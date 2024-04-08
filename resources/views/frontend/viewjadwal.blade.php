@@ -47,7 +47,7 @@ https://templatemo.com/tm-591-villa-agency
 </head>
 
 <body>
-    <!-- ***** Header Area Start ***** -->
+    <!-- ***** Header Area ***** -->
     <header class="header-area header-sticky" style="background-color: rgb(88, 216, 163)">
         <div class="container">
             <div class="row">
@@ -65,7 +65,6 @@ https://templatemo.com/tm-591-villa-agency
     <div class="row">
         <div class="col">
             <div class="card" style="background-color: rgb(88, 216, 163); border: none;">
-                <!-- Menambahkan border: none; -->
                 <div class="card-body">
                     <h2 style="text-align: center; color: white;">Jadwal Dokter Spesialis</h2>
                 </div>
