@@ -34,6 +34,7 @@
 
             <li><a href="/backend/data-poli"><i class="fa fa-book"></i> <span>Data Poli</span></a></li>
             <li><a href="/backend/data-dokter"><i class="fa fa-folder"></i> <span>Data Dokter</span></a></li>
+            <li><a href="/backend/kamar"><i class="fa fa-bed"></i> <span>Ketersediaan Kamar</span></a></li>
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar "></i> <span>Jadwal Dokter</span></a></li>
             <li><a href="/backend/user"><i class="fa fa-users "></i> <span>Users</span></a></li>
         </ul>

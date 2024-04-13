@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
+use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
@@ -64,6 +65,15 @@ Route::get('/backend/data-dokter/{id}/edit', [DokterController::class, 'edit'])-
 Route::put('/backend/data-dokter/{id}/update', [DokterController::class, 'update'])->name('backend.data-dokter.update');
 Route::delete('/backend/data-dokter/{id}/delete', [DokterController::class, 'delete'])->name('backend.data-dokter.delete');
 // End Data Dokter
+
+// Kamar
+Route::get('/backend/kamar', [KamarController::class, 'index'])->name('backend.kamar.index');
+Route::get('/backend/kamar/create', [KamarController::class, 'create'])->name('backend.kamar.create');
+Route::post('/backend/kamar/store', [KamarController::class, 'store'])->name('backend.kamar.store');
+Route::get('/backend/kamar/{id}/edit', [KamarController::class, 'edit'])->name('backend.kamar.edit');
+Route::put('/backend/kamar/{id}/update', [KamarController::class, 'update'])->name('backend.kamar.update');
+Route::delete('/backend/kamar/{id}/delete', [KamarController::class, 'delete'])->name('backend.kamar.delete');
+// End Jadwal Dokter
 
 // Jadwal Dokter
 Route::get('/backend/jadwal-dokter', [JadwalDokterController::class, 'index'])->name('backend.jadwal-dokter.index');

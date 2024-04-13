@@ -15,6 +15,8 @@
                     <h2 style="text-align: center">{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h2>
                 </div>
             </div>
+            
+                
+            </div>
         </div>
-    </div>
-@endsection
+    @endsection

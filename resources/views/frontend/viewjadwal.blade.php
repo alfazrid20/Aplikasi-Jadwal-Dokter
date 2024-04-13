@@ -48,36 +48,50 @@ https://templatemo.com/tm-591-villa-agency
 
 <body>
     <!-- ***** Header Area ***** -->
-    <header class="header-area header-sticky" style="background-color: rgb(88, 216, 163)">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center align-items-center">
-                    <nav class="main-nav">
-                        <a href="/" class="gambar">
-                            <img src="{{ asset('frontend/images/logo.png') }}" style="width: 100px" alt="Gambar">
-                        </a>
-                    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6">
+            <div class="card"
+                style="background-image: url('{{ asset('frontend/images/jadwal.jpeg') }}'); background-size: cover; border: none; text-align: center;">
+                <div class="card-body">
+                    <img src="{{ asset('frontend/images/logo.png') }}" alt="logors"
+                        style="max-width: 100px; margin: auto;">
+                </div>
+                <div class="card-body">
+                    <h2 style="color: rgb(236, 0, 0);">Jadwal Dokter Spesialis</h2>
+                </div>
+                <div class="card-body">
+                    <h2 style="color: rgb(255, 0, 0);">{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h2>
                 </div>
             </div>
         </div>
-    </header>
-
-    <div class="row">
-        <div class="col">
-            <div class="card" style="background-color: rgb(88, 216, 163); border: none;">
+        <div class="col-12 col-md-6">
+            <div class="card"
+                style="background-image: url('{{ asset('frontend/images/rs.jpg') }}'); background-size: cover; border: none; text-align: center; ">
                 <div class="card-body">
-                    <h2 style="text-align: center; color: white;">Jadwal Dokter Spesialis</h2>
+                    <img src="{{ asset('frontend/images/logo.png') }}" alt="logors"
+                        style="max-width: 100px; margin: auto;">
                 </div>
                 <div class="card-body">
-                    <h2 style="text-align: center; color: white;">{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h2>
+                    <h2 style="color: white;">Ketersediaan Kamar</h2>
+                </div>
+                <div class="card-body">
+                    <h2 style="color: white;">{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h2>
                 </div>
             </div>
         </div>
     </div>
 
 
+
+    {{-- <br>
+    <button onclick="location.href='URL_KAMAR_TERSEDIA'" class="btn btn-success" style="margin-left: 30px;">Ketersediaan
+        Kamar</button>
+    <button onclick="location.href='URL_KAMAR_TERSEDIA'" class="btn btn-success" style="margin-left: 70%;">Ketersediaan
+        Kamar</button> --}}
+
     <div class="row justify-content-center" style="margin-top: 30px">
-        <div class="col-md-10">
+        <div class="col-md-6">
             <div class="table-responsive-sm">
                 <table class="table">
                     <thead class="table" style="background-color: rgb(88, 216, 163)">
@@ -85,7 +99,6 @@ https://templatemo.com/tm-591-villa-agency
                             <th><b>No</b></th>
                             <th><b>Poli</b></th>
                             <th><b>Nama Dokter</b></th>
-                            {{-- <th><b>Hari</b></th> --}}
                             <th><b>Jam Pelayanan</b></th>
                             <th><b>Keterangan</b></th>
                         </tr>
@@ -96,12 +109,9 @@ https://templatemo.com/tm-591-villa-agency
                                 <td style="color: black; font-weight: bold;"><b>{{ $loop->iteration }}</b></td>
                                 <td style="color: black; font-weight: bold;"><b>{{ $d->poli->nama }}</b></td>
                                 <td style="color: black; font-weight: bold;"><b>{{ $d->dokter->nama }}</b></td>
-                                <td style="color: black; font-weight: bold; padding-left: 5%">
+                                <td style="color: black; font-weight: bold; padding-left: 3%">
                                     <b>{{ $d->jam_pelayanan }}</b>
                                 </td>
-
-                                {{-- <td><b>{{ $d->hari }}</b></td> --}}
-                                {{-- <td><b style="padding-left: 30%;">{{ $d->jam_pelayanan }}</b></td> --}}
                                 <td>
                                     @if ($d->keterangan == 'Tersedia')
                                         <span class="badge badge-primary custom-badge">{{ $d->keterangan }}</span>
@@ -111,17 +121,51 @@ https://templatemo.com/tm-591-villa-agency
                                         <span class="badge badge-danger custom-badge">{{ $d->keterangan }}</span>
                                     @endif
                                 </td>
-
-
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-
-
-
         </div>
+        <div class="col-md-6">
+            <div class="table-responsive-sm">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Kamar</th>
+                            <th>Jenis Kamar</th>
+                            <th>Posisi</th>
+                            <th>Status</th>
+                            <th>Jumlah Pasien</th>
+                            <th>Tanggal Masuk</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kamarTableBody">
+                        @foreach ($kamar as $d)
+                            @if ($d->status == 'TERISI')
+                                <tr>
+                                    <td style="color: black; font-weight: bold;">{{ $loop->iteration }}</td>
+                                    <td style="color: black; font-weight: bold; padding-left: 4%">{{ $d->nama_kamar }}
+                                    </td>
+                                    <td style="color: black; font-weight: bold; padding-left: 4%">
+                                        {{ $d->jeniskamar->nama_ruang }}</td>
+                                    <td style="color: black; font-weight: bold;">{{ $d->posisi }}</td>
+                                    <td>
+                                        <span
+                                            class="badge badge-primary badge-lg custom-badge">{{ $d->status }}</span>
+                                    </td>
+                                    <td style="color: black; font-weight: bold; padding-left: 7%">
+                                        {{ $d->jumlah_pasien }}</td>
+                                    <td style="color: black; font-weight: bold;">{{ $d->tanggal_masuk }}</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
     <!-- ***** Header Area End ***** -->

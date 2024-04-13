@@ -20,7 +20,7 @@ class DokterController extends Controller
                 $dokter->where($field, 'like', '%' . $val . '%');
             }
         }
-        $dokter = $dokter->paginate(10); // Gunakan variabel $dokter yang telah difilter
+        $dokter = $dokter->paginate(10); 
         return view('backend.data-dokter', compact('dokter'));
     }
 
