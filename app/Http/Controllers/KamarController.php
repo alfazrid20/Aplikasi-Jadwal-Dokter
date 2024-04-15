@@ -12,8 +12,15 @@ class KamarController extends Controller
 {
     public function index(Request $request)
     {
-        $kamar = Kamars::orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(20);
+        $query = Kamars::query();
+        $query->select('ruang_inaps.*');
+        if (!empty($request->nama_kamar)) {
+            $query->where('nama_kamar', 'like', '%' . $request->nama_kamar . '%');
+        }
+        $kamar = $query->orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(10);
         $jenis_kamar = JenisKamar::all();
+
+        // Mengembalikan view dengan data kamar yang sudah difilter
         return view('kamar.index', compact('kamar', 'jenis_kamar'));
     }
 
@@ -40,7 +47,7 @@ class KamarController extends Controller
             'posisi.required' => "Isi Posisi",
             'status.required' => "Pilih Status",
             'Jumlah Pasien.required' => "Isi Jumlah Pasien",
-            'tanggal_masuk.required' => "Isi Tanggal Masuk"
+            // 'tanggal_masuk.required' => "Isi Tanggal Masuk"
         ]);
 
         // Jika validasi gagal
@@ -55,7 +62,7 @@ class KamarController extends Controller
             'posisi' => $request->posisi,
             'status' => $request->status,
             'jumlah_pasien' => $request->jumlah_pasien,
-            'tanggal_masuk' => date('Y-m-d', strtotime($request->tanggal_masuk))
+            // 'tanggal_masuk' => date('Y-m-d', strtotime($request->tanggal_masuk))
         ]);
 
         // Redirect ke index kamar dengan pesan sukses
@@ -84,7 +91,7 @@ class KamarController extends Controller
             'posisi.required' => "Isi Posisi",
             'status.required' => "Pilih Status",
             'jumlah_pasien.required' => "Isi Jumlah Pasien",
-            'tanggal_masuk.required' => "Isi Tanggal Masuk"
+            // 'tanggal_masuk.required' => "Isi Tanggal Masuk"
         ]);
 
         // Jika validasi gagal
@@ -102,7 +109,7 @@ class KamarController extends Controller
             'posisi' => $request->posisi,
             'status' => $request->status,
             'jumlah_pasien' => $request->jumlah_pasien,
-            'tanggal_masuk' => date('Y-m-d', strtotime($request->tanggal_masuk))
+            // 'tanggal_masuk' => date('Y-m-d', strtotime($request->tanggal_masuk))
         ]);
 
         // Redirect ke index kamar dengan pesan sukses

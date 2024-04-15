@@ -15,10 +15,22 @@
                                 data-bs-toggle="modal" data-bs-target="#modal-inputdokter"><i class="fa fa-plus"></i> Tambah
                                 Data </a>
                         </div>
-                        {{-- <div class="mb-3 d-flex align-items-center">
-                            <input type="text" id="searchInput" class="form-control mr-2" placeholder="Cari Nama Dokter">
-                            <button class="btn btn-primary" id="searchBtn">Cari</button>
-                        </div> --}}
+                        <form action="/backend/data-dokter" method="GET" id="searchForm">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="Cari Kamar" style="width: 45%; margin-right: 5%;"
+                                                value="{{ Request('nama') }}">
+                                            <button class="btn btn-primary" type="submit" id="button-addon4"><i
+                                                    class="fa fa-search"></i> Search</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
                         <div class="table-responsive-sm">
                             <table class="table">
                                 <thead class="thead-dark">
@@ -32,7 +44,7 @@
                                 <tbody id="dokterTableBody">
                                     @foreach ($dokter as $d)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $loop->iteration + $dokter->firstitem() - 1 }}</td>
                                             <td>{{ $d->nama }}</td>
                                             <td>{{ $d->poli->nama }}</td>
                                             <td>
@@ -58,3 +70,11 @@
                 </div>
             </div>
         @endsection
+
+        @push('myscript')
+            <script>
+                document.getElementById('button-addon4').addEventListener('click', function() {
+                    document.getElementById('searchForm').submit();
+                });
+            </script>
+        @endpush

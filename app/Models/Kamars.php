@@ -9,7 +9,7 @@ class Kamars extends Model
 {
     use HasFactory;
     protected $table = 'ruang_inaps';
-    protected $fillable = ['nama_kamar', 'posisi', 'tanggal_masuk', 'status', 'jumlah_pasien', 'jenis_ruang_id'];
+    protected $fillable = ['nama_kamar', 'posisi','status', 'jumlah_pasien', 'jenis_ruang_id'];
 
     public function jeniskamar()
     {

@@ -138,7 +138,6 @@ https://templatemo.com/tm-591-villa-agency
                             <th>Posisi</th>
                             <th>Status</th>
                             <th>Jumlah Pasien</th>
-                            <th>Tanggal Masuk</th>
                         </tr>
                     </thead>
                     <tbody id="kamarTableBody">
@@ -157,7 +156,6 @@ https://templatemo.com/tm-591-villa-agency
                                     </td>
                                     <td style="color: black; font-weight: bold; padding-left: 7%">
                                         {{ $d->jumlah_pasien }}</td>
-                                    <td style="color: black; font-weight: bold;">{{ $d->tanggal_masuk }}</td>
                                 </tr>
                             @endif
                         @endforeach

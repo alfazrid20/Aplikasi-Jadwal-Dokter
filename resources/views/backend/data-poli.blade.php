@@ -14,11 +14,20 @@
                             <a href="/backend/data-poli/create" class="btn btn-primary" id="tambahpoli" data-bs-toggle="modal"
                                 data-bs-target="#modal-inputpoli"><i class="fa fa-plus"></i> Tambah Data </a>
                         </div>
-                        <form action="/backend/data-poli" method="GET">
-                            <div class="mb-3 d-flex align-items-center">
-                                <input type="text" name="nama" id="nama" class="form-control mr-2"
-                                    placeholder="Cari nama poli" value="">
-                                <button class="btn btn-primary" id="searchBtn">Cari</button>
+                        <form action="/backend/data-poli" method="GET" id="searchForm">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" name="nama" id="nama" class="form-control"
+                                                placeholder="Cari Poli" style="width: 45%; margin-right: 5%;"
+                                                value="{{ Request('nama') }}">
+                                            <button class="btn btn-primary" type="submit" id="button-addon3"><i
+                                                    class="fa fa-search"></i> Search</button>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </form>
                         <div class="table-responsive-sm">
@@ -74,29 +83,9 @@
 @endsection
 
 @push('myscript')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script>
-        $(document).ready(function() {
-            // Tambahkan event click untuk tombol "Cari"
-            $("#searchBtn").click(function() {
-                var searchTerm = $("#nama").val(); // Ambil nilai dari input pencarian
-
-                // Kirim permintaan pencarian ke server menggunakan AJAX
-                $.ajax({
-                    type: "GET",
-                    url: "/backend/data-poli", // Sesuaikan dengan rute yang menangani pencarian
-                    data: {
-                        nama: searchTerm // Kirim nilai pencarian sebagai parameter 'nama'
-                    },
-                    success: function(response) {
-                        // Hapus isi tabel sebelum menambahkan data baru
-                        $("#poliTableBody").empty();
-
-                        // Tampilkan hasil pencarian di dalam tabel
-                        $("#poliTableBody").html(response);
-                    }
-                });
-            });
-        });
-    </script>
+<script>
+    document.getElementById('button-addon2').addEventListener('click', function() {
+        document.getElementById('searchForm').submit();
+    });
+</script>
 @endpush

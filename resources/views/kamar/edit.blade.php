@@ -90,7 +90,7 @@
                                         value="{{ $kamar->posisi }}">
                                 </div>
 
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label class="col-sm-2 control-label required">Tanggal Masuk</label>
                                     <div class="col-sm-6 input-group">
                                         <div class="input-group">
@@ -105,7 +105,7 @@
                                             @endif
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <div class="box-footer text-right">
                                     <a href="{{ URL::previous() }}" class="btn btn-danger">Batal</a>
