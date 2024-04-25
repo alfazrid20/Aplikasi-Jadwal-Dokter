@@ -22,7 +22,7 @@
             <div class="full counter_section margin_bottom_30 yellow_bg">
                 <div class="couter_icon">
                     <div>
-                        <i class="fa fa-bed"></i>
+                        <a href="/backend/kamar/"><i class="fa fa-bed"></a></i>
                     </div>
                 </div>
                 <div class="counter_no">
@@ -37,7 +37,7 @@
             <div class="full counter_section margin_bottom_30 blue1_bg">
                 <div class="couter_icon">
                     <div>
-                        <i class="fa fa-users"></i>
+                        <a href="/backend/data-dokter/"><i class="fa fa-users"></i></a>
                     </div>
                 </div>
                 <div class="counter_no">
@@ -52,7 +52,7 @@
             <div class="full counter_section margin_bottom_30 green_bg">
                 <div class="couter_icon">
                     <div>
-                        <i class="fa fa-book"></i>
+                        <a href="/backend/data-poli/"><i class="fa fa-book"></i></a>
                     </div>
                 </div>
                 <div class="counter_no">
