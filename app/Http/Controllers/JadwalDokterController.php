@@ -38,20 +38,19 @@ class JadwalDokterController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $validator = Validator::make($request->all(), [
         'poli_id' => 'required', 
         'dokter_id' => 'required',
         'hari' => 'required',
         'jam_pelayanan' => 'required',
-        'foto_dokter' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'foto_dokter' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'keterangan' => 'required'
     ], [
         'poli_id.required' => "Isi Poli",
         'dokter_id.required' => "Isi Nama Dokter",
         'hari.required' => "Isi Hari",
         'jam_pelayanan.required' => "Isi Jam Pelayanan",
-        'foto_dokter.required' => 'Silakan pilih file foto.',
         'foto_dokter.image' => 'File harus berupa gambar.',
         'foto_dokter.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
         'foto_dokter.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
@@ -64,21 +63,16 @@ class JadwalDokterController extends Controller
             ->withInput();
     }
 
+    $filePath = asset('frontend/images/no-photo.png'); 
+
     if ($request->hasFile('foto_dokter')) {
         $file = $request->file('foto_dokter');
-        // Membuat nama file unik dengan menambahkan timestamp
         $fileName = time() . '_' . $file->getClientOriginalName();
         
-        // Menyimpan file ke direktori penyimpanan
         $filePath = $file->storeAs('public/foto_dokter', $fileName);
         $filePath = 'storage/' . str_replace('public/', '', $filePath);
-    } else {
-        return redirect()->back()
-            ->withErrors(['foto_dokter' => 'Silakan pilih file foto.'])
-            ->withInput();
     }
 
-    // Jika validasi berhasil dan file berhasil diunggah, buat entitas baru
     JadwalDokter::create([
         'poli_id' => $request->poli_id,
         'dokter_id' => $request->dokter_id,
@@ -90,7 +84,8 @@ class JadwalDokterController extends Controller
 
     return redirect()->route('backend.jadwal-dokter.index')
         ->with('success', 'Data berhasil ditambah');
-}
+    }
+
 
 
     public function edit($id)

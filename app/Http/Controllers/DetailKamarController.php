@@ -56,7 +56,7 @@ class DetailKamarController extends Controller
             return redirect()->route('backend.detail-kamar.create')->withErrors($validator)->withInput();
         }
     
-        $filePath = asset('frontend/images/no-image.png'); // Mengatur path default untuk gambar
+        $filePath = asset('frontend/images/no-image.png'); 
     
         if ($request->hasFile('foto_kamar')) {
             $file = $request->file('foto_kamar');
