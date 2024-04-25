@@ -27,15 +27,15 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000; /* Make sure it's above other content */
-            transition: top 0.3s; /* Add smooth transition */
+            z-index: 1000; 
+            transition: top 0.3s; 
         }
 
         .header-sticky.is-hidden {
-            top: -20x; /* Hide the header when scrolling down */
+            top: -20x; 
         }
 
-         /* Set video as background */
+         
          #video-background {
             position: fixed;
             right: 0;
@@ -49,38 +49,36 @@
             object-fit: cover;
         }
 
-        /* Overlay to make text more readable */
+        
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+            background-color: rgba(0, 0, 0, 0.5); 
             z-index: -1;
         }
 
-        /* Styles for content */
+        
         .content {
             position: relative;
             z-index: 1;
             color: white;
             text-align: center;
-            padding: 100px 0; /* Adjust padding as needed */
+            padding: 100px 0; 
         }
 
         .card {
             background-color: rgba(255, 255, 255, 0.8); /* Ubah nilai alpha (a) sesuai kebutuhan */
           }
+
+          .contact-info p {
+            margin-bottom: 5px;
+          }
           
     </style>
-<!--
 
-TemplateMo 591 villa agency
-
-https://templatemo.com/tm-591-villa-agency
-
--->
   </head>
 
 <body>
@@ -105,7 +103,7 @@ https://templatemo.com/tm-591-villa-agency
                       <li><a href="/" class="active">Home</a></li>
                       <li><a href="/sejarah" class="">Sejarah</a></li>
                       <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
-                      <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter    </a></li>
+                      <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -210,6 +208,27 @@ https://templatemo.com/tm-591-villa-agency
 
 
   <!-- ***** Header Area End ***** -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" style="margin-top: 5%">
+          <p><strong><i class="fa-solid fa-map-location-dot"></i></strong> Jl. H. Agus Salim No.6, Sawahan, Kec. Padang Tim., Kota Padang, Sumatera Barat 25171</p>
+          <p><strong><i class="fa-solid fa-phone"></i></strong> 0751-23843</p>
+          <p><strong><i class="fa-solid fa-envelope"></i></strong> rsuaisyiyahpadang@gmail.com</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Location</h5>
+          <!-- Embedding Google Maps -->
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15957.090328223261!2d100.3635671!3d-0.9476724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b9384eb33b0d%3A0xee87dd6052b44f19!2sRumah%20Sakit%20Umum%20Aisyiyah!5e0!3m2!1sid!2sid!4v1714013801118!5m2!1sid!2sid" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center">
+      <p>&copy; 2024 RSUA. Designed By Alfazri Darmawansyah. All Rights Reserved.</p>
+    </div>
+  </footer>
+
 
 
   <!-- Scripts -->

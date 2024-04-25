@@ -33,4 +33,6 @@ class ViewController extends Controller
         $detailkamar = DetailKamars::all();
         return view('frontend.cekkamar', compact('detailkamar'));
     }
+
+   
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailKamarController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
+use App\Http\Controllers\JamController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\ViewController;
@@ -32,6 +33,8 @@ Route::get('/', function () {
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
+Route::get('/contact-us', [ViewController::class, 'contact'])->name('contact');
+
 
 //Login
 
