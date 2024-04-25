@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
                         <div class="form-group">
-                            <form class="form-horizontal" method="POST" action="{{ route('backend.jadwal-dokter.store') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('backend.jadwal-dokter.store') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 @if ($errors->any())
@@ -80,6 +80,16 @@
                                         </div>
                                         <input type="text" name="jam_pelayanan" class="form-control"
                                             placeholder="08:00 - 12:00" value="{{ old('jam_pelayanan') }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Foto Dokter</label>
+                                    <div class="col-sm-6 input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-picture-o"></i></span>
+                                        </div>
+                                        <input type="file" name="foto_dokter" class="form-control">
                                     </div>
                                 </div>
 

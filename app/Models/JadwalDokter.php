@@ -11,7 +11,7 @@ class JadwalDokter extends Model
     protected $table = 'jadwal';
     protected $fillable = [
         // 'poli_id', 'dokter_id', 'hari', 'jam_pelayanan', 'keterangan'
-        'poli_id', 'dokter_id', 'hari', 'jam_pelayanan', 'keterangan' ,
+        'poli_id', 'dokter_id', 'hari', 'jam_pelayanan', 'foto_dokter', 'keterangan' ,
     ];
 
     protected $guarded = [];

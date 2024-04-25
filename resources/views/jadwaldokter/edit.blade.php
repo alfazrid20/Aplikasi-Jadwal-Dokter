@@ -13,7 +13,7 @@
                     <div class="table_section padding_infor_info">
                         <div class="form-group">
                             <form class="form-horizontal" method="POST"
-                                action="{{ route('backend.jadwal-dokter.update', ['id' => $jadwal->id]) }}">
+                                action="{{ route('backend.jadwal-dokter.update', ['id' => $jadwal->id]) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -93,6 +93,16 @@
                                         </div>
                                         <input type="text" name="jam_pelayanan" class="form-control"
                                             placeholder="08:00 - 12:00" value="{{ $jadwal->jam_pelayanan }}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Foto Dokter</label>
+                                    <div class="col-sm-6 input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-picture-o"></i></span>
+                                        </div>
+                                        <input type="file" name="foto_dokter" class="form-control">
                                     </div>
                                 </div>
 

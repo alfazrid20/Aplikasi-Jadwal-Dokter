@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailKamarController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\KamarController;
@@ -29,6 +30,8 @@ Route::get('/', function () {
 
 
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
+Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
+Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
 
 //Login
 
@@ -73,7 +76,16 @@ Route::post('/backend/kamar/store', [KamarController::class, 'store'])->name('ba
 Route::get('/backend/kamar/{id}/edit', [KamarController::class, 'edit'])->name('backend.kamar.edit');
 Route::put('/backend/kamar/{id}/update', [KamarController::class, 'update'])->name('backend.kamar.update');
 Route::delete('/backend/kamar/{id}/delete', [KamarController::class, 'delete'])->name('backend.kamar.delete');
-// End Jadwal Dokter
+// End Kamar
+
+// Kamar
+Route::get('/backend/detail-kamar', [DetailKamarController::class, 'index'])->name('backend.detail-kamar.index');
+Route::get('/backend/detail-kamar/create', [DetailKamarController::class, 'create'])->name('backend.detail-kamar.create');
+Route::post('/backend/detail-kamar/store', [DetailKamarController::class, 'store'])->name('backend.detail-kamar.store');
+Route::get('/backend/detail-kamar/{id}/edit', [DetailKamarController::class, 'edit'])->name('backend.detail-kamar.edit');
+Route::put('/backend/detail-kamar/{id}/update', [DetailKamarController::class, 'update'])->name('backend.detail-kamar.update');
+Route::delete('/backend/detail-kamar/{id}/delete', [DetailKamarController::class, 'delete'])->name('backend.detail-kamar.delete');
+// End Kamar
 
 // Jadwal Dokter
 Route::get('/backend/jadwal-dokter', [JadwalDokterController::class, 'index'])->name('backend.jadwal-dokter.index');
@@ -82,6 +94,7 @@ Route::post('/backend/jadwal-dokter/store', [JadwalDokterController::class, 'sto
 Route::get('/backend/jadwal-dokter/{id}/edit', [JadwalDokterController::class, 'edit'])->name('backend.jadwal-dokter.edit');
 Route::put('/backend/jadwal-dokter/{id}/update', [JadwalDokterController::class, 'update'])->name('backend.jadwal-dokter.update');
 Route::delete('/backend/jadwal-dokter/{id}/delete', [JadwalDokterController::class, 'delete'])->name('backend.jadwal-dokter.delete');
+Route::post('/backend/jadwal-dokter/reset', [JadwalDokterController::class, 'reset'])->name('backend.jadwal-dokter.reset');
 // End Jadwal Dokter
 
 // User

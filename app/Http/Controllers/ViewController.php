@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailKamars;
 use App\Models\Polis;
 use App\Models\Dokters;
 use App\Models\JadwalDokter;
@@ -19,5 +20,17 @@ class ViewController extends Controller
         $kamar = Kamars::all();
         $jenis_kamar = JenisKamar::all();
         return view('frontend.viewjadwal',compact('jadwaldokter', 'dokter','poli','kamar','jenis_kamar'));
+    }
+
+    public function sejarah()
+    {
+        return view('frontend.sejarah');
+    }
+
+    public function cekkamar()
+    {
+        $jenis_kamar = JenisKamar::all();
+        $detailkamar = DetailKamars::all();
+        return view('frontend.cekkamar', compact('detailkamar'));
     }
 }

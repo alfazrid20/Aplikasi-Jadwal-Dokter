@@ -85,18 +85,7 @@
                             </div>
                         </div>
 
-                        {{-- <div class="form-group">
-                            <label class="col-sm-2 control-label required">Tanggal Masuk</label>
-                            <div class="col-sm-6 input-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="tanggal_masuk" name="tanggal_masuk"
-                                        value="{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}" readonly>
-                                </div>
-                            </div>
-                        </div> --}}
+                       
                         <div class="box-footer text-right">
                             <a href="{{ URL::previous() }}" class="btn btn-danger">Batal</a>
                             <button type="submit" class="btn btn-success">Simpan</button>
