@@ -10,10 +10,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
-                        <div class="mb-3">
+                        <div class="mb-3 d-flex">
                             <a href="/backend/kamar/create" class="btn btn-primary" id="tambahkamar" data-bs-toggle="modal"
-                                data-bs-target="#modal-inputdokter"><i class="fa fa-plus"></i> Tambah
+                                data-bs-target="#modal-inputkamar"><i class="fa fa-plus"></i> Tambah
                                 Data </a>
+                                <form id="resetForm" action="/backend/kamar/reset" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-secondary mx-2"><i class="fa fa-refresh"></i> Reset</button>
+                                </form>
                         </div>
                         <form action="/backend/kamar" method="GET" id="searchForm">
                             <div class="row">
@@ -41,7 +45,6 @@
                                         <th>Posisi</th>
                                         <th>Status</th>
                                         <th>Jumlah Pasien</th>
-                                        {{-- <th>Tanggal Masuk</th> --}}
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -62,7 +65,6 @@
                                                 @endif
                                             </td>
                                             <td>{{ $d->jumlah_pasien }}</td>
-                                            {{-- <td>{{ $d->tanggal_masuk }}</td> --}}
                                             <td>
                                                 <div class="btn-group">
                                                     <form action="{{ route('backend.kamar.delete', $d->id) }}"
@@ -93,6 +95,23 @@
     <script>
         document.getElementById('button-addon2').addEventListener('click', function() {
             document.getElementById('searchForm').submit();
+        });
+
+        document.getElementById('resetForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            Swal.fire({
+                title: 'Apa Kamu Yakin?',
+                text: "Data Yang Direset Adalah Status & Jam Pasien",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, reset it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.submit();
+                }
+            });
         });
     </script>
 @endpush

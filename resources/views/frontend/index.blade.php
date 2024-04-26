@@ -126,7 +126,7 @@
                     </p>
                 </div>
                 <div class="text-center">
-                    <a href="/view-jadwal" class="btn btn-success" style="width: 100%">Lihat Selengkapnya</a>
+                    <a href="/view-jadwal" target="_blank" class="btn btn-success" style="width: 100%">Lihat Selengkapnya</a>
                 </div>
             </div>
         </div>

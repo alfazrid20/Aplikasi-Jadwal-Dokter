@@ -8,6 +8,7 @@ use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\JamController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\SetJamPraktekController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -79,6 +80,8 @@ Route::post('/backend/kamar/store', [KamarController::class, 'store'])->name('ba
 Route::get('/backend/kamar/{id}/edit', [KamarController::class, 'edit'])->name('backend.kamar.edit');
 Route::put('/backend/kamar/{id}/update', [KamarController::class, 'update'])->name('backend.kamar.update');
 Route::delete('/backend/kamar/{id}/delete', [KamarController::class, 'delete'])->name('backend.kamar.delete');
+Route::post('/backend/kamar/reset', [KamarController::class, 'reset'])->name('backend.kamar.reset');
+
 // End Kamar
 
 // Kamar
@@ -97,7 +100,6 @@ Route::post('/backend/jadwal-dokter/store', [JadwalDokterController::class, 'sto
 Route::get('/backend/jadwal-dokter/{id}/edit', [JadwalDokterController::class, 'edit'])->name('backend.jadwal-dokter.edit');
 Route::put('/backend/jadwal-dokter/{id}/update', [JadwalDokterController::class, 'update'])->name('backend.jadwal-dokter.update');
 Route::delete('/backend/jadwal-dokter/{id}/delete', [JadwalDokterController::class, 'delete'])->name('backend.jadwal-dokter.delete');
-Route::post('/backend/jadwal-dokter/reset', [JadwalDokterController::class, 'reset'])->name('backend.jadwal-dokter.reset');
 // End Jadwal Dokter
 
 // User

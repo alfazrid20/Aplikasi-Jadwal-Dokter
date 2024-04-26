@@ -14,10 +14,11 @@ class ViewController extends Controller
 {
     public function index()
     {
+        $query = Kamars::query();
         $jadwaldokter = JadwalDokter::all();
         $dokter = Dokters::all();
         $poli = Polis::all();
-        $kamar = Kamars::all();
+        $kamar = $query->orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(7);
         $jenis_kamar = JenisKamar::all();
         return view('frontend.viewjadwal',compact('jadwaldokter', 'dokter','poli','kamar','jenis_kamar'));
     }

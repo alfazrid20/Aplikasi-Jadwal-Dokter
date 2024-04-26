@@ -19,7 +19,9 @@
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
                         <div class="mb-3 d-flex">
-                            <a href="/backend/jadwal-dokter/create" class="btn btn-primary mx-2"><i class="fa fa-plus"></i> Tambah Data</a>
+                            <a href="/backend/jadwal-dokter/create" class="btn btn-primary" id="tambahjadwal" data-bs-toggle="modal"
+                            data-bs-target="#modal-inputjadwal"><i class="fa fa-plus"></i> Tambah
+                            Data </a>
                             <form id="resetForm" action="/backend/jadwal-dokter/reset" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-secondary mx-2"><i class="fa fa-refresh"></i> Reset</button>

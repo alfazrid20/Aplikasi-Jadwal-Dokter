@@ -63,67 +63,122 @@
     <div class="overlay"></div>
 
     <div class="container-fluid main-banner" >
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="background-image: url('{{ asset('frontend/images/drbg.jpg') }}');">
-            <div class="carousel-inner">
-                @foreach($jadwaldokter as $key => $d)
-                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <div class="card mt-2">
-                        <h5 class="card-header text-center bg-success text-white">Jadwal Praktek Dokter Spesialis <br>{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h5>
-                        </p>
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-md-4 mb-3 mb-md-0">
-                                    <img src="{{ asset($d->foto_dokter) }}" class="img-fluid rounded" alt="Foto Dokter">
-                                </div>
-                                <div class="col-md-8">
-                                    <h5 class="card-title" style="font-family: sans-serif; font-size: 24px"><span class="badge text-bg-success">{{ $d->dokter->nama }}</span>
-                                        </h5>
-                                    <br>
-                                    <p class="card-text" style="font-size: 24px;"><span class="badge text-bg-success">SPESIALIS {{ $d->poli->nama }}</span>
-                                        </p>
-                                    <br>
-                                    <p class="card-text" style="font-size: 24px;"><span class="badge text-bg-success">JAM PRAKTEK : {{ $d->jam_pelayanan }}</span>
-                                        </p>
-                                    <br>
-                                    @php
-                                    $status = $d->keterangan;
-                                    $badge_class = '';
-                                    switch($status) {
-                                        case 'Tersedia':
-                                            $badge_class = 'badge bg-primary';
-                                            break;
-                                        case 'Tidak Tersedia':
-                                            $badge_class = 'badge bg-danger';
-                                            break;
-                                        case 'Dalam Perjalanan':
-                                            $badge_class = 'badge bg-info';
-                                            break;
-                                        default:
-                                            $badge_class = 'badge bg-secondary';
-                                    }
-                                    @endphp
-                                    <span class="badge {{ $badge_class }}" style="font-size: 24px">{{ $status }}</span>
+        <div class="logo mt-2" style="text-align: center;">
+            <img src="{{ asset('frontend/images/logo.ico') }}" style="width: 10%">
+        </div>
+       
+        <div class="row">
+            <div class="col-md-6" style="margin-top: 5%">
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" >
+                    <div class="carousel-inner">
+                        <!-- Your carousel items here -->
+                        @foreach($jadwaldokter as $key => $d)
+                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                            <div class="card mt-2">
+                                <h5 class="card-header text-center bg-success text-white">Jadwal Praktek Dokter Spesialis <br>{{ date('d-m-Y', strtotime(date('Y-m-d'))) }}</h5>
+                                </p>
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-4 mb-3 mb-md-0">
+                                            <img src="{{ asset($d->foto_dokter) }}" class="img-fluid rounded" alt="Foto Dokter">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h5 class="card-title" style="font-size: 24px"><span class="badge text-bg-success">{{ $d->dokter->nama }}</span>
+                                                </h5>
+                                            <br>
+                                            <p class="card-text" style="font-size: 24px;"><span class="badge text-bg-success">SPESIALIS {{ $d->poli->nama }}</span>
+                                                </p>
+                                            <br>
+                                            <p class="card-text" style="font-size: 24px;"><span class="badge text-bg-success">JAM PRAKTEK : {{ $d->jam_pelayanan }}</span>
+                                                </p>
+                                            <br>
+                                            @php
+                                            $status = $d->keterangan;
+                                            $badge_class = '';
+                                            switch($status) {
+                                                case 'Tersedia':
+                                                    $badge_class = 'badge bg-primary';
+                                                    break;
+                                                case 'Tidak Tersedia':
+                                                    $badge_class = 'badge bg-danger';
+                                                    break;
+                                                case 'Dalam Perjalanan':
+                                                    $badge_class = 'badge bg-info';
+                                                    break;
+                                                default:
+                                                    $badge_class = 'badge bg-secondary';
+                                            }
+                                            @endphp
+                                            <span class="badge {{ $badge_class }}" style="font-size: 24px">{{ $status }}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer text-center bg-light">
-                            {{--  <img src="{{ asset('frontend/images/logo-bpjs.png') }}" style="width: 200px;" class="mr-4">
-                            <img src="{{ asset('frontend/images/larsi.png') }}" style="width: 120px;">  --}}
+                        @endforeach
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            
+                    <div class="col-md-6" style="margin-top: 5%">
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table">
+                                    <thead class="table bg-success text-white">
+                                        <tr>    
+                                            <th colspan="6" style="text-align: center">Ketersediaan Kamar</th>
+                                        </tr>
+                                        <tr>    
+                                            <th>No</th>
+                                            <th>Nama Kamar</th>
+                                            <th>Jenis Kamar</th>
+                                           
+                                            <th>Status</th>
+                                            <th>Jumlah Pasien</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="kamarTableBody">
+                                        @foreach ($kamar as $d)
+                                        <tr>
+                                            <td>{{ $loop->iteration + $kamar->firstItem() - 1  }}</td>
+                                            <td style="color: black; font-weight: bold; padding-left: 4%">{{ $d->nama_kamar }}</td>
+                                            <td style="color: black; font-weight: bold; padding-left: 4%">{{ $d->jeniskamar->nama_ruang }}</td>
+                                            <td>
+                                                @if($d->status == 'TERISI')
+                                                    <span class="badge text-bg-primary">{{ $d->status }}</span>
+                                                @elseif($d->status == 'KOSONG')
+                                                    <span class="badge text-bg-danger">{{ $d->status }}</span>
+                                                @else
+                                                    {{ $d->status }}
+                                                @endif
+                                            </td>
+                                            <td style="color: black; font-weight: bold; padding-left: 10%">{{ $d->jumlah_pasien }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                {{ $kamar->links('vendor.pagination.bootstrap-5') }}
+                            </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
     </div>
+        <marquee behavior="scroll" direction="left" style="margin-top: 20px; color: white">
+            <i>Pendaftaran Poliklinik Bisa Melalui Aplikasi Mobile JKN</i>
+            <div style="margin-left: 30%">
+                <img src="{{ asset('frontend/images/icon.png') }}" alt="Mobile JKN" style="width: 20%; ">
+                <img src="{{ asset('frontend/images/plystr.png') }}" alt="Mobile JKN" style="width: 20%; "> 
+            </div>  
+        </marquee>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
@@ -162,6 +217,8 @@
     
             startCarousel();
         });
+
+        
     </script>
     
     

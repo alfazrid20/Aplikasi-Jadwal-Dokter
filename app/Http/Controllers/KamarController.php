@@ -123,4 +123,19 @@ class KamarController extends Controller
 
         return redirect()->route('backend.kamar.index')->with('success', 'Data Berhasil dihapus.');
     }
+
+    public function reset()
+    {
+        try {
+            $kamar = Kamars::all();
+            foreach ($kamar as $item) {
+                $item->jumlah_pasien = '';
+                $item->status = 'KOSONG';
+                $item->save();
+            }
+            return redirect()->back()->with('success', 'Semua data berhasil di-reset');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mereset data: ' . $e->getMessage());
+        }
+    }
 }

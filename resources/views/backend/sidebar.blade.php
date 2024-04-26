@@ -28,7 +28,7 @@
     <div class="sidebar_blog_2">
         <h4>Menu</h4>
         <ul class="list-unstyled components">
-            <li class="active">
+            <li class="">
                 <a href="/backend/dashboard" aria-expanded="false"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
 
@@ -44,7 +44,7 @@
                 </ul>
             </li> 
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar"></i> <span>Jadwal Dokter</span></a></li> 
-            </li>            
+            </li>
             <li><a href="/backend/user"><i class="fa fa-users "></i> <span>Users</span></a></li>
         </ul>
     </div>

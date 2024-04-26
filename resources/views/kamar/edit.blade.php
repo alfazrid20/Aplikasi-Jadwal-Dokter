@@ -82,14 +82,6 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-6 input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-location-arrow"></i></span>
-                                    </div>
-                                    <input type="text" name="posisi" class="form-control" placeholder="Posisi Ruangan"
-                                        value="{{ $kamar->posisi }}">
-                                </div>
-
                                 {{-- <div class="form-group">
                                     <label class="col-sm-2 control-label required">Tanggal Masuk</label>
                                     <div class="col-sm-6 input-group">

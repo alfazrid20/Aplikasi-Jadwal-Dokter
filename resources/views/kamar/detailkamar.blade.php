@@ -48,7 +48,7 @@
                                 <tbody id="kamarTableBody">
                                 <tr>
                                     @foreach ($detailkamar as $d )
-                                    <td>{{ $loop->iteration}}</td>
+                                    <td>{{ $loop->iteration + $detailkamar->firstItem() - 1}}</td>
                                     <td>{{ $d->nama_kamar }}</td>
                                     <td>{{ $d->jeniskamar->nama_ruang }}</td>
                                     <td>{{ $d->tempat_tidur }}</td>
@@ -94,5 +94,7 @@
         document.getElementById('button-addon5').addEventListener('click', function() {
             document.getElementById('searchForm').submit();
         });
+
+        
     </script>
 @endpush
