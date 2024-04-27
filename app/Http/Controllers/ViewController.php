@@ -18,7 +18,7 @@ class ViewController extends Controller
         $jadwaldokter = JadwalDokter::all();
         $dokter = Dokters::all();
         $poli = Polis::all();
-        $kamar = $query->orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(7);
+        $kamar = $query->orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(15);
         $jenis_kamar = JenisKamar::all();
         return view('frontend.viewjadwal',compact('jadwaldokter', 'dokter','poli','kamar','jenis_kamar'));
     }
