@@ -5,59 +5,66 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
     public function index()
     {
         $user = User::all();
-        return view('backend.user', compact('user'));
+        $roles = Role::all();
+        $permissions = Permission::all();
+
+        return view('backend.user', compact('user','roles', 'permissions'));
     }
 
     public function create()
     {
-        return view('user.create');
+        $roles = Role::all();
+        return view('user.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'role' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'name.required' => 'Nama pengguna harus diisi.',
+            'role.required' => 'Role pengguna harus diisi.',
             'email.required' => 'Alamat email harus diisi.',
+            'email.email' => 'Alamat email tidak valid.',
+            'email.unique' => 'Alamat email sudah digunakan.',
             'password.required' => 'Kata sandi harus diisi.',
+            'password.min' => 'Kata sandi minimal harus 6 karakter.',
             'foto.required' => 'Silakan pilih file foto.',
             'foto.image' => 'File harus berupa gambar.',
             'foto.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
         ]);
 
-        // Jika Validasi Gagal
         if ($validator->fails()) {
             return redirect()->route('backend.user.create')->withErrors($validator)->withInput();
         }
 
-        // Jika validasi berhasil, proses unggahan gambar
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('foto_users', $fileName, 'public');
         }
 
-        // Buat entitas baru dengan foto
-        User::create([
+        $user = User::create([
             'name' => $request->name,
+            'role' => $request->role,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'foto' => $filePath ?? null, // Gunakan $filePath jika foto diunggah, jika tidak, biarkan null
+            'foto' => $filePath ?? null,
         ]);
-
 
         return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil ditambahkan.');
     }
@@ -65,33 +72,25 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('user.edit', compact('user'));
+        $roles = Role::all();
+        return view('user.edit', compact('user','roles'));
     }
 
     public function update(Request $request, $id)
-{
-    $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'email' => 'required',
-    ], [
-        'name.required' => 'Nama pengguna harus diisi.',
-        'email.required' => 'Alamat email harus diisi.',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->route('backend.user.edit', ['id' => $id])->withErrors($validator)->withInput();
-    }
-
-    $user = User::findOrFail($id);
-    $user->name = $request->input('name');
-    $user->email = $request->input('email');
-
-    // Periksa apakah ada input foto baru
-    if ($request->hasFile('foto')) {
-        // Validasi foto
+    {
         $validator = Validator::make($request->all(), [
-            'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required',
+            'role' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|min:6',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
+            'name.required' => 'Nama pengguna harus diisi.',
+            'role.required' => 'Role pengguna harus diisi.',
+            'email.required' => 'Alamat email harus diisi.',
+            'email.email' => 'Alamat email tidak valid.',
+            'email.unique' => 'Alamat email sudah digunakan.',
+            'password.min' => 'Kata sandi minimal harus 6 karakter.',
             'foto.image' => 'File harus berupa gambar.',
             'foto.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
@@ -101,30 +100,31 @@ class UserController extends Controller
             return redirect()->route('backend.user.edit', ['id' => $id])->withErrors($validator)->withInput();
         }
 
-        // Proses unggah foto
-        $file = $request->file('foto');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('foto_users', $fileName, 'public');
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->role = $request->input('role');
+        $user->email = $request->input('email');
 
-        // Hapus foto lama jika ada
-        if ($user->foto) {
-            Storage::disk('public')->delete($user->foto);
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->input('password'));
         }
 
-        $user->foto = $filePath;
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('foto_users', $fileName, 'public');
+
+            if ($user->foto) {
+                Storage::disk('public')->delete($user->foto);
+            }
+
+            $user->foto = $filePath;
+        }
+
+        $user->save();
+
+        return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil diubah.');
     }
-
-    // Periksa apakah ada input password baru
-    if ($request->filled('password')) {
-        // Jika ada input password baru, update password
-        $user->password = bcrypt($request->input('password'));
-    }
-
-    $user->save();
-
-    return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil diubah.');
-}
-
 
     public function delete($id)
     {
@@ -132,5 +132,64 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil dihapus.');
+    }
+
+
+    //Role
+    public function roleindex()
+    {
+        $roles = Role::all();
+        $permissions = Permission::all();
+        return view('user.role', compact('roles', 'permissions'));
+    }
+
+    // Menambahkan role baru
+    public function storeRole(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:roles,name',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('backend.role.index')->withErrors($validator)->withInput();
+        }
+
+        Role::create(['name' => $request->name]);
+
+        return redirect()->route('backend.role.index')->with('success', 'Role berhasil ditambahkan.');
+    }
+
+    // Menghapus role
+    public function deleteRole($id)
+    {
+        $role = Role::findOrFail($id);
+        $role->delete();    
+
+        return redirect()->route('backend.role.index')->with('success', 'Role berhasil dihapus.');
+    }
+
+    // Menambahkan permission baru
+    public function storePermission(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:permissions,name',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('backend.role.index')->withErrors($validator)->withInput();
+        }
+
+        Permission::create(['name' => $request->name]);
+
+        return redirect()->route('backend.role.index')->with('success', 'Permission berhasil ditambahkan.');
+    }
+
+    // Menghapus permission
+    public function deletePermission($id)
+    {
+        $permission = Permission::findOrFail($id);
+        $permission->delete();
+
+        return redirect()->route('backend.role.index')->with('success', 'Permission berhasil dihapus.');
     }
 }

@@ -1,3 +1,9 @@
+@php
+$role = Auth::check() ? Auth::user()->role : '';
+$route = Request::path();
+$route = explode('/',$route);
+@endphp
+
 <nav id="sidebar">
     <div class="sidebar_blog_1">
         <div class="sidebar-header">
@@ -45,7 +51,21 @@
             </li> 
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar"></i> <span>Jadwal Dokter</span></a></li> 
             </li>
-            <li><a href="/backend/user"><i class="fa fa-users "></i> <span>Users</span></a></li>
+            @if($role == 'IT')
+            <li class="dropdown">
+                <a href="#element_user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-users"></i><span>User</span>
+                </a>
+                <ul class="collapse list-unstyled" id="element_user">
+                    <li>
+                        <a href="/backend/user"><i class="fa fa-user "></i> <span>Users</span></a>
+                    </li>
+                    <li>
+                        <a href="/backend/role"><i class="fa fa-tags "></i> <span>Roles</span></a>
+                    </li>
+                </ul>
+            </li>
+            @endif  
         </ul>
     </div>
 </nav>

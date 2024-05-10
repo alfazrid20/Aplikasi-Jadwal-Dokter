@@ -44,6 +44,18 @@
                                 <input type="password" name="password" class="form-control" placeholder="Password">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Role</label>
+                            <div class="col-sm-6 input-group">
+                                <select name="role" class="form-control">
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Foto</label>
                             <div class="col-sm-6 input-group">

@@ -169,8 +169,8 @@ class JadwalDokterController extends Controller
         try {
             $jadwal = JadwalDokter::all();
             foreach ($jadwal as $item) {
+                $item->jam_pelayanan = '-';
                 $item->keterangan = 'Tidak Tersedia';
-                $item->jam_pelayanan = '';
                 $item->save();
             }
             return redirect()->back()->with('success', 'Semua data berhasil di-reset');

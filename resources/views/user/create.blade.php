@@ -33,40 +33,53 @@
                                     <input type="text" name="name" class="form-control" placeholder="Username"
                                         value="{{ old('name') }}">
                                 </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-6 input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                </div>
-                                <input type="text" name="email" class="form-control" placeholder="Email"
-                                    value="{{ old('Email') }}">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Password</label>
-                            <div class="col-sm-6 input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-6 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    <input type="text" name="email" class="form-control" placeholder="Email"
+                                        value="{{ old('Email') }}">
                                 </div>
-                                <input type="password" name="password" class="form-control" placeholder="Password"
-                                    value="{{ old('Email') }}">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Foto</label>
-                            <div class="col-sm-6 input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-picture-o"></i></span>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Password</label>
+                                <div class="col-sm-6 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-key"></i></span>
+                                    </div>
+                                    <input type="password" name="password" class="form-control" placeholder="Password"
+                                        value="{{ old('Email') }}">
                                 </div>
-                                <input type="file" name="foto" class="form-control">
                             </div>
-                        </div>
-                        <div class="box-footer text-right">
-                            <a href="{{ URL::previous() }}" class="btn btn-danger">Batal</a>
-                            <button type="submit" class="btn btn-success">Simpan</button>
-                        </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Role</label>
+                                <div class="col-sm-6 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <select name="role" class="form-control">
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Foto</label>
+                                <div class="col-sm-6 input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-picture-o"></i></span>
+                                    </div>
+                                    <input type="file" name="foto" class="form-control">
+                                </div>
+                            </div>
+                            <div class="box-footer text-right">
+                                <a href="{{ URL::previous() }}" class="btn btn-danger">Batal</a>
+                                <button type="submit" class="btn btn-success">Simpan</button>
+                            </div>
                         </form>
                     </div>
                 </div>

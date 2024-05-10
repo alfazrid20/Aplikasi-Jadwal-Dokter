@@ -14,6 +14,17 @@ class DashboardController extends Controller
     {
         $kamar = Kamars::all();
         $user = Auth::user();
-        return view('backend.dashboard', compact('user',));
+        return view('backend.dashboard', compact('user','kamar'));
+    }
+
+    public function profileuser()
+    {
+        $user = Auth::user();
+        return view('backend.profileuser', compact('user',));
+    }
+
+    public function panduan()
+    {
+        return view('backend.panduan',);
     }
 }

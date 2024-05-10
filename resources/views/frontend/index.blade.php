@@ -180,7 +180,7 @@
                 </div>
                 <div class="text-center">
                     <div class="col-12"></div>
-                    <a href="https://simrs.rsuaisyiyahpadang.com/" class="btn btn-success" style="width: 100%">SIMRS</a>
+                    <a href="https://simrs.rsuaisyiyahpadang.com/" target="_blank" class="btn btn-success" style="width: 100%">SIMRS</a>
                 </div>
             </div>
         </div>  

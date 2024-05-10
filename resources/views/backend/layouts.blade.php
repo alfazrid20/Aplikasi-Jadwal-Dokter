@@ -63,6 +63,7 @@
                     @include('backend.footer')
                 </div>
                 <!-- end dashboard inner -->
+                </div>
             </div>
         </div>
     </div>

@@ -20,6 +20,7 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                         <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -30,6 +31,7 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $d->name }}</td>
                                             <td>{{ $d->email }}</td>
+                                            <td>{{ $d->role }}</td>
                                             <td>
                                                 @if (!empty($d->foto))
                                                 <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto Pengguna" class="avatar" style="max-width: 50px;">
@@ -58,4 +60,10 @@
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+
+  
+
+    
+@endsection

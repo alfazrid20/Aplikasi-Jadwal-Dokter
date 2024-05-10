@@ -113,21 +113,21 @@
 
 @push('myscript')   
     <script>
-    document.getElementById('resetForm').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-        Swal.fire({
-            title: 'Apa Kamu Yakin?',
-            text: "Data Yang Direset Adalah Keterangan & Jam Pelayanan",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, reset it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                event.target.submit();
-            }
-        });
+        document.getElementById('resetForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            Swal.fire({
+                title: 'Apa Kamu Yakin?',
+                text: "Data Yang Direset Adalah Jam Pelayanan & Keterangan",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, reset it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    event.target.submit();
+                }
+            });
     });
 
     function confirmDelete(id) {
