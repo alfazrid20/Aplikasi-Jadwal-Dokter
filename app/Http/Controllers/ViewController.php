@@ -35,5 +35,18 @@ class ViewController extends Controller
         return view('frontend.cekkamar', compact('detailkamar'));
     }
 
+    public function berita()
+    {
+      
+        return view('frontend.berita');
+    }
+
+    public function listberita()
+    {
+      
+        return view('frontend.listberita');
+    }
+
+
    
 }

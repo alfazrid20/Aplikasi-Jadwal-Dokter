@@ -50,6 +50,18 @@ $route = explode('/',$route);
                 </ul>
             </li> 
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar"></i> <span>Jadwal Dokter</span></a></li> 
+            <li class="dropdown">
+                <a href="#element_berita" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-newspaper-o"></i><span>Berita</span>
+                </a>
+                <ul class="collapse list-unstyled" id="element_berita">
+                    <li>
+                        <a href="/backend/data-berita"><i class="fa fa-pencil-square-o"></i> <span>Data Berita</span></a>
+                    </li>
+                    <li>
+                        <a href="/backend/kategori"><i class="fa fa-tasks"></i> <span>Kategori</span></a>
+                    </li>
+                </ul>
             </li>
             @if($role == 'IT')
             <li class="dropdown">
@@ -65,7 +77,7 @@ $route = explode('/',$route);
                     </li>
                 </ul>
             </li>
-            @endif  
+            @endif
         </ul>
     </div>
 </nav>

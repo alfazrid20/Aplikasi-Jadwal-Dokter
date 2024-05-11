@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailKamarController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\JamController;
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\SetJamPraktekController;
 use App\Http\Controllers\ViewController;
@@ -37,6 +39,8 @@ Route::get('/', function () {
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
+Route::get('/view-berita', [ViewController::class, 'berita'])->name('berita');
+Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');
 Route::get('/contact-us', [ViewController::class, 'contact'])->name('contact');
 
 
@@ -123,6 +127,24 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/backend/permission/store', [UserController::class, 'storePermission'])->name('backend.permission.store');
     Route::delete('/backend/permission/{id}/delete', [UserController::class, 'deletePermission'])->name('backend.permission.delete');
     // End User
+
+    // Data Berita
+    Route::get('/backend/data-berita', [BeritaController::class, 'index'])->name('backend.data-berita.index');
+    Route::get('/backend/data-berita/create', [BeritaController::class, 'create'])->name('backend.data-berita.create');
+    Route::post('/backend/data-berita/store', [BeritaController::class, 'store'])->name('backend.data-berita.store');
+    Route::get('/backend/data-berita/{id}/edit', [BeritaController::class, 'edit'])->name('backend.data-berita.edit');
+    Route::put('/backend/data-berita/{id}/update', [BeritaController::class, 'update'])->name('backend.data-berita.update');
+    Route::delete('/backend/data-berita/{id}/delete', [BeritaController::class, 'delete'])->name('backend.data-berita.delete');
+    // End Data Berita
+
+    // Data Kategori
+    Route::get('/backend/kategori', [KategoriController::class, 'index'])->name('backend.kategori.index');
+    Route::get('/backend/kategori/create', [KategoriController::class, 'create'])->name('backend.kategori.create');
+    Route::post('/backend/kategori/store', [KategoriController::class, 'store'])->name('backend.kategori.store');
+    Route::get('/backend/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('backend.kategori.edit');
+    Route::put('/backend/kategori/{id}/update', [KategoriController::class, 'update'])->name('backend.kategori.update');
+    Route::delete('/backend/kategori/{id}/delete', [KategoriController::class, 'delete'])->name('backend.kategori.delete');
+    // End Data Kategori
     
 
 });

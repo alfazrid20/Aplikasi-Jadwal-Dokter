@@ -36,7 +36,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-</head>
+</head>\
+
 
 <body class="dashboard dashboard_1">
     <div class="full_container">
@@ -99,6 +100,18 @@
     <!--Sweet Alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <!--CK Editor -->
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+        ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .then( editor => {
+                        console.log( editor );
+                } )
+                .catch( error => {
+                        console.error( error );
+                } );
+    </script>
 
 
     @stack('myscript')
