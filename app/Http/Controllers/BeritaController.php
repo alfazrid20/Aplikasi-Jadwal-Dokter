@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Beritas;
+use App\Models\Kategoris;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -11,7 +13,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-
+        
         
         return view('berita.index');
     }
