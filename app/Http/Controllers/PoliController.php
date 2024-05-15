@@ -12,16 +12,12 @@ class PoliController extends Controller
 {
     public function index(Request $request)
     {
-        $searchTerm = $request->input('nama'); // Ambil nilai parameter pencarian
-
-        // Lakukan pencarian berdasarkan nama poli jika parameter pencarian ada
+        $searchTerm = $request->input('nama');
         if ($searchTerm) {
             $polis = Polis::where('nama', 'LIKE', '%' . $searchTerm . '%')->get();
         } else {
-            // Jika tidak ada parameter pencarian, ambil semua data poli
             $polis = Polis::all();
         }
-
         return view('backend.data-poli', compact('polis'));
     }
 

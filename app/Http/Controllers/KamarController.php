@@ -20,7 +20,7 @@ class KamarController extends Controller
         $kamar = $query->orderByRaw("CASE WHEN status = 'TERISI' THEN 0 ELSE 1 END")->paginate(10);
         $jenis_kamar = JenisKamar::all();
 
-        // Mengembalikan view dengan data kamar yang sudah difilter
+       
         return view('kamar.index', compact('kamar', 'jenis_kamar'));
     }
 
@@ -50,12 +50,12 @@ class KamarController extends Controller
             // 'tanggal_masuk.required' => "Isi Tanggal Masuk"
         ]);
 
-        // Jika validasi gagal
+       
         if ($validator->fails()) {
             return redirect()->route('backend.kamar.create')->withErrors($validator)->withInput();
         }
 
-        // Jika validasi berhasil, buat entitas baru
+       
         Kamars::create([
             'nama_kamar' => $request->nama_kamar,
             'jenis_ruang_id' => $request->jenis_ruang_id,
@@ -65,7 +65,7 @@ class KamarController extends Controller
             // 'tanggal_masuk' => date('Y-m-d', strtotime($request->tanggal_masuk))
         ]);
 
-        // Redirect ke index kamar dengan pesan sukses
+       
         return redirect()->route('backend.kamar.index')->with('success', 'Data berhasil ditambah');
     }
     public function edit($id)

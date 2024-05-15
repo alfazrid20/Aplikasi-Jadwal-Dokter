@@ -47,6 +47,7 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
+    
                     <a href="/" class="logo mt-2">
                         <img src="{{ asset('frontend/images/logo.ico') }}" style="width: 40%;" alt="logo">
                     </a>

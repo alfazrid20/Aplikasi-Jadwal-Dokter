@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <title>News RSUA</title>
     <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
-
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
-
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{{ asset('frontend/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/templatemo-villa-agency.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <style>
       body {
           background-image: url('{{ asset('frontend/images/drbg.jpg') }}');
@@ -28,14 +21,9 @@
           background-position: center;
           background-attachment: fixed;
       }
-  </style>
-  
-
-
-  </head>
-
+    </style>
+</head>
 <body>
-
   <div class="sub-header">
     <div class="container">
       <div class="row">
@@ -78,63 +66,78 @@
                     <!-- ***** Menu End ***** -->
                 </nav>
             </div>
-
-            <div class="section properties">
-                <div class="container">
-                  <ul class="properties-filter">
-                    <li>
-                      <a class="is_active" href="#!" data-filter="*">Show All</a>
-                    </li>
-                    <li>
-                      <a href="#!" data-filter=".adv">Apartment</a>
-                    </li>
-                    <li>
-                      <a href="#!" data-filter=".str">Villa House</a>
-                    </li>
-                    <li>
-                      <a href="#!" data-filter=".rac">Penthouse</a>
-                    </li>
-                  </ul>
-                  <div class="row properties-box">
-                    <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-                      <div class="item">
-                        <a href="#"><img src="assets/images/property-01.jpg" alt="Foto"></a>
-                        
-                        <h4><a href="property-details.html">Title</a></h4>
-                        <p>Berita Berita Berita Berita Berita Berita Berita Berita Berita Berita Berita Berita Berita </p>
-                        <br>
-                        <div class="main-button">
-                          <a href="/view-berita">Detail Berita</a>
-                        </div>
-                      </div>
-                    </div>
-                  
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <ul class="pagination">
-                        <li><a href="#">1</a></li>
-                        <li><a class="is_active" href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">>></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-              </div>
         </div>
     </div>
+  </header>
+
+  <div class="section properties">
+    <div class="container">
+      <ul class="properties-filter">
+        <li><a class="is_active" href="#!" data-filter="*">Show All</a></li>
+        @foreach ($kategori as $k )
+        <li><a href="#!" data-filter=".kategori-{{ $k->id }}">{{ $k->kategori }}</a></li>
+        @endforeach
+      </ul>
+
+      <div class="row properties-box" id="properties-box">
+        @foreach ($berita as $d)
+        <?php
+            // Hitung selisih hari antara tanggal berita dengan tanggal hari ini
+            $tanggalBerita = \Carbon\Carbon::createFromFormat('Y-m-d', $d->tanggal);
+            $selisihHari = $tanggalBerita->diffInDays(\Carbon\Carbon::now());
+            // Tentukan status berita berdasarkan selisih hari
+            $statusBerita = $selisihHari < 1 ? 'Update News' : 'Late News';
+        ?>
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+            <div class="item">
+                <a href="#">
+                    @if (!empty($d->gambar))
+                    <img src="{{ asset($d->gambar) }}" alt="Gambar Berita" style="max-width: 100%;">
+                    @else
+                    <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                    @endif
+                </a>
+                <h4><a href="property-details.html">{{ $d->judul_berita }}</a></h4>
+                <a href="#">{{ $d->kategori->kategori }}</a>
+                <hr>
+                <p style="color: red"><b>{{ $d->tanggal }}</b></p>
+                <p>Status: {{ $statusBerita }}</p> <!-- Tampilkan status berita -->
+                <?php
+                $wordCount = str_word_count($d->isi);
+                $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
+                $trimmedText = implode(' ', array_slice(explode(' ', $d->isi), 0, $maxWords));
+                $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                ?>
+                <p>{!! $trimmedText !!}</p>
+                <br>
+                <div class="main-button">
+                    <a href="/view-berita">Detail Berita</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
     
-    <footer class="footer-no-gap mt-2">
-      <div class="container">
+    
+
+      <!-- Pagination -->
+      <div class="row">
         <div class="col-lg-12">
-          <p>Copyright © 2024 RSUA, Design By Alfazri Darmawansyah. All rights reserved. 
+          <ul class="pagination">
+            <!-- Nomor Halaman -->
+          </ul>
         </div>
       </div>
-    </footer>
-  </header>
+    </div>
+  </div>
+
+  <footer class="footer-no-gap mt-2">
+    <div class="container">
+      <div class="col-lg-12">
+        <p>Copyright © 2024 RSUA, Design By Alfazri Darmawansyah. All rights reserved.
+      </div>
+    </div>
+  </footer>
 
   <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -143,19 +146,17 @@
   <script src="{{ asset('frontend/js/counter.js') }}"></script>
   <script src="{{ asset('frontend/js/custom.js') }}"></script>
   <script>
-        $(document).ready(function () {
-            $('.properties-filter a').on('click', function (e) {
-                e.preventDefault();
-                var filterValue = $(this).attr('data-filter');
-                $('#properties-box').isotope({
-                    filter: filterValue
-                });
-                $('.properties-filter a').removeClass('is_active');
-                $(this).addClass('is_active');
-            });
+    $(document).ready(function () {
+      $('.properties-filter a').on('click', function (e) {
+        e.preventDefault();
+        var filterValue = $(this).attr('data-filter');
+        $('#properties-box').isotope({
+          filter: filterValue
         });
-    </script>
-  
-
-  </body>
+        $('.properties-filter a').removeClass('is_active');
+        $(this).addClass('is_active');
+      });
+    });
+  </script>
+</body>
 </html>

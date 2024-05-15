@@ -11,11 +11,13 @@ class Beritas extends Model
 
     protected $table = 'beritas';
     protected $fillable = [
-         'judul_berita', 'gambar','kategori','isi','tanggal',
+         'judul_berita', 'gambar','kategori_id','isi','tanggal',
     ];
+    public $timestamps = false;
 
     public function kategori()
     {
         return $this->belongsTo(Kategoris::class, 'kategori_id');
     }
+
 }

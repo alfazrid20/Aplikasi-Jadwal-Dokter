@@ -5,23 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Beritas;
 use App\Models\Kategoris;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class BeritaController extends Controller
 {
     public function index()
     {
+        $berita = Beritas::all();
+        $kategori = Kategoris::all();
         
-        
-        return view('berita.index');
+        return view('berita.index', compact('berita','kategori'));
     }
 
     public function create()
     {   
-        $kategori['kategori'] = DB::table('kategoris')->get();
-        return view('berita.create', $kategori);
+        $kategori = Kategoris::all();
+        return view('berita.create', compact('kategori'));
     }
 
     public function store(Request $request)
@@ -30,7 +29,7 @@ class BeritaController extends Controller
             'tanggal' => 'required', 
             'judul_berita' => 'required', 
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
-            'kategori' => 'required', 
+            'kategori_id' => 'required', 
             'isi' => 'required', 
         ], [
             'tanggal.required' => "Isi Tanggal",
@@ -38,12 +37,12 @@ class BeritaController extends Controller
             'gambar.image' => 'File harus berupa gambar.',
             'gambar.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
-            'kategori.required' => "Isi Kategori",
+            'kategori_id.required' => "Isi Kategori",
             'isi.required' => "Inputkan Isi Berita",
         ]);
     
         if ($validator->fails()) {
-            return redirect()->route('backend.kategori.create')
+            return redirect()->route('backend.data-berita.create')
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -58,17 +57,15 @@ class BeritaController extends Controller
             $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
     
-        $berita= DB::table('beritas')->insert([
+        Beritas::create([
             'tanggal'=> $request->tanggal,
             'judul_berita'=> $request->judul_berita,
             'gambar'=> $filePath,
-            'kategori'=> $request->kategori,
+            'kategori_id'=> $request->kategori_id,
             'isi'=> $request->isi,
         ]);
     
         return redirect()->route('backend.data-berita.index')
             ->with('success', 'Data berhasil ditambah');
-        }
-    
-    
+    }
 }

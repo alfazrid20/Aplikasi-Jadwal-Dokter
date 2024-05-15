@@ -27,7 +27,6 @@
                                                     class="fa fa-search"></i> Search</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </form>
@@ -38,26 +37,46 @@
                                         <th>No</th>
                                         <th>Tanggal</th>
                                         <th>Judul Berita</th>
+                                        <th>Gambar</th>
                                         <th>Kategori</th>
                                         <th>Isi Berita</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="beritaTableBody">
-                                   
+                                    @foreach ($berita as $d)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $d->tanggal }}</td>
+                                        <td>{{ $d->judul_berita }}</td>
+                                        <td>
+                                            @if (!empty($d->gambar))
+                                                <img src="{{ asset($d->gambar) }}" alt="Gambar Berita" style="max-width: 100%;">
+                                            @else
+                                                <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto"  style="max-width: 100px;">
+                                            @endif
+                                        </td>
+                                        <td>{{ $d->kategori->kategori }}</td>
+                                        <td class="text-wrap">{!! $d->isi !!}</td>
+                                        <td>
+                                            <!-- Tambahkan aksi sesuai kebutuhan -->
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
-                           
                         </div>
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection
 
-        @push('myscript')
-            <script>
-                document.getElementById('button-addon8').addEventListener('click', function() {
-                    document.getElementById('searchForm').submit();
-                });
-            </script>
-        @endpush
+@push('myscript')
+    <script>
+        document.getElementById('button-addon8').addEventListener('click', function() {
+            document.getElementById('searchForm').submit();
+        });
+    </script>
+@endpush
