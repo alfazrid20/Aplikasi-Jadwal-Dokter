@@ -10,6 +10,7 @@ use App\Http\Controllers\JamController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PoliController;
+use App\Http\Controllers\LokerController;
 use App\Http\Controllers\SetJamPraktekController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
@@ -39,10 +40,9 @@ Route::get('/', function () {
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
-Route::get('/view-berita', [ViewController::class, 'berita'])->name('berita');
+Route::get('/view-berita/{id}', [ViewController::class, 'berita'])->name('berita');
 Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');
 Route::get('/contact-us', [ViewController::class, 'contact'])->name('contact');
-
 
 //Login
 
@@ -146,6 +146,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/backend/kategori/{id}/delete', [KategoriController::class, 'delete'])->name('backend.kategori.delete');
     // End Data Kategori
     
+    // Data Kategori
+    Route::get('/backend/loker', [LokerController::class, 'index'])->name('backend.loker.index');
+    Route::get('/backend/loker/create', [LokerController::class, 'create'])->name('backend.loker.create');
+    Route::post('/backend/loker/store', [LokerController::class, 'store'])->name('backend.loker.store');
+    Route::get('/backend/loker/{id}/edit', [LokerController::class, 'edit'])->name('backend.loker.edit');
+    Route::put('/backend/loker/{id}/update', [LokerController::class, 'update'])->name('backend.loker.update');
+    Route::delete('/backend/loker/{id}/delete', [LokerController::class, 'delete'])->name('backend.loker.delete');
+    // End Data Kategori
 
 });
 

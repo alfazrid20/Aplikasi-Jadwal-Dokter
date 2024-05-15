@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>RSUA JADWAL DOKTER</title>
+    <title>RSU Aisyiyah Padang</title>
     <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
 
     <!-- Bootstrap core CSS -->
@@ -104,6 +104,7 @@
                       <li><a href="/sejarah" class="">Sejarah</a></li>
                       <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
                       <li><a href="/list-berita" class="">Berita</a></li>
+                      <li><a href="/list-berita" class="">Lowongan Pekerjaan</a></li>
                       <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter</a></li>
                   </ul>   
                     <a class='menu-trigger'>
@@ -133,7 +134,7 @@
         </div>
     </div>
     
-    <div class="col-md-5">
+    {{--  <div class="col-md-5">
         <div class="card card-sm" id="login-admin">
             <div class="card-body">
                 <h5 class="card-header text-center bg-success text-white">Login Admin</h5>
@@ -149,7 +150,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  --}}
 
     <div class="col-md-5 mt-2">
         <div class="card card-sm" id="sejarah" >

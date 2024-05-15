@@ -10,6 +10,7 @@ use App\Models\Dokters;
 use App\Models\JadwalDokter;
 use App\Models\Kamars;
 use App\Models\JenisKamar;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -38,32 +39,25 @@ class ViewController extends Controller
         return view('frontend.cekkamar', compact('detailkamar'));
     }
 
-    public function berita()
+    public function berita($id)
     {
-      
-        return view('frontend.berita');
+        $berita = Beritas::findOrFail($id);
+        $otherNews = Beritas::where('id', '!=', $id)->get();
+        return view('frontend.berita', compact('berita', 'otherNews'));
     }
 
-    public function listberita()
+
+    
+    public function listberita(Request $request)
     {
-        $berita = Beritas::all();
-        $kategori = Kategoris::all();
-    
-        // Iterasi melalui setiap berita
-        foreach ($berita as $b) {
-            // Mendapatkan tanggal berita
-            $tanggalBerita = Carbon::parse($b->tanggal);
-    
-            // Mendapatkan tanggal sekarang
-            $tanggalSekarang = Carbon::now();
-    
-            // Menghitung selisih hari antara tanggal berita dan tanggal sekarang
-            $selisihHari = $tanggalBerita->diffInDays($tanggalSekarang);
-    
-            // Menentukan status berita berdasarkan selisih hari
-            $b->status = ($selisihHari <= 1) ? 'Update News' : 'Late News';
+        $kategoriId = $request->input('kategori_id');
+        $query = Beritas::query();
+        if ($kategoriId) {
+            $query->where('kategori_id', $kategoriId);
         }
-    
+        $berita = $query->get();
+        $kategori = Kategoris::all();
+        
         return view('frontend.listberita', compact('berita', 'kategori'));
     }
     

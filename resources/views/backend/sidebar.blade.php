@@ -63,6 +63,19 @@ $route = explode('/',$route);
                     </li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a href="#element_job" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-tty"></i><span>Lowongan Pekerjaan</span>
+                </a>
+                <ul class="collapse list-unstyled" id="element_job">
+                    <li>
+                        <a href="#"><i class="fa fa-university  "></i> <span>Data Lowongan</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-archive"></i> <span>Data Pelamar</span></a>
+                    </li>
+                </ul>
+            </li>
             @if($role == 'IT')
             <li class="dropdown">
                 <a href="#element_user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

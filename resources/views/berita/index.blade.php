@@ -20,9 +20,8 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="text" name="judulberita" id="judulberita" class="form-control"
-                                                placeholder="Cari Berita" style="width: 45%; margin-right: 5%;"
-                                                value="{{ Request('nama') }}">
+                                            <input type="date" name="tanggalberita" id="tanggalberita" class="form-control"
+                                                placeholder="Tanggal Berita" style="width: 45%;" value="{{ Request('tanggalberita') }}">
                                             <button class="btn btn-primary" type="submit" id="button-addon8"><i
                                                     class="fa fa-search"></i> Search</button>
                                         </div>
@@ -30,6 +29,7 @@
                                 </div>
                             </div>
                         </form>
+                        
                         <div class="table-responsive-sm">
                             <table class="table">
                                 <thead class="thead-dark">
@@ -59,7 +59,17 @@
                                         <td>{{ $d->kategori->kategori }}</td>
                                         <td class="text-wrap">{!! $d->isi !!}</td>
                                         <td>
-                                            <!-- Tambahkan aksi sesuai kebutuhan -->
+                                            <div class="btn-group">
+                                                <form action="{{ route('backend.data-berita.delete', $d->id) }}"
+                                                    method="POST">
+                                                    <a href="{{ route('backend.data-berita.edit', $d->id) }}"
+                                                        class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-danger"><i
+                                                            class="fa fa-trash text-white"></i></button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -75,8 +85,12 @@
 
 @push('myscript')
     <script>
-        document.getElementById('button-addon8').addEventListener('click', function() {
-            document.getElementById('searchForm').submit();
+        document.getElementById('tanggalberita').addEventListener('change', function(event) {
+            // Memeriksa apakah tanggal berita sudah diisi
+            var tanggalBerita = this.value;
+            if (tanggalBerita.trim() === '') {
+                window.location.href = '/backend/data-berita';
+            }
         });
     </script>
 @endpush

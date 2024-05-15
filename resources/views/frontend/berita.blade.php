@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>RSUA JADWAL DOKTER</title>
+    <title>News</title>
     <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -47,7 +47,6 @@
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-    
                     <a href="/" class="logo mt-2">
                         <img src="{{ asset('frontend/images/logo.ico') }}" style="width: 40%;" alt="logo">
                     </a>
@@ -71,29 +70,44 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="main-image">
-                        <img src="{{ asset('frontend/images/no-image.png') }}" alt="image">
+                        <img src="{{ asset($berita->gambar) }}" alt="image">
                     </div>
                     <div class="main-content">
-                        <h4>Title Berita</h4>
-                        <p>
-                            Pada awal berdirinya tahun 1966 adalah Klinik Bersalin dimana pendiriannya termotivasi karena adanya ibu-ibu hamil islam sering mengeluh karena tidak adanya Rumah Bersalin Islami, sehingga mereka terpaksa melahirka dan dirawat pada bidan dan rumah sakit non muslim.
-                        </p>
+                        <h4>{{ $berita->judul_berita }}</h4>
+                        <div class="kategori bg-primary" style="padding: 10px; color: rgb(255, 255, 255); display: inline-block;">
+                            <p class="text-white">{{ $berita->kategori->kategori }}</p>
+                        </div>
+                        <hr>
+                        <p style="color: red">{{ $berita->tanggal }}</p>
+                        <p>{!! $berita->isi !!}</p>
                     </div>
-                </div>
+                </div>                
                 <div class="col-lg-4">
                     <div class="info-table">
-                        <h4>Late News</h4>
+                        <h4 class="info-title bg-primary" style="padding: 10px; color: rgb(255, 255, 255)">Other News</h4>
                         <hr>
                         <ul>
+                            @foreach ($otherNews as $d)
                             <li>
-                                <h5>News Title 1</h5>
-                                <p>Summary of the news...</p>
+                                <h5><a href="/view-berita/{{ $d->id }}">{{ $d->judul_berita }}</a></h5>
+                                <br>
+                                @if (!empty($d->gambar))
+                                <img src="{{ asset($d->gambar) }}" alt="Gambar Berita" style="max-width: 50%;">
+                                @else
+                                <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                                @endif
+                                <?php
+                                $wordCount = str_word_count($d->isi);
+                                $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
+                                $trimmedText = implode(' ', array_slice(explode(' ', $d->isi), 0, $maxWords));
+                                $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                                ?>
+                                <p><b>{!! $trimmedText !!}</b></p>
+                                <div class="button">
+                                    <a href="/view-berita/{{ $d->id }}">Lihat Selengkapnya....</a>
+                                </div>
                             </li>
-                            <li>
-                                <h5>News Title 2</h5>
-                                <p>Summary of the news...</p>
-                            </li>
-                           
+                            @endforeach
                         </ul>
                     </div>
                 </div>

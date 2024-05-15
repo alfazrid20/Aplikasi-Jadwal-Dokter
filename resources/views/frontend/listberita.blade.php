@@ -74,7 +74,7 @@
     <div class="container">
       <ul class="properties-filter">
         <li><a class="is_active" href="#!" data-filter="*">Show All</a></li>
-        @foreach ($kategori as $k )
+        @foreach ($kategori as $k)
         <li><a href="#!" data-filter=".kategori-{{ $k->id }}">{{ $k->kategori }}</a></li>
         @endforeach
       </ul>
@@ -88,7 +88,7 @@
             // Tentukan status berita berdasarkan selisih hari
             $statusBerita = $selisihHari < 1 ? 'Update News' : 'Late News';
         ?>
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv kategori-{{ $d->kategori->id }}">
             <div class="item">
                 <a href="#">
                     @if (!empty($d->gambar))
@@ -101,7 +101,7 @@
                 <a href="#">{{ $d->kategori->kategori }}</a>
                 <hr>
                 <p style="color: red"><b>{{ $d->tanggal }}</b></p>
-                <p>Status: {{ $statusBerita }}</p> <!-- Tampilkan status berita -->
+                <p><b>{{ $statusBerita }}</b></p>
                 <?php
                 $wordCount = str_word_count($d->isi);
                 $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
@@ -111,25 +111,12 @@
                 <p>{!! $trimmedText !!}</p>
                 <br>
                 <div class="main-button">
-                    <a href="/view-berita">Detail Berita</a>
-                </div>
+                  <a href="/view-berita/{{ $d->id }}">Detail Berita</a>
+              </div>                        
             </div>
         </div>
         @endforeach
     </div>
-    
-    
-
-      <!-- Pagination -->
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="pagination">
-            <!-- Nomor Halaman -->
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer class="footer-no-gap mt-2">
     <div class="container">
@@ -147,12 +134,15 @@
   <script src="{{ asset('frontend/js/custom.js') }}"></script>
   <script>
     $(document).ready(function () {
+      var $propertiesBox = $('#properties-box').isotope({
+        itemSelector: '.properties-items',
+        layoutMode: 'fitRows'
+      });
+
       $('.properties-filter a').on('click', function (e) {
         e.preventDefault();
         var filterValue = $(this).attr('data-filter');
-        $('#properties-box').isotope({
-          filter: filterValue
-        });
+        $propertiesBox.isotope({ filter: filterValue });
         $('.properties-filter a').removeClass('is_active');
         $(this).addClass('is_active');
       });
