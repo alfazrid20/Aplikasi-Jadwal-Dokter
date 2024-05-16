@@ -146,14 +146,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/backend/kategori/{id}/delete', [KategoriController::class, 'delete'])->name('backend.kategori.delete');
     // End Data Kategori
     
-    // Data Kategori
+    // Data Loker
     Route::get('/backend/loker', [LokerController::class, 'index'])->name('backend.loker.index');
     Route::get('/backend/loker/create', [LokerController::class, 'create'])->name('backend.loker.create');
     Route::post('/backend/loker/store', [LokerController::class, 'store'])->name('backend.loker.store');
     Route::get('/backend/loker/{id}/edit', [LokerController::class, 'edit'])->name('backend.loker.edit');
     Route::put('/backend/loker/{id}/update', [LokerController::class, 'update'])->name('backend.loker.update');
     Route::delete('/backend/loker/{id}/delete', [LokerController::class, 'delete'])->name('backend.loker.delete');
-    // End Data Kategori
+    // End Data Loker
 
 });
 

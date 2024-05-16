@@ -23,14 +23,7 @@ class BeritaController extends Controller
             $kategori = Kategoris::all();
             return view('berita.index', compact('berita', 'kategori'));
         }
-        
-        $berita = $query->get();
-        $kategori = Kategoris::all();
-        
-        return view('berita.index', compact('berita', 'kategori'));
     }
-
-
 
     public function create()
     {   

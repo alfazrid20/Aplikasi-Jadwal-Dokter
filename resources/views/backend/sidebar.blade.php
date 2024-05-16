@@ -69,7 +69,7 @@ $route = explode('/',$route);
                 </a>
                 <ul class="collapse list-unstyled" id="element_job">
                     <li>
-                        <a href="#"><i class="fa fa-university  "></i> <span>Data Lowongan</span></a>
+                        <a href="/backend/loker"><i class="fa fa-university  "></i> <span>Data Lowongan</span></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-archive"></i> <span>Data Pelamar</span></a>
