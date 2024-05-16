@@ -100,11 +100,11 @@
                         {{--  <img src="{{ asset('frontend/images/logo.ico') }}" alt="Logo" style="width: 40%; margin-top: 2%;" >  --}}
                     </a>    
                     <ul class="nav">
-                      <li><a href="/" class="active">Home</a></li>
+                      <li><a href="/" class="">Home</a></li>
                       <li><a href="/sejarah" class="">Sejarah</a></li>
                       <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
                       <li><a href="/list-berita" class="">Berita</a></li>
-                      <li><a href="/list-berita" class="">Lowongan Pekerjaan</a></li>
+                      <li><a href="/lowongan" class="">Lowongan Pekerjaan</a></li>
                       <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter</a></li>
                   </ul>   
                     <a class='menu-trigger'>

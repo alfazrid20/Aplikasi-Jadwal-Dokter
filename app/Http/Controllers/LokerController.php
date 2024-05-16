@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lokers;
+use App\Models\Posisi;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class LokerController extends Controller
 {
+    // Function Loker
     public function index()
     {
         $loker = Lokers::all();
@@ -134,5 +136,52 @@ class LokerController extends Controller
             return redirect()->route('backend.loker.index')->with('error', 'Data Gagal Dihapus');
         }
     }
+    // End Function Loker
+
+    // Function Posisi
+    public function posisi()
+    {
+        $posisi = Posisi::all();
+        return view('loker.posisi',compact('posisi'));
+    }
+
+    public function create2()
+    {
+        return view('loker.posisi_create');
+    }
+
+    public function store2(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'posisi' => 'required', 
+        ], [
+            'posisi.required' => "Posisi harus diisi.",
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect()->route('backend.posisi.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        Posisi::create([
+            'posisi'=> $request->posisi,
+        ]);
+
+        return redirect()->route('backend.posisi.index')
+        ->with('success', 'Data berhasil ditambah');
+    }
+
+    public function delete2($id)
+    {
+        $polis = DB::table('infoloker')
+            ->where('id', $id)
+            ->delete();
+        if ($polis) {
+            return redirect()->route('backend.loker.index')->with('success', 'Data Berhasil Dihapus');
+        } else {
+            return redirect()->route('backend.loker.index')->with('error', 'Data Gagal Dihapus');
+        }
+    }
+    // End Function Posisi
 
 }

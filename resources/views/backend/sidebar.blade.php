@@ -72,7 +72,10 @@ $route = explode('/',$route);
                         <a href="/backend/loker"><i class="fa fa-university  "></i> <span>Data Lowongan</span></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-archive"></i> <span>Data Pelamar</span></a>
+                        <a href="/backend/lamaran"><i class="fa fa-archive"></i> <span>Data Pelamar</span></a>
+                    </li>
+                    <li>
+                        <a href="/backend/posisi"><i class="fa fa-briefcase"></i> <span>Posisi</span></a>
                     </li>
                 </ul>
             </li>

@@ -61,4 +61,8 @@ class ViewController extends Controller
         return view('frontend.listberita', compact('berita', 'kategori'));
     }
     
+    public function lowongan(Request $request)
+    {
+        return view('frontend.lowongan');
+    }
 }

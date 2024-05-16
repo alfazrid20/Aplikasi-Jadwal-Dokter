@@ -9,6 +9,7 @@ use App\Http\Controllers\JadwalDokterController;
 use App\Http\Controllers\JamController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\LokerController;
 use App\Http\Controllers\SetJamPraktekController;
@@ -42,7 +43,7 @@ Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
 Route::get('/view-berita/{id}', [ViewController::class, 'berita'])->name('berita');
 Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');
-Route::get('/contact-us', [ViewController::class, 'contact'])->name('contact');
+Route::get('/lowongan', [ViewController::class, 'lowongan'])->name('lowongan');
 
 //Login
 
@@ -154,6 +155,22 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/backend/loker/{id}/update', [LokerController::class, 'update'])->name('backend.loker.update');
     Route::delete('/backend/loker/{id}/delete', [LokerController::class, 'delete'])->name('backend.loker.delete');
     // End Data Loker
+
+     // Data Posisi Yang Dibutuhkan
+     Route::get('/backend/posisi', [LokerController::class, 'posisi'])->name('backend.posisi.index');
+     Route::get('/backend/posisi/create', [LokerController::class, 'create2'])->name('backend.posisi.create');
+     Route::post('/backend/posisi/store', [LokerController::class, 'store2'])->name('backend.posisi.store');
+     Route::delete('/backend/posisi/{id}/delete', [LokerController::class, 'delete2'])->name('backend.posisi.delete');
+     // End Data Posisi Yang Dibutuhkan
+
+    // Data Lamaran
+    Route::get('/backend/lamaran', [LamaranController::class, 'index'])->name('backend.lamaran.index');
+    Route::get('/backend/lamaran/create', [LamaranController::class, 'create'])->name('backend.lamaran.create');
+    Route::post('/backend/lamaran/store', [LamaranController::class, 'store'])->name('backend.lamaran.store');
+    Route::get('/backend/lamaran/{id}/edit', [LamaranController::class, 'edit'])->name('backend.lamaran.edit');
+    Route::put('/backend/lamaran/{id}/update', [LamaranController::class, 'update'])->name('backend.lamaran.update');
+    Route::delete('/backend/lamaran/{id}/delete', [LamaranController::class, 'delete'])->name('backend.lamaran.delete');
+    // End Data Lamaran
 
 });
 

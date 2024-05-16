@@ -1,8 +1,8 @@
 @extends('backend.layouts')
-@section('title', 'Data Lowongan Pekerjaan')
+@section('title', 'Data Pelamar')
 @section('content')
     <div class="page_title">
-        <h2>Lowongan Pekerjaan</h2>
+        <h2>Data Lamaran</h2>
     </div>
 
     <div class="row">
@@ -10,18 +10,13 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
-                        <div class="mb-3">
-                            <a href="/backend/loker/create" class="btn btn-primary" id="tambahloker"
-                                data-bs-toggle="modal" data-bs-target="#modal-inputloker"><i class="fa fa-plus"></i> Tambah
-                                Data </a>
-                        </div>
-                        <form action="/backend/loker" method="GET" id="searchForm">
+                        <form action="/backend/lamaran" method="GET" id="searchForm">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input type="text" name="nama" id="nama" class="form-control"
-                                                placeholder="Cari Data" style="width: 45%; margin-right: 5%;"
+                                                placeholder="Cari Pelamar" style="width: 45%; margin-right: 5%;"
                                                 value="{{ Request('nama') }}">
                                             <button class="btn btn-primary" type="submit" id="button-addon4"><i
                                                     class="fa fa-search"></i> Search</button>
@@ -36,44 +31,48 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>No</th>
-                                        <th>Posisi</th>
+                                        <th>Nama Kandidat</th>
+                                        <th>Email</th>
+                                        <th>No Handphone</th>
+                                        <th>Alamat</th>
+                                        <th>Posisi Dilamar</th>
+                                        <th>Dokumen</th>
+                                        <th>Status Perkawinan</th>
                                         <th>Foto</th>
-                                        <th>Deskripsi</th>
-                                        <th>Persyaratan</th>
-                                        <th>Batas Waktu</th>
+                                        <th>Status Lamaran</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody id="dokterTableBody">
-                                    @foreach ($loker as $d )
+                                <tbody id="lamaranTableBody">
+                    
                                     <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $d->posisi }}</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
-                                        @if (!empty($d->foto_loker))
+                                        {{--  @if (!empty($d->foto_loker))
                                                 <img src="{{ asset($d->foto_loker) }}" alt="Foto Loker" style="max-width: 100%;">
                                             @else
                                                 <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto"  style="max-width: 100px;">
-                                            @endif
+                                            @endif  --}}
                                     </td>
-                                    <td>{!! $d->deskripsi !!}</td>
-                                    <td>{!! $d->persyaratan !!}</td>
-                                    <td>{{ $d->batas_waktu }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
-                                        <div class="btn-group">
-                                            <form action="{{ route('backend.loker.delete', $d->id) }}"
+                                        {{--  <div class="btn-group">
+                                            <form action="{{ route('backend.lamaran.delete', $d->id) }}"
                                                 method="POST">
-                                                <a href="{{ route('backend.loker.edit', $d->id) }}"
+                                                <a href="{{ route('backend.lamaran.edit', $d->id) }}"
                                                     class="btn btn-success"><i class="fa fa-edit"></i></a>
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-danger"><i
                                                         class="fa fa-trash text-white"></i></button>
                                             </form>
-                                        </div>
+                                        </div>  --}}
                                     </td>
                                     </tr>  
-                                    @endforeach
+                                   
                                 </tbody>
                             </table>
                             {{--  {{ $dokter->links('vendor.pagination.bootstrap-5') }}  --}}
@@ -85,7 +84,7 @@
 
         @push('myscript')
             <script>
-                document.getElementById('button-addon9').addEventListener('click', function() {
+                document.getElementById('button-addon10').addEventListener('click', function() {
                     document.getElementById('searchForm').submit();
                 });
             </script>
