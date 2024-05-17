@@ -10,6 +10,7 @@ use App\Models\Dokters;
 use App\Models\JadwalDokter;
 use App\Models\Kamars;
 use App\Models\JenisKamar;
+use App\Models\Lokers;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -61,8 +62,16 @@ class ViewController extends Controller
         return view('frontend.listberita', compact('berita', 'kategori'));
     }
     
-    public function lowongan(Request $request)
+    public function loker(Request $request)
     {
-        return view('frontend.lowongan');
+        $loker = Lokers::all();
+        return view('frontend.listlowongan',compact('loker'));
     }
+
+    public function lowongan(Request $id)
+    {
+        $loker = Lokers::findOrFail($id);
+        return view('frontend.lowongan', compact('loker'));
+    }
+
 }

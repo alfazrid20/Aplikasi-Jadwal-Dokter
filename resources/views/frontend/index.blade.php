@@ -104,7 +104,7 @@
                       <li><a href="/sejarah" class="">Sejarah</a></li>
                       <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
                       <li><a href="/list-berita" class="">Berita</a></li>
-                      <li><a href="/lowongan" class="">Lowongan Pekerjaan</a></li>
+                      <li><a href="/lowongan-pekerjaan" class="">Lowongan Pekerjaan</a></li>
                       <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter</a></li>
                   </ul>   
                     <a class='menu-trigger'>

@@ -41,6 +41,7 @@
                                         <th>Deskripsi</th>
                                         <th>Persyaratan</th>
                                         <th>Batas Waktu</th>
+                                        <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -59,6 +60,15 @@
                                     <td>{!! $d->deskripsi !!}</td>
                                     <td>{!! $d->persyaratan !!}</td>
                                     <td>{{ $d->batas_waktu }}</td>
+                                    <td>
+                                        @if ($d->status_loker == 'Buka')
+                                            <span class="badge badge-success">Buka</span>
+                                        @elseif ($d->status_loker == 'Tutup')
+                                            <span class="badge badge-danger">Tutup</span>
+                                        @else
+                                            <span class="badge badge-secondary">{{ $d->status_loker }}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="btn-group">
                                             <form action="{{ route('backend.loker.delete', $d->id) }}"

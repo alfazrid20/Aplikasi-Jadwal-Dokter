@@ -29,12 +29,14 @@ class LokerController extends Controller
             'deskripsi' => 'required', 
             'persyaratan' => 'required',    
             'batas_waktu' => 'required', 
+            'staus_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'posisi.required' => "Posisi harus diisi.",
             'deskripsi.required' => "Deskripsi harus diisi.",
             'persyaratan.required' => "Persyaratan harus diisi.",
             'batas_waktu.required' => "Batas waktu harus diisi.",
+            'status_loker.required' => "Status harus diisi.",
             'foto_loker.image' => 'File harus berupa foto atau gambar.',
             'foto_loker.mimes' => 'Format foto yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto_loker.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
@@ -83,12 +85,14 @@ class LokerController extends Controller
             'deskripsi' => 'required', 
             'persyaratan' => 'required',    
             'batas_waktu' => 'required', 
+            'status_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'posisi.required' => "Posisi harus diisi.",
             'deskripsi.required' => "Deskripsi harus diisi.",
             'persyaratan.required' => "Persyaratan harus diisi.",
             'batas_waktu.required' => "Batas waktu harus diisi.",
+            'status_loker.required' => "Status harus diisi.",
             'foto_loker.image' => 'File harus berupa foto atau gambar.',
             'foto_loker.mimes' => 'Format foto yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto_loker.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
@@ -119,6 +123,7 @@ class LokerController extends Controller
             'deskripsi'=> $request->deskripsi,
             'persyaratan'=> $request->persyaratan,
             'batas_waktu'=> $request->batas_waktu,
+            'status_loker'=> $request->status_loker,
         ]);
 
         return redirect()->route('backend.loker.index')

@@ -78,6 +78,24 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-info"></i></span>
+                                </div>
+                                <select name="status_loker" class="form-control">
+                                    <option value="" disabled {{ old('status_loker') ? '' : 'selected' }}>Pilih Status</option>
+                                    <option value="Buka" {{ old('status_loker') == 'Buka' ? 'selected' : '' }}>Buka</option>
+                                    <option value="Tutup" {{ old('status_loker') == 'Tutup' ? 'selected' : '' }}>Tutup</option>
+                                </select>
+                                @if ($errors->has('status_loker'))
+                                    <span class="text-danger">{{ $errors->first('status_loker') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        
+
                         <div class="box-footer text-right">
                             <a href="{{ route('backend.loker.index') }}" class="btn btn-danger">Kembali</a>
                             <button type="submit" class="btn btn-success">Simpan</button>
