@@ -51,12 +51,9 @@
                             <img src="{{ asset('frontend/images/logo.ico') }}" style="width: 40%;" alt="logo">
                         </a>
                         <ul class="nav">
-                            <li><a href="/">Home
-                               </a></li>
-                               <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan
-                               </a></li>
-                            <li><a href="/#" class="active">Ajukan Lamaran
-                               </a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
+                            <li><a href="/#" class="active">Ajukan Lamaran</a></li>
                             <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter Spesialis</a></li>
                         </ul>
                         <a class="menu-trigger">
@@ -73,7 +70,7 @@
             <div class="container">
                 <h2 class="mt-5 text-center" style="font-family: 'Times New Roman', Times, serif">Ajukan Lamaran</h2>
                 <hr>
-                <form action="{{ route('lowongan.store') }}" method="POST" enctype="multipart/form-data"  onsubmit="showSuccessAlert()">
+                <form id="lamaranForm" action="{{ route('lowongan.store') }}" method="POST" enctype="multipart/form-data" onsubmit="return showConfirmationAlert(event)">
                     @csrf
                     <div class="form-group row mt-2">
                         <div class="col-6">
@@ -103,7 +100,7 @@
                         <div class="col-6">
                             <label for="pendidikan_terakhir"><b>Pendidikan Terakhir</b></label>
                             <input type="text" class="form-control" id="pendidikan_terakhir" name="pendidikan_terakhir" maxlength="5">
-                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : S1/S2/D4/D3/SMA/SMK<</i></small>
+                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : S1/S2/D4/D3/SMA/SMK</i></small>
                         </div>
                         <div class="col-6">
                             <label for="ipk"><b>IPK / Nilai Ijazah Terakhir</b></label>
@@ -146,8 +143,6 @@
             </div>
         </div>
     </div>
-    
-
 
     <!-- Scripts -->
     <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
@@ -157,36 +152,87 @@
     <script src="{{ asset('frontend/js/counter.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script>
-        function validateAndSubmitForm() {
-            // Lakukan validasi form di sini
+        function validateForm() {
             var nama = document.getElementById('nama').value;
             var email = document.getElementById('email').value;
-            // Contoh validasi nama tidak boleh kosong
+            var alamat = document.getElementById('alamat').value;
+            var no_hp = document.getElementById('no_hp').value;
+            var pendidikan_terakhir = document.getElementById('pendidikan_terakhir').value;
+            var ipk = document.getElementById('ipk').value;
+            var posisi_dilamar = document.getElementById('posisi_dilamar').value;
+            var dokumen = document.getElementById('dokumen').value;
+
             if (nama.trim() === '') {
                 alert('Nama harus diisi');
                 return false;
             }
-            // Contoh validasi email harus valid
+
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
                 alert('Email tidak valid');
                 return false;
             }
-            showSuccessAlert();
-            setTimeout(function() {
-                window.location.href = "{{ route('loker') }}";
-            }, 10000);
+
+            if (alamat.trim() === '') {
+                alert('Alamat harus diisi');
+                return false;
+            }
+
+            if (no_hp.trim() === '') {
+                alert('No HP harus diisi');
+                return false;
+            }
+
+            if (pendidikan_terakhir.trim() === '') {
+                alert('Pendidikan terakhir harus diisi');
+                return false;
+            }
+
+            if (ipk.trim() === '') {
+                alert('IPK harus diisi');
+                return false;
+            }
+
+            if (posisi_dilamar.trim() === '') {
+                alert('Posisi yang dilamar harus dipilih');
+                return false;
+            }
+
+            if (dokumen.trim() === '') {
+                alert('Dokumen harus diunggah');
+                return false;
+            }
+
             return true; 
         }
-        function showSuccessAlert() {
+
+        function showConfirmationAlert(event) {
+            event.preventDefault(); // Prevent form from submitting immediately
+            if (!validateForm()) {
+                return false; // If form validation fails, do not proceed
+            }
+
             Swal.fire({
-                title: 'Terimakasih!',
-                text: 'Lamaranmu akan Segera Diproses',
-                icon: 'success',
-                confirmButtonText: 'OK'
+                title: "Apa kamu yakin Datanya Sudah Benar?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Display success alert before submitting form
+                    Swal.fire({
+                        title: "Success",
+                        text: "Data Berhasil Dikirim dan Segera Diproses",
+                        icon: "success"
+                    }).then(() => {
+                        // Submit the form after displaying success alert
+                        document.getElementById('lamaranForm').submit();
+                    });
+                }
             });
         }
     </script>
-    
 </body>
 </html>

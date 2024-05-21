@@ -52,6 +52,32 @@
                     /* Ubah nilai alpha (a) sesuai kebutuhan */
                 }
 
+                .marquee-container {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    box-sizing: border-box;
+                    width: 100%;
+                    color: white;
+                    margin-top: 20px;
+                    /* background: transparent; /* Remove this line or set it to transparent if needed */
+                }
+        
+                .marquee-content {
+                    display: inline-block;
+                    padding-left: 100%;
+                    animation: marquee 20s linear infinite;
+                }
+        
+                .marquee-content img {
+                    vertical-align: middle;
+                    margin-left: 30px;
+                }
+        
+                @keyframes marquee {
+                    0% { transform: translateX(100%); }
+                    100% { transform: translateX(-100%); }
+                }
+
             
             </style>
         </head>
@@ -166,13 +192,13 @@
 
                 </div>
                 </div>
-                <marquee behavior="scroll" direction="left" style="margin-top: 20px; color: white">
-                    <i>Pendaftaran Poliklinik Bisa Melalui Aplikasi Mobile JKN</i>
-                    <div style="margin-left: 30%">
-                        <img src="{{ asset('frontend/images/icon.png') }}" alt="Mobile JKN" style="width: 20%; ">
-                        <img src="{{ asset('frontend/images/plystr.png') }}" alt="Mobile JKN" style="width: 20%; "> 
-                    </div>  
-                </marquee>
+                <div class="marquee-container">
+                    <div class="marquee-content">   
+                        <img src="{{ asset('frontend/images/icon.png') }}" alt="Mobile JKN" style="width: 20%;">
+                        <img src="{{ asset('frontend/images/plystr.png') }}" alt="Mobile JKN" style="width: 20%;">
+                        <i>Pendaftaran Poliklinik Bisa Melalui Aplikasi Mobile JKN</i>
+                    </div>
+                </div>
 
             <!-- Bootstrap core JavaScript -->
             <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>

@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
     <style>
       body {
-          background-image: url('{{ asset('frontend/images/drbg.jpg') }}');
-          background-size: cover;
+          background-image: url('{{ asset('frontend/images/news.png') }}');
+          background-size:  30%;
           background-position: center;
           background-attachment: fixed;
       }

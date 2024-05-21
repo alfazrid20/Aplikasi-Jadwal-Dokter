@@ -23,7 +23,7 @@
 
     <style>
       body {
-          background-image: url('{{ asset('frontend/images/drbg.jpg') }}');
+          background-image: url('{{ asset('frontend/images/rs.jpg') }}');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -85,15 +85,6 @@
                     <h1><span class="badge text-bg-warning text-white">Daftar Kamar</span>
                       </h1>
                     <br>
-                    {{--  <li>
-                      <a class="is_active" href="#!" data-filter="*">Show All</a>
-                    </li>
-                    @foreach ($detailkamar as $d)
-                    <li>
-                      <a href="#!" data-filter=".{{ $d->jeniskamar->nama_ruang }}">{{ $d->jeniskamar->nama_ruang }}</a>
-                    </li>
-                    @endforeach
-                  </ul>  --}}
                   <div class="row properties-box">
                     @foreach ($detailkamar as $d)
                     <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
@@ -130,19 +121,6 @@
   <script src="{{ asset('frontend/js/owl-carousel.js') }}"></script>
   <script src="{{ asset('frontend/js/counter.js') }}"></script>
   <script src="{{ asset('frontend/js/custom.js') }}"></script>
-  <script>
-        $(document).ready(function () {
-            $('.properties-filter a').on('click', function (e) {
-                e.preventDefault();
-                var filterValue = $(this).attr('data-filter');
-                $('#properties-box').isotope({
-                    filter: filterValue
-                });
-                $('.properties-filter a').removeClass('is_active');
-                $(this).addClass('is_active');
-            });
-        });
-    </script>
   
 
   </body>

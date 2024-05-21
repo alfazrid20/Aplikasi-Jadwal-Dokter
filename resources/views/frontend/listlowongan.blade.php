@@ -14,11 +14,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <style>
       body {
-          background-image: url('{{ asset('frontend/images/drbg.jpg') }}');
+          background-image: url('{{ asset('frontend/images/loker.png') }}');
           background-size: cover;
-          background-position: center;
+          background-position: 100% center;
           background-attachment: fixed;
       }
     </style>
@@ -72,6 +75,8 @@
 
   <div class="section properties">
     <div class="container">
+      <h1 class="text-center text-white" style="font-family: 'Pacifico', cursive; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">We are Hiring!!</h1>
+      <br>
       <div class="row properties-box" id="properties-box">
         @foreach ($loker as $d)
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6">

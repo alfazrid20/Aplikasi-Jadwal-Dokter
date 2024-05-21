@@ -23,7 +23,7 @@
 
     <style>
       body {
-          background-image: url('{{ asset('frontend/images/drbg.jpg') }}');
+          background-image: url('{{ asset('frontend/images/rs.jpg') }}');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
