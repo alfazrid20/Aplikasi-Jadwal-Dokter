@@ -10,6 +10,7 @@ class Lamarans extends Model
     use HasFactory;
     protected $table = 'lamarans';
     protected $fillable = [
-         'nama', 'email','no_hp','alamat','posisi_dilamar','dokumen','status','status_lamaran','foto',
+         'nama', 'email','no_hp','alamat','posisi_dilamar','dokumen','status','status_lamaran','pendidikan_terakhir'
+         ,'ipk',
     ];
 }

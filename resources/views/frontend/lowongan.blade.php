@@ -70,16 +70,59 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="main-image">
-                            <img src="{{ asset('frontend/images/no-image.png')}}" alt="image">
+                            <img src="{{ asset($loker->foto_loker) }}" alt="image">
                         </div>
                         <div class="main-content">
-                            <h4>Posisi</h4>
+                            <br>
+                            <h1><span class="badge text-bg-success">{{ $loker->posisi }}</span></h1>
                             <hr>
-                            <p>Deskripsi</p>
-                            <p>Persyaratan</p>
-                            <p>Batas Waktu</p>
-                        </div>                        
-                    </div>                
+                            <h5>Deskripsi</h5>
+                            <hr>
+                            <p>{!! $loker->deskripsi !!}</p>
+                            <hr>
+                            <h5>Persyaratan</h5>
+                            <hr>
+                            <p>{!! $loker->persyaratan !!}</p>
+                            <hr>
+                            <h5>Batas Waktu Lamaran</h5>
+                            <hr>
+                            <p>Batas Waktu Lamaran Adalah Pada Tanggal {{ $loker->batas_waktu }}</p>
+                            <br>
+                            <div class="main-button2">
+                                <a href="/daftar-lowongan" class="apply-button">Apply Lamaran</a>
+                            </div>
+                            <br>
+                        </div>      
+                    </div>   
+
+                    <div class="col-lg-4">
+                        <div class="info-table">
+                            <h4 class="info-title bg-success" style="padding: 10px; color: rgb(255, 255, 255)">Other Jobs</h4>
+                            <hr>
+                            <ul>
+                                @foreach ($otherJobs as $d)
+                                <li>
+                                    <h5><a href="/lowongan/{{ $d->id }}">{{ $d->posisi }}</a></h5>
+                                    <br>
+                                    @if (!empty($d->foto_loker))
+                                    <img src="{{ asset($d->foto_loker) }}" alt="Gambar Berita" style="max-width: 50%;">
+                                    @else
+                                    <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                                    @endif
+                                    <?php
+                                    $wordCount = str_word_count($d->deskripsi);
+                                    $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
+                                    $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
+                                    $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                                    ?>
+                                    <p><b>{!! $trimmedText !!}</b></p>
+                                    <div class="button">
+                                    <a href="/lowongan/{{ $d->id }}" class="statusLink" data-status="{{ $d->status_loker }}">Lihat Selengkapnya....</a>                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>                 
                 </div>
             </div>
         </div>
@@ -100,5 +143,21 @@
     <script src="{{ asset('frontend/js/owl-carousel.js') }}"></script>
     <script src="{{ asset('frontend/js/counter.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.statusLink').on('click', function (event) {
+                var status = $(this).data('status');
+                
+                if (status === 'Tutup') {
+                    event.preventDefault();
+                    alert('Maaf, Lowongan sudah Ditutup');
+                } else {
+                    // Lanjutkan ke tautan jika status "Buka"
+                    window.location.href = $(this).attr('href');
+                }
+            });
+        });
+    </script>
+    
 </body>
 </html>

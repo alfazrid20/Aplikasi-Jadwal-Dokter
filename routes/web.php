@@ -44,7 +44,9 @@ Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
 Route::get('/view-berita/{id}', [ViewController::class, 'berita'])->name('berita');
 Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');
 Route::get('/lowongan-pekerjaan', [ViewController::class, 'loker'])->name('loker');
-Route::get('/lowongan', [ViewController::class, 'lowongan'])->name('lowongan');
+Route::get('/lowongan/{id}', [ViewController::class, 'lowongan'])->name('lowongan');
+Route::get('/daftar-lowongan', [ViewController::class, 'create'])->name('lowongan.create');
+Route::post('/daftar-lowongan/store', [ViewController::class, 'store'])->name('lowongan.store');
 
 //Login
 

@@ -29,7 +29,7 @@ class LokerController extends Controller
             'deskripsi' => 'required', 
             'persyaratan' => 'required',    
             'batas_waktu' => 'required', 
-            'staus_loker' => 'required', 
+            'status_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'posisi.required' => "Posisi harus diisi.",
@@ -41,15 +41,15 @@ class LokerController extends Controller
             'foto_loker.mimes' => 'Format foto yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto_loker.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->route('backend.loker.create')
                 ->withErrors($validator)
                 ->withInput();
         }
-    
+
         $filePath = 'path/to/default/image.png';
-    
+
         if ($request->hasFile('foto_loker')) {
             $file = $request->file('foto_loker');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -57,19 +57,20 @@ class LokerController extends Controller
             $filePath = $file->storeAs('public/foto_loker', $fileName);
             $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
-    
+
         Lokers::create([
-            'posisi'=> $request->posisi,
-            'foto_loker'=> $filePath,
-            'deskripsi'=> $request->deskripsi,
-            'persyaratan'=> $request->persyaratan,
-            'batas_waktu'=> $request->batas_waktu,
+            'posisi' => $request->posisi,
+            'foto_loker' => $filePath,
+            'deskripsi' => $request->deskripsi,
+            'persyaratan' => $request->persyaratan,
+            'status_loker' => $request->status_loker,
+            'batas_waktu' => $request->batas_waktu,
         ]);
-    
+
         return redirect()->route('backend.loker.index')
             ->with('success', 'Data berhasil ditambah');
     }
-    
+
 
     public function edit($id)
     {

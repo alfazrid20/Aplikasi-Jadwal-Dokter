@@ -203,6 +203,20 @@ body {
   transition: all .3s;
 }
 
+.main-button2 a {
+  display: inline-block;
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 40px;
+  padding: 0px 30px;
+  border-radius: 25px;
+  transition: all .3s;
+}
+
+
 .main-button a:hover {
   background-color: #f35525;
   color: #fff;

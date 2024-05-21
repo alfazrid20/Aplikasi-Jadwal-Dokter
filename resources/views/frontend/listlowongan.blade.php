@@ -75,44 +75,41 @@
       <div class="row properties-box" id="properties-box">
         @foreach ($loker as $d)
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6">
-            <div class="item">
-                <a href="#">
-                    @if (!empty($d->foto_loker))
-                    <img src="{{ asset($d->foto_loker) }}" alt="Gambar Berita" style="max-width: 100%;">
-                    @else
-                    <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
-                    @endif
+          <div class="item">
+            <a href="#">
+                @if (!empty($d->foto_loker))
+                <img src="{{ asset($d->foto_loker) }}" alt="Gambar Berita" style="max-width: 100%;">
+                @else
+                <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                @endif
+            </a>
+            <h4><a href="#"><span class="badge text-bg-primary">{{ $d->posisi }}</span></a></h4>
+            <a href="#">
+                @if ($d->status_loker == 'Buka')
+                <span class="badge text-bg-success">Buka</span>
+                @elseif ($d->status_loker == 'Tutup')
+                <span class="badge text-bg-danger">Tutup</span>
+                @else
+                <span class="badge badge-secondary">{{ $d->status_loker }}</span>
+                @endif
+            </a>
+            <hr>
+            <p style="color: red"></p>
+            <p></p>
+            <?php
+            $wordCount = str_word_count($d->deskripsi);
+            $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
+            $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
+            $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+            ?>
+            <p>{!! $trimmedText !!}</p>
+            <br>
+            <div class="main-button">
+                <a class="statusLink" href="/lowongan/{{ $d->id }}" data-status="{{ $d->status_loker }}">
+                  Lihat Selengkapnya
                 </a>
-                <h4><a href="property-details.html"><span class="badge text-bg-primary">{{ $d->posisi }}</span>
-                  </a></h4>
-                <a href="#">
-                  @if ($d->status_loker == 'Buka')
-                    <span class="badge text-bg-success">Buka</span>
-                  @elseif ($d->status_loker == 'Tutup')
-                    <span class="badge text-bg-danger">Tutup</span>
-                  @else
-                      <span class="badge badge-secondary">{{ $d->status_loker }}</span>
-                  @endif
-              </a>
-              
-                <hr>
-                <p style="color: red"></p>
-                <p></p>
-                <?php
-                $wordCount = str_word_count($d->deskripsi);
-                $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
-                $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
-                $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
-                ?>
-                <p>{!! $trimmedText !!}</p>
-                <br>
-                <div class="main-button">
-                  <div class="main-button">
-                    <a id="statusLink" href="/lowongan" data-status="{{ $d->status_loker }}">Lihat Selengkapnya</a>
-                </div>
-                
-              </div>                               
             </div>
+        </div>        
         </div>
         @endforeach
     </div>
@@ -132,6 +129,21 @@
   <script src="{{ asset('frontend/js/counter.js') }}"></script>
   <script src="{{ asset('frontend/js/custom.js') }}"></script>
   <script>
+    $(document).ready(function () {
+      $('.statusLink').on('click', function (event) {
+          var status = $(this).data('status');
+          
+          if (status === 'Tutup') {
+              event.preventDefault();
+              alert('Maaf, Lowongan Sudah ditutup');
+          } else {
+              // Lanjutkan ke tautan jika status "Buka"
+              // Ubah link ini sesuai dengan kebutuhan Anda
+              window.location.href = $(this).attr('href');
+          }
+      });
+  });
+  
     $(document).ready(function () {
       var $propertiesBox = $('#properties-box').isotope({
         itemSelector: '.properties-items',
