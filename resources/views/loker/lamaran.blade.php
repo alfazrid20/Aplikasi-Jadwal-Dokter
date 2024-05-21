@@ -22,7 +22,6 @@
                                                     class="fa fa-search"></i> Search</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </form>
@@ -35,44 +34,59 @@
                                         <th>Email</th>
                                         <th>No Handphone</th>
                                         <th>Alamat</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>IPK/Nilai</th>
                                         <th>Posisi Dilamar</th>
                                         <th>Dokumen</th>
                                         <th>Status Perkawinan</th>
-                                        <th>Foto</th>
                                         <th>Status Lamaran</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="lamaranTableBody">
-                    
-                                    <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        {{--  @if (!empty($d->foto_loker))
-                                                <img src="{{ asset($d->foto_loker) }}" alt="Foto Loker" style="max-width: 100%;">
-                                            @else
-                                                <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto"  style="max-width: 100px;">
-                                            @endif  --}}
-                                    </td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        {{--  <div class="btn-group">
-                                            <form action="{{ route('backend.lamaran.delete', $d->id) }}"
-                                                method="POST">
-                                                <a href="{{ route('backend.lamaran.edit', $d->id) }}"
-                                                    class="btn btn-success"><i class="fa fa-edit"></i></a>
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-danger"><i
-                                                        class="fa fa-trash text-white"></i></button>
-                                            </form>
-                                        </div>  --}}
-                                    </td>
-                                    </tr>  
-                                   
+                                    @foreach ($lamaran as $d)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $d->nama }}</td>
+                                            <td>{{ $d->email }}</td>
+                                            <td>{{ $d->no_hp }}</td>
+                                            <td>{{ $d->alamat }}</td>
+                                            <td>{{ $d->pendidikan_terakhir }}</td>
+                                            <td>{{ $d->ipk }}</td>
+                                            <td>{{ $d->posisi_dilamar }}</td>
+                                            <td>
+                                                @if($d->dokumen)
+                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-primary">Lihat Dokumen</a>
+                                                @else
+                                                    Tidak ada dokumen
+                                                @endif
+                                            </td>
+                                            <td>{{ ucwords($d->status) }}</td>
+                                            <td>
+                                                @if ($d->status_lamaran == 0)
+                                                    <span class="badge badge-secondary">Waiting</span>
+                                                @elseif ($d->status_lamaran == 1)
+                                                    <span class="badge badge-primary">Process</span>
+                                                @elseif ($d->status_lamaran == 2)
+                                                    <span class="badge badge-danger">Denied</span>
+                                                @endif
+                                            </td>
+                                            
+                                            <td>
+                                                <div class="btn-group">
+                                                    <form action="{{ route('backend.lamaran.delete', $d->id) }}"
+                                                        method="POST">
+                                                        <a href="{{ route('backend.lamaran.edit', $d->id) }}"
+                                                            class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-danger"><i
+                                                                class="fa fa-trash text-white"></i></button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             {{--  {{ $dokter->links('vendor.pagination.bootstrap-5') }}  --}}

@@ -102,6 +102,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <!--CK Editor -->
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf.min.mjs"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.2.67/pdf_viewer.min.css"></script>
     <script>
         ClassicEditor
                 .create( document.querySelector( '#editor' ) )

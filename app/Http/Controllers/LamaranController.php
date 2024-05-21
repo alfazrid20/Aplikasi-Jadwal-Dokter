@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Lamarans;
 
 class LamaranController extends Controller
 {
     public function index()
     {
-       
-        return view('loker.lamaran');
+        $lamaran = Lamarans::all();
+        return view('loker.lamaran',compact('lamaran'));
     }
 }

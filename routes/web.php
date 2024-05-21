@@ -175,6 +175,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/backend/lamaran/{id}/delete', [LamaranController::class, 'delete'])->name('backend.lamaran.delete');
     // End Data Lamaran
 
+    
+
 });
 
 Route::get('/createrolepermission', function(){
