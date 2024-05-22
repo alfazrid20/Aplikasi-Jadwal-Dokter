@@ -10,14 +10,14 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
-                        <form action="/backend/lamaran" method="GET" id="searchForm">
+                        <form action="{{ route('backend.lamaran.index') }}" method="GET" id="searchForm">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
                                         <div class="input-group">
                                             <input type="text" name="nama" id="nama" class="form-control"
                                                 placeholder="Cari Pelamar" style="width: 45%; margin-right: 5%;"
-                                                value="{{ Request('nama') }}">
+                                                value="{{ request('nama') }}">
                                             <button class="btn btn-primary" type="submit" id="button-addon4"><i
                                                     class="fa fa-search"></i> Search</button>
                                         </div>
@@ -40,7 +40,7 @@
                                         <th>Dokumen</th>
                                         <th>Status Perkawinan</th>
                                         <th>Status Lamaran</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="lamaranTableBody">
@@ -51,12 +51,12 @@
                                             <td>{{ $d->email }}</td>
                                             <td>{{ $d->no_hp }}</td>
                                             <td>{{ $d->alamat }}</td>
-                                            <td>{{ $d->pendidikan_terakhir }}</td>
+                                            <td class="text-center">{{ $d->pendidikan_terakhir }}</td>
                                             <td>{{ $d->ipk }}</td>
-                                            <td>{{ $d->posisi_dilamar }}</td>
+                                            <td>{{ $d->infoloker->posisi_id }}</td>
                                             <td>
                                                 @if($d->dokumen)
-                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-primary">Lihat Dokumen</a>
+                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-success">Lihat Dokumen</a>
                                                 @else
                                                     Tidak ada dokumen
                                                 @endif
@@ -64,24 +64,24 @@
                                             <td>{{ ucwords($d->status) }}</td>
                                             <td>
                                                 @if ($d->status_lamaran == 0)
-                                                    <span class="badge badge-secondary">Waiting</span>
+                                                    <span class="badge badge-success">Waiting</span>
                                                 @elseif ($d->status_lamaran == 1)
                                                     <span class="badge badge-primary">Process</span>
                                                 @elseif ($d->status_lamaran == 2)
                                                     <span class="badge badge-danger">Denied</span>
                                                 @endif
                                             </td>
-                                            
                                             <td>
                                                 <div class="btn-group">
-                                                    <form action="{{ route('backend.lamaran.delete', $d->id) }}"
-                                                        method="POST">
-                                                        <a href="{{ route('backend.lamaran.edit', $d->id) }}"
-                                                            class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                    <form action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
                                                         @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-danger"><i
-                                                                class="fa fa-trash text-white"></i></button>
+                                                        <input type="hidden" name="status_lamaran" value="1">
+                                                        <button type="submit" class="btn btn-primary mb-2" style="width: 100px;"><i class="fa fa-check-circle"></i></button>
+                                                    </form>
+                                                    <form action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="status_lamaran" value="2">
+                                                        <button type="submit" class="btn btn-danger" style="width: 100px;"><i class="fa fa-close text-white"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -89,17 +89,19 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{--  {{ $dokter->links('vendor.pagination.bootstrap-5') }}  --}}
+                            {{ $lamaran->links('vendor.pagination.bootstrap-5') }}
                         </div>
                     </div>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection
 
-        @push('myscript')
-            <script>
-                document.getElementById('button-addon10').addEventListener('click', function() {
-                    document.getElementById('searchForm').submit();
-                });
-            </script>
-        @endpush
+@push('myscript')
+    <script>
+        document.getElementById('button-addon10').addEventListener('click', function() {
+            document.getElementById('searchForm').submit();
+        });
+    </script>
+@endpush

@@ -173,6 +173,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/backend/lamaran/{id}/edit', [LamaranController::class, 'edit'])->name('backend.lamaran.edit');
     Route::put('/backend/lamaran/{id}/update', [LamaranController::class, 'update'])->name('backend.lamaran.update');
     Route::delete('/backend/lamaran/{id}/delete', [LamaranController::class, 'delete'])->name('backend.lamaran.delete');
+    Route::post('/backend/lamaran/{id}/status', [LamaranController::class, 'updateStatus'])->name('backend.lamaran.updateStatus');
     // End Data Lamaran
 
     

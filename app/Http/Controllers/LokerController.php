@@ -25,14 +25,14 @@ class LokerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'posisi' => 'required', 
+            'posisi_id' => 'required', 
             'deskripsi' => 'required', 
             'persyaratan' => 'required',    
             'batas_waktu' => 'required', 
             'status_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            'posisi.required' => "Posisi harus diisi.",
+            'posisi_id.required' => "Posisi harus diisi.",
             'deskripsi.required' => "Deskripsi harus diisi.",
             'persyaratan.required' => "Persyaratan harus diisi.",
             'batas_waktu.required' => "Batas waktu harus diisi.",
@@ -59,7 +59,7 @@ class LokerController extends Controller
         }
 
         Lokers::create([
-            'posisi' => $request->posisi,
+            'posisi_id' => $request->posisi_id,
             'foto_loker' => $filePath,
             'deskripsi' => $request->deskripsi,
             'persyaratan' => $request->persyaratan,
@@ -82,14 +82,14 @@ class LokerController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'posisi' => 'required', 
+            'posisi_id' => 'required', 
             'deskripsi' => 'required', 
             'persyaratan' => 'required',    
             'batas_waktu' => 'required', 
             'status_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            'posisi.required' => "Posisi harus diisi.",
+            'posisi_id.required' => "Posisi harus diisi.",
             'deskripsi.required' => "Deskripsi harus diisi.",
             'persyaratan.required' => "Persyaratan harus diisi.",
             'batas_waktu.required' => "Batas waktu harus diisi.",
@@ -119,7 +119,7 @@ class LokerController extends Controller
         }
 
         $loker->update([
-            'posisi'=> $request->posisi,
+            'posisi_id'=> $request->posisi_id,
             'foto_loker'=> $filePath,
             'deskripsi'=> $request->deskripsi,
             'persyaratan'=> $request->persyaratan,
