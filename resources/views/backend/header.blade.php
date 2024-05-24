@@ -21,9 +21,9 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="/backend/profileuser/">My Profile</a>
-                                <a class="dropdown-item" href="/backend/panduan/">
+                                {{--  <a class="dropdown-item" href="/backend/panduan/">
                                     <span>Panduan</span> <i class="fa fa-book"></i>
-                                </a>
+                                </a>  --}}
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">

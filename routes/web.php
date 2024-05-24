@@ -65,7 +65,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/backend/dashboard', [DashboardController::class, 'index']);
     Route::get('/backend/profileuser', [DashboardController::class, 'profileuser'])->name('backend.profileuser');
-    Route::get('/backend/panduan', [DashboardController::class, 'panduan']);
+    Route::get('/backend/profileuser{id}/edit', [DashboardController::class, 'edit'])->name('backend.profileuser.edit');
+    Route::put('/backend/profileuser/{id}/update', [PoliController::class, 'update'])->name('backend.profileuser.update');
+    Route::get('/backend/panduan', [DashboardController::class, 'panduan']); // <----- Route Ini Sedang Dalam Tahap Pengembangan
 
 
     // Data Poli

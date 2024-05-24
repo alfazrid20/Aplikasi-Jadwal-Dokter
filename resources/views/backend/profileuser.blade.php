@@ -32,14 +32,23 @@
                             <div class="profile_contant">
                                 <div class="contact_inner">
                                     <h3>{{ Auth::user()->name }}</h3>
+                                    <hr>
                                     <ul class="list-unstyled">
-                                    <li><i class="fa fa-envelope-o"></i> : {{ Auth::user()->email }}</li>
+                                        <li>
+                                            <i class="fa fa-envelope-o"></i> : {{ Auth::user()->email }}
+                                            <hr>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-building-o"></i> : {{ Auth::user()->role }}
+                                            <hr>
+                                        </li>
                                     </ul>
-                                </div>
+                                    <div class="edit_profile_button text-right">
+                                        <a href="#" onclick="editProfile('{{ route('backend.profileuser.edit', ['id' => Auth::user()->id]) }}')" class="btn btn-primary">Edit Profile</a>
+                                    </div>
+                                </div>                                
                             </div>
                           </div>
-
-                          
                          <!-- end user profile section -->
                       </div>
                    </div>
@@ -50,4 +59,12 @@
           <!-- end row -->
        </div>
 @endsection
+
+@push('myscript')
+    <script>
+        function editProfile(url) {
+            window.location.href = url;
+        }
+    </script>
+@endpush
       
