@@ -40,7 +40,7 @@
                                         <th>Dokumen</th>
                                         <th>Status Perkawinan</th>
                                         <th>Status Lamaran</th>
-                                        <th>Aksi</th>
+                                        <th class="text-center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="lamaranTableBody">
@@ -56,7 +56,7 @@
                                             <td>{{ $d->infoloker->posisi_id }}</td>
                                             <td>
                                                 @if($d->dokumen)
-                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-success">Lihat Dokumen</a>
+                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-danger">Lihat Dokumen</a>
                                                 @else
                                                     Tidak ada dokumen
                                                 @endif
@@ -64,24 +64,35 @@
                                             <td>{{ ucwords($d->status) }}</td>
                                             <td>
                                                 @if ($d->status_lamaran == 0)
-                                                    <span class="badge badge-success">Waiting</span>
+                                                    <span class="badge badge-warning">Waiting</span>
                                                 @elseif ($d->status_lamaran == 1)
                                                     <span class="badge badge-primary">Process</span>
                                                 @elseif ($d->status_lamaran == 2)
                                                     <span class="badge badge-danger">Denied</span>
+                                                @elseif ($d->status_lamaran == 3)
+                                                    <span class="badge badge-success">Hired</span>
                                                 @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <form action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
+                                                    <form id="submitForm_{{ $d->id }}_1" action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="status_lamaran" value="1">
-                                                        <button type="submit" class="btn btn-primary mb-2" style="width: 100px;"><i class="fa fa-check-circle"></i></button>
+                                                        <button type="submit" class="btn btn-primary mb-2 mr-2"><i class="fa fa-check-circle"></i></button>
                                                     </form>
-                                                    <form action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
+                                                    <form id="submitForm_{{ $d->id }}_2" action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
                                                         @csrf
                                                         <input type="hidden" name="status_lamaran" value="2">
-                                                        <button type="submit" class="btn btn-danger" style="width: 100px;"><i class="fa fa-close text-white"></i></button>
+                                                        <button type="submit" class="btn btn-danger mr-2"><i class="fa fa-close text-white"></i></button>
+                                                    </form>
+                                                    <form id="submitForm_{{ $d->id }}_3" action="{{ route('backend.lamaran.updateStatus', $d->id) }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="status_lamaran" value="3">
+                                                        @if ($d->status_lamaran == 1)
+                                                            <button type="button" class="btn btn-info" onclick="confirmHire({{ $d->id }})"><i class="fa fa-check-square-o text-white"></i></button>
+                                                        @else
+                                                            <button type="button" class="btn btn-info" disabled><i class="fa fa-check-square-o text-white"></i></button>
+                                                        @endif
                                                     </form>
                                                 </div>
                                             </td>
@@ -103,5 +114,22 @@
         document.getElementById('button-addon10').addEventListener('click', function() {
             document.getElementById('searchForm').submit();
         });
+
+        function confirmHire(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This candidate will be hired!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, hire them!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('submitForm_' + id + '_3').submit();
+                }
+            });
+        }
     </script>
 @endpush
+

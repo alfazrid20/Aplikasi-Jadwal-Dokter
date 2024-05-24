@@ -29,6 +29,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi input
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'role' => 'required',
@@ -52,15 +53,19 @@ class UserController extends Controller
             return redirect()->route('backend.user.create')->withErrors($validator)->withInput();
         }
 
-        $filePath = asset('frontend/images/usernofoto.png'); 
+        // Menentukan path default untuk foto
+        $filePath = 'frontend/images/usernofoto.png';
 
+        // Jika ada file foto yang diupload, ganti path dengan path upload
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('foto_users', $fileName, 'public');
+            $filePath = $file->storeAs('public/foto_users', $fileName);
+            $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
 
-        $user = User::create([
+        // Membuat pengguna baru
+        User::create([
             'name' => $request->name,
             'role' => $request->role,
             'email' => $request->email,
@@ -70,7 +75,6 @@ class UserController extends Controller
 
         return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil ditambahkan.');
     }
-
 
     public function edit($id)
     {

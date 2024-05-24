@@ -33,22 +33,19 @@
                                             <td>{{ $d->email }}</td>
                                             <td>{{ $d->role }}</td>
                                             <td>
-                                                @if (!empty($d->foto))
-                                                <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto Pengguna" class="avatar" style="max-width: 50px;">
-                                            @else
-                                                <img src="{{ asset('assets/img/nophoto.png') }}" alt="Tidak Ada Foto" class="avatar" style="max-width: 50px;">
-                                            @endif
+                                                @if (!empty($d->foto) && $d->foto !== 'frontend/images/usernofoto.png')
+                                                    <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto Pengguna" class="avatar" style="max-width: 50px;">
+                                                @else
+                                                    <img src="{{ asset('frontend/images/usernofoto.png') }}" alt="Tidak Ada Foto" class="avatar" style="max-width: 50px;">
+                                                @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <form action="{{ route('backend.user.delete', $d->id) }}"
-                                                        method="POST">
-                                                        <a href="{{ route('backend.user.edit', $d->id) }}"
-                                                            class="btn btn-success"><i class="fa fa-edit"></i></a>
+                                                    <form action="{{ route('backend.user.delete', $d->id) }}" method="POST">
+                                                        <a href="{{ route('backend.user.edit', $d->id) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-danger"><i
-                                                                class="fa fa-trash text-white"></i></button>
+                                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash text-white"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -62,7 +59,4 @@
             </div>
         </div>
     </div>
-
-  
-    
 @endsection

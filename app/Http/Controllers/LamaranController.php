@@ -11,13 +11,14 @@ class LamaranController extends Controller
     {
         $search = $request->input('nama');
         $query = Lamarans::query();
-    
+
         if ($search) {
             $query->where('nama', 'LIKE', "%{$search}%");
         }
-    
-        $lamaran = $query->paginate(10);
-    
+
+        $lamaran = $query->orderByRaw("FIELD(status_lamaran, 3, 1, 0, 2)")
+                        ->paginate(10);
+
         return view('loker.lamaran', compact('lamaran'));
     }
 

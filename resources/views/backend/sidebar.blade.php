@@ -26,6 +26,7 @@ $route = explode('/',$route);
                 </div>
                 <div class="user_info">
                     <h6>{{ Auth::user()->name }}</h6>
+                    <small class="form-text text-white">{{ Auth::user()->role }}</small>
                     <p><span class="online_animation"></span> Online</p>
                 </div>
             </div>
@@ -57,7 +58,7 @@ $route = explode('/',$route);
             @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar"></i> <span>Jadwal Dokter</span></a></li> 
             @endif
-            @if($role == 'IT')
+            @if($role == 'IT' || $role == 'HRD' || $role == 'Admin' || $role == 'Humas' || $role == 'Marketing')
             <li class="dropdown">
                 <a href="#element_berita" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-newspaper-o"></i><span>Berita</span>
@@ -72,7 +73,7 @@ $route = explode('/',$route);
                 </ul>
             </li>
             @endif
-            @if($role == 'IT' || $role == 'HRD')
+            @if($role == 'IT' || $role == 'HRD' || $role == 'Humas')
             <li class="dropdown">
                 <a href="#element_job" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-tty"></i><span>Lowongan Pekerjaan</span>
@@ -90,7 +91,7 @@ $route = explode('/',$route);
                 </ul>
             </li>
             @endif
-            @if($role == 'IT')
+            @if($role == 'IT' || $role == 'Admin')
             <li class="dropdown">
                 <a href="#element_user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-users"></i><span>User</span>
