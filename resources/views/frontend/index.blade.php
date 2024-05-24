@@ -152,7 +152,7 @@
         </div>
     </div>  --}}
 
-    <div class="col-md-5 mt-2">
+    <div class="col-md-5">
         <div class="card card-sm" id="sejarah" >
             <div class="card-body">
                 <h5 class="card-header text-center bg-success text-white">Sejarah Rumah Sakit Aisyiyah </h5>
@@ -188,7 +188,7 @@
         </div>  
     </div>
 
-    <div class="col-md-5 mt-2 mb-2">
+    <div class="col-md-5 mt-2">
         <div class="card card-sm" id="cek-kamar">
             <div class="card-body">
                 <h5 class="card-header text-center bg-success text-white">Cek Kamar</h5>

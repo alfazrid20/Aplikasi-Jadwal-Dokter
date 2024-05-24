@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -33,7 +34,7 @@ class UserController extends Controller
             'role' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'name.required' => 'Nama pengguna harus diisi.',
             'role.required' => 'Role pengguna harus diisi.',
@@ -42,7 +43,6 @@ class UserController extends Controller
             'email.unique' => 'Alamat email sudah digunakan.',
             'password.required' => 'Kata sandi harus diisi.',
             'password.min' => 'Kata sandi minimal harus 6 karakter.',
-            'foto.required' => 'Silakan pilih file foto.',
             'foto.image' => 'File harus berupa gambar.',
             'foto.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'foto.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
@@ -51,6 +51,8 @@ class UserController extends Controller
         if ($validator->fails()) {
             return redirect()->route('backend.user.create')->withErrors($validator)->withInput();
         }
+
+        $filePath = asset('frontend/images/usernofoto.png'); 
 
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -63,11 +65,12 @@ class UserController extends Controller
             'role' => $request->role,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'foto' => $filePath ?? null,
+            'foto' => $filePath,
         ]);
 
         return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil ditambahkan.');
     }
+
 
     public function edit($id)
     {
@@ -128,10 +131,14 @@ class UserController extends Controller
 
     public function delete($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        return redirect()->route('backend.user.index')->with('success', 'Data pengguna berhasil dihapus.');
+        $user = DB::table('users')
+            ->where('id', $id)
+            ->delete();
+        if ($user) {
+            return redirect()->route('backend.user.index')->with('success', 'Data Berhasil Dihapus');
+        } else {
+            return redirect()->route('backend.user.index')->with('error', 'Data Gagal Dihapus');
+        }
     }
 
 

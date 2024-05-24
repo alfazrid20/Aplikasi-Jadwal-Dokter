@@ -50,7 +50,7 @@
                             <div class="col-sm-6 input-group">
                                 <select name="role" class="form-control">
                                     @foreach($roles as $role)
-                                        <option value="{{ $role->name }}" {{ $user->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                    <option value="{{ $role->name }}" {{ $role->name == $user->role ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

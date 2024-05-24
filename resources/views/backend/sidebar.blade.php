@@ -37,9 +37,13 @@ $route = explode('/',$route);
             <li class="">
                 <a href="/backend/dashboard" aria-expanded="false"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
-
+            @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/data-poli"><i class="fa fa-book"></i> <span>Data Poli</span></a></li>
+            @endif
+            @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/data-dokter"><i class="fa fa-folder"></i> <span>Data Dokter</span></a></li>
+            @endif
+            @if($role == 'IT' || $role == 'CS')
             <li class="dropdown">
                 <a href="#element_bed" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-bed"></i><span>Ketersediaan Tempat Tidur</span>
@@ -49,7 +53,11 @@ $route = explode('/',$route);
                     <li><a href="/backend/detail-kamar"><i class="fa fa-bed"></i>Detail Kamar</a></li>
                 </ul>
             </li> 
+            @endif
+            @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/jadwal-dokter"><i class="fa fa-calendar"></i> <span>Jadwal Dokter</span></a></li> 
+            @endif
+            @if($role == 'IT')
             <li class="dropdown">
                 <a href="#element_berita" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-newspaper-o"></i><span>Berita</span>
@@ -63,6 +71,8 @@ $route = explode('/',$route);
                     </li>
                 </ul>
             </li>
+            @endif
+            @if($role == 'IT' || $role == 'HRD')
             <li class="dropdown">
                 <a href="#element_job" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-tty"></i><span>Lowongan Pekerjaan</span>
@@ -74,11 +84,12 @@ $route = explode('/',$route);
                     <li>
                         <a href="/backend/lamaran"><i class="fa fa-archive"></i> <span>Data Pelamar</span></a>
                     </li>
-                    <li>
+                    {{--  <li>
                         <a href="/backend/posisi"><i class="fa fa-briefcase"></i> <span>Posisi</span></a>
-                    </li>
+                    </li>  --}}
                 </ul>
             </li>
+            @endif
             @if($role == 'IT')
             <li class="dropdown">
                 <a href="#element_user" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

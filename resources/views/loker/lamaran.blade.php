@@ -40,7 +40,7 @@
                                         <th>Dokumen</th>
                                         <th>Status Perkawinan</th>
                                         <th>Status Lamaran</th>
-                                        <th class="text-center">Aksi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="lamaranTableBody">

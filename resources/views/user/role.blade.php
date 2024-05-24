@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="margin-top: 5%">
+        {{--  <div class="col-md-6" style="margin-top: 5%">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Tambah Permission</h5>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  --}}
         
         
     </div>

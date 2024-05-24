@@ -32,4 +32,10 @@ class LamaranController extends Controller
             return redirect()->back()->with('error', 'Lamaran tidak ditemukan.');
         }
     }
+
+    public function show($id)
+    {
+        $lamaran = Lamarans::findOrFail($id);
+        return response()->json($lamaran);
+    }
 }
