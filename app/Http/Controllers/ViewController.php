@@ -12,6 +12,7 @@ use App\Models\Kamars;
 use App\Models\JenisKamar;
 use App\Models\Lokers;
 use App\Models\Lamarans;
+use App\Models\Slider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -19,6 +20,15 @@ use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
+
+    public function indexview()
+    {
+        $kategori = Kategoris::all();
+        $berita = Beritas::all();
+        $slider = Slider::all();
+        return view('frontend.index',compact('slider','kategori','berita'));
+    }
+
     public function index()
     {
         $query = Kamars::query();

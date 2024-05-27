@@ -38,6 +38,9 @@ $route = explode('/',$route);
             <li class="">
                 <a href="/backend/dashboard" aria-expanded="false"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
+            <li class="">
+                <a href="/backend/slider" aria-expanded="false"><i class="fa fa-play-circle"></i> <span>Slider</span></a>
+            </li>
             @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/data-poli"><i class="fa fa-book"></i> <span>Data Poli</span></a></li>
             @endif

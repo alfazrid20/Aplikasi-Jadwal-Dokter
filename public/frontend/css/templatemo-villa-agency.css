@@ -88,7 +88,7 @@ a {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #1e1e1e;
+  color: #ffffff;
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: 700;
@@ -772,7 +772,7 @@ Banner Style
   height: 50px;
   line-height: 50px;
   font-size: 24px;
-  display: inline-block;
+  display: none;
   color: #fff;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
@@ -782,12 +782,12 @@ Banner Style
 
 .main-banner .owl-nav .owl-prev i {
   position: absolute;
-  left: 45px;
+  left: 10px;
 }
 
 .main-banner .owl-nav .owl-next i {
   position: absolute;
-  right: 45px;
+  right: 10px;
 }
 
 .main-banner .owl-nav .owl-prev i:hover,
@@ -916,7 +916,7 @@ Video Style
 */
 
 .video {
-  background-image: url(../images/video-bg.jpg);
+  background-image: url(../images/image.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -1301,7 +1301,7 @@ footer.footer-no-gap {
 }
 
 footer {
-  margin-top: 150px;
+  margin-top: 200px;
   background-color: #1e1e1e;
   min-height: 100px;
 }

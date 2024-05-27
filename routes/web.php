@@ -13,6 +13,7 @@ use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\LokerController;
 use App\Http\Controllers\SetJamPraktekController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -33,11 +34,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
-
-
+Route::get('/', [ViewController::class, 'indexview']);
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
@@ -177,6 +174,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/backend/lamaran/{id}/delete', [LamaranController::class, 'delete'])->name('backend.lamaran.delete');
     Route::post('/backend/lamaran/{id}/status', [LamaranController::class, 'updateStatus'])->name('backend.lamaran.updateStatus');
     // End Data Lamaran
+
+    // Data Slider
+    Route::get('/backend/slider', [SliderController::class, 'index'])->name('backend.slider.index');
+    Route::get('/backend/slider/create', [SliderController::class, 'create'])->name('backend.slider.create');
+    Route::post('/backend/slider/store', [SliderController::class, 'store'])->name('backend.slider.store');
+    Route::get('/backend/slider/{id}/edit', [SliderController::class, 'edit'])->name('backend.slider.edit');
+    Route::put('/backend/slider/{id}/update', [SliderController::class, 'update'])->name('backend.slider.update');
+    Route::delete('/backend/slider/{id}/delete', [SliderController::class, 'delete'])->name('backend.slider.delete');
+    // End Data Slider
 
     
 

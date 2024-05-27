@@ -236,9 +236,7 @@
                     }
             
                     startCarousel();
-                });
-
-                
+                }); 
             </script>
             
             
