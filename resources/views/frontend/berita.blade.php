@@ -72,14 +72,18 @@
                     <div class="main-image">
                         <img src="{{ asset($berita->gambar) }}" alt="image">
                     </div>
+                    <br>
                     <div class="main-content">
-                        <h4>{{ $berita->judul_berita }}</h4>
-                        <div class="kategori bg-primary" style="padding: 10px; color: rgb(255, 255, 255); display: inline-block;">
+                        <h1 style="color: black; font-family: 'Times New Roman', Times, serif">{{ $berita->judul_berita }}</h1>
+                        <br>
+                        <div class="kategori bg-success" style="padding: 10px; color: rgb(255, 255, 255); display: inline-block;">
                             <p class="text-white">{{ $berita->kategori->kategori }}</p>
                         </div>
-                        <hr>
+                        <div class="kategori" style="padding: 10px; color: rgb(255, 255, 255); display: inline-block;">
                         <p style="color: red">{{ $berita->tanggal }}</p>
-                        <p>{!! $berita->isi !!}</p>
+                        </div>
+                        <hr>
+                        <p style="font-family: 'Times New Roman', Times, serif">{!! $berita->isi !!}</p>
                     </div>
                 </div>                
                 <div class="col-lg-4">
@@ -112,6 +116,7 @@
                     </div>
                 </div>
             </div>
+        </div>
             <footer class="footer-no-gap mt-2">
                 <div class="container">
                     <div class="col-lg-12">

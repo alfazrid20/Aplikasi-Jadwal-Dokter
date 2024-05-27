@@ -118,6 +118,7 @@
         </div>
         @endforeach
     </div>
+    </div>
 
   <footer class="footer-no-gap mt-2">
     <div class="container">
