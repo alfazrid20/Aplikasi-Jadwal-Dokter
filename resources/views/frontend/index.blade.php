@@ -130,8 +130,9 @@
                         <img src="{{ asset('frontend/images/larsi.png') }}" alt="Second Image" style="max-width: 10%;">
                     </div>
                     <hr class="text-white">
-                      <h1>{{ $d->judul }}</h1>
-                      <p class="text-white" style="word-wrap: break-word;">{{ $d->konten }}</p>
+                      <h1><span class="badge text-bg-success"> {{ $d->judul }}</span>
+                       </h1>
+                      <h4 class="text-white mt-2" style="word-wrap: break-word;">{!! $d->konten !!}</h4>
                     </div>
                   </div>
                   @endforeach
@@ -168,69 +169,103 @@
         </div>
       </div>
     </div>
-    
-     <div class="section properties">
-          <div class="container">
-            <div class="col-12 text-center">
-              <h1>News</h1>
+
+   
+    <div class="section best-deal" style="background-color: rgba(255, 255, 255, 0);">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="section-heading">
+              <h1 style="font-family: 'Times New Roman', Times, serif;"><span class="badge text-bg-success">Berita</span>
+              </h1>
+              <h2>Temukan Informasi dan Kegiatan Kami!</h2>
             </div>
-            <br>
-            <div class="row properties-box" id="properties-box">
-              @foreach ($berita as $d)
-              <?php
-                  // Hitung selisih hari antara tanggal berita dengan tanggal hari ini
-                  $tanggalBerita = \Carbon\Carbon::createFromFormat('Y-m-d', $d->tanggal);
-                  $selisihHari = $tanggalBerita->diffInDays(\Carbon\Carbon::now());
-                  // Tentukan status berita berdasarkan selisih hari
-                  $statusBerita = $selisihHari < 1 ? 'Update News' : 'Late News';
-              ?>
-              <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv kategori-{{ $d->kategori->id }}">
-                  <div class="item">
-                      <a href="#">
-                          @if (!empty($d->gambar))
-                          <img src="{{ asset($d->gambar) }}" alt="Gambar Berita" style="max-width: 100%;">
-                          @else
-                          <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
-                          @endif
-                      </a>
-                      <h4><a href="property-details.html">{{ $d->judul_berita }}</a></h4>
-                      <a href="#">{{ $d->kategori->kategori }}</a>
-                      <hr>
-                      <p style="color: red"><b>{{ $d->tanggal }}</b></p>
-                      <p><b>{{ $statusBerita }}</b></p>
-                      <br>
-                      <div class="main-button mt-2">
-                        <a href="/list-berita">Lihat Selengkapnya...</a>
-                    </div>                        
-                  </div>
-              </div>
-              @endforeach
           </div>
+          <div class="col-lg-12">
+            <div class="tabs-content">
+              <div class="row">
+                <div class="nav-wrapper">
+                  <ul class="nav nav-tabs">
+                      @foreach ($kategori->take(3) as $k)
+                          <li class="nav-item" role="presentation">
+                              <a class="nav-link active" href="/list-berita" data-filter=".kategori-{{ $k->id }}" aria-selected="true">{{ $k->kategori }}</a>
+                          </li>
+                      @endforeach
+                      <li class="nav-item" role="presentation">
+                          <a class="nav-link active" href="/list-berita">See More</a>
+                      </li>
+                  </ul>
+              </div>                                
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    @foreach ($berita as $index => $g)
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
+                    @endforeach
+                </div>
+                <div class="carousel-inner">
+                    @foreach ($berita as $index => $g)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                      <div class="row">
+                          <div class="col-lg-9">
+                              <div class="card" style="background-color: rgba(255, 255, 255, 0); border: none">
+                                  <div class="card-body d-flex justify-content-center align-items-center" >
+                                      @if (!empty($g->gambar))
+                                          <img src="{{ asset($g->gambar) }}" alt="Gambar Berita" style="max-width: 50%;">
+                                      @else
+                                          <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                                      @endif
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3">
+                              <h4 class="bg-danger text-center">{{ $g->judul_berita }}</h4>
+                              <div class="card">
+                                  <div class="card-body">
+                                      <?php
+                                      $wordCount = str_word_count($g->isi);
+                                      $maxWords = 30; // Jumlah maksimum kata yang ingin ditampilkan
+                                      $trimmedText = implode(' ', array_slice(explode(' ', $g->isi), 0, $maxWords));
+                                      $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                                      ?>
+                                      <p>{!! $trimmedText !!}</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                    @endforeach
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div> 
+    </div>
+    </div>
+             
     
     <div class="section properties">
       <div class="container">
-        <div class="col-12 text-center">
-          <h1>Our Partner</h1>
-        </div>
-        <br>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card h-100">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              </div>
-            </div>
+          <div class="col-12 text-center">
+              <h1>Our Partner</h1>
           </div>
-        </div>
+          <br>
+          <div class="row">
+              <div class="col">
+                  <div class="owl-carousel owl-theme">
+                      @foreach($mitra as $m)
+                      <div class="item" style="border: none">
+                          <div class="card h-100" style="border: none" >
+                              <img src="{{ $m->gambar }}" style="width: 100%" class="card-img-top" alt="{{ $m->nama }}">
+                          </div>
+                      </div>
+                      @endforeach
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-</div>   
   
-   
-    
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -290,6 +325,29 @@
           autoplayHoverPause: true // Jeda autoplay saat kursor berada di atas carousel
         });
       });
+
+      $(document).ready(function(){
+        $(".owl-carousel").owlCarousel({
+            items: 3, // jumlah item yang ditampilkan dalam satu waktu
+            loop: true, // membuat carousel berputar secara terus-menerus
+            margin: 10, // jarak antara setiap item
+            autoplay: true, // mengaktifkan autoplay
+            autoplayTimeout: 3000, // waktu tunggu autoplay dalam milidetik
+            autoplayHoverPause: true, // memberhentikan autoplay saat kursor di atas carousel
+            responsiveClass: true,
+            responsive:{
+                0:{
+                    items:1,
+                },
+                768:{
+                    items:3,
+                },
+                1000:{
+                    items:5,
+                }
+            }
+        });
+    });
 
     </script>
   </body>

@@ -41,6 +41,9 @@ $route = explode('/',$route);
             <li class="">
                 <a href="/backend/slider" aria-expanded="false"><i class="fa fa-play-circle"></i> <span>Slider</span></a>
             </li>
+            <li class="">
+                <a href="/backend/mitra" aria-expanded="false"><i class="fa fa-globe"></i> <span>Mitra</span></a>
+            </li>
             @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/data-poli"><i class="fa fa-book"></i> <span>Data Poli</span></a></li>
             @endif

@@ -13,6 +13,7 @@ use App\Models\JenisKamar;
 use App\Models\Lokers;
 use App\Models\Lamarans;
 use App\Models\Slider;
+use App\Models\Mitras;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -26,7 +27,8 @@ class ViewController extends Controller
         $kategori = Kategoris::all();
         $berita = Beritas::all();
         $slider = Slider::all();
-        return view('frontend.index',compact('slider','kategori','berita'));
+        $mitra = Mitras::all();
+        return view('frontend.index',compact('slider','kategori','berita','mitra'));
     }
 
     public function index()
@@ -88,30 +90,33 @@ class ViewController extends Controller
 
     public function create()
     {
-        $lokerData = Lokers::all();
-        return view('frontend.lowongan_create',compact('lokerData'));
+        $loker = Lokers::all();
+        return view('frontend.lowongan_create',compact('loker'));
     }
 
     public function store(Request $request)
     {
+        // Validasi awal sebelum pengecekan status loker
         $validator = Validator::make($request->all(), [
             'nama' => 'required', 
-            'email' => 'required', 
+            'email' => 'required|email', 
             'no_hp' => 'required',    
             'alamat' => 'required', 
             'pendidikan_terakhir' => 'required', 
             'ipk' => 'required',
-            'posisi_id' => 'required',
+            'posisi_id' => 'required|exists:lokers,id',
             'dokumen' => 'required|mimes:pdf',
             'status' => 'required',
         ], [
             'nama.required' => "Nama harus diisi.",
             'email.required' => "Email harus diisi.",
+            'email.email' => "Email tidak valid.",
             'no_hp.required' => "Nomor HP harus diisi.",
             'alamat.required' => "Alamat harus diisi.",
             'pendidikan_terakhir.required' => "Pendidikan terakhir harus diisi.",
             'ipk.required' => 'IPK atau Nilai Ijazah Terakhir harus diisi',
             'posisi_id.required' => 'Posisi yang dilamar harus diisi',
+            'posisi_id.exists' => 'Posisi yang dilamar tidak valid',
             'dokumen.required' => 'Dokumen harus diunggah',
             'dokumen.mimes' => 'Dokumen harus berupa file PDF',
             'status.required' => 'Status harus diisi',
@@ -123,14 +128,16 @@ class ViewController extends Controller
                 ->withInput();
         }
 
-        $loker = Lokers::find($request->posisi_dilamar);
+        $loker = Lokers::find($request->posisi_id);
         if ($loker && $loker->status_loker === 'Tutup') {
             return redirect()->route('lowongan.create')
                 ->with('error', 'Maaf, lowongan pada posisi ini belum dibuka.')
                 ->withInput();
         }
-        $status_lamaran = 0;
 
+        $status_lamaran = 0;
+        
+        // Simpan dokumen setelah semua validasi terpenuhi
         $dokumenPath = $request->file('dokumen')->store('dokumen');
         
         Lamarans::create([

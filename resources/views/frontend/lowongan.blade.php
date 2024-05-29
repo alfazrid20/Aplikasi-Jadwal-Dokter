@@ -74,19 +74,19 @@
                         </div>
                         <div class="main-content">
                             <br>
-                            <h1><span class="badge text-bg-success">{{ $loker->posisi }}</span></h1>
+                            <h1><span class="badge text-bg-success">{{ $loker->posisi_id }}</span></h1>
                             <hr>
-                            <h5>Deskripsi</h5>
+                            <h5 class="text-dark">Deskripsi</h5>
                             <hr>
                             <p>{!! $loker->deskripsi !!}</p>
                             <hr>
-                            <h5>Persyaratan</h5>
+                            <h5 class="text-dark">Persyaratan</h5>
                             <hr>
                             <p>{!! $loker->persyaratan !!}</p>
                             <hr>
-                            <h5>Batas Waktu Lamaran</h5>
+                            <h5 class="text-dark">Batas Waktu Lamaran</h5>
                             <hr>
-                            <p>Batas Waktu Lamaran Adalah Pada Tanggal {{ $loker->batas_waktu }}</p>
+                            <p>Batas Waktu Lamaran Adalah Pada Tanggal <b><u>{{ $loker->batas_waktu }}</u></b></p>
                             <br>
                             <div class="main-button2">
                                 <a href="/daftar-lowongan" class="apply-button">Apply Lamaran</a>

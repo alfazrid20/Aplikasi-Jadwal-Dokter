@@ -131,6 +131,15 @@
                 .catch( error => {
                         console.error( error );
                 } );
+
+                ClassicEditor
+                .create( document.querySelector( '#editor4' ) )
+                .then( editor => {
+                        console.log( editor );
+                } )
+                .catch( error => {
+                        console.error( error );
+                } );
     </script>
 
 

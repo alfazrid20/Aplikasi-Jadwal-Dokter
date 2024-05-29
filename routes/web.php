@@ -12,6 +12,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\LokerController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SetJamPraktekController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ViewController;
@@ -183,6 +184,15 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/backend/slider/{id}/update', [SliderController::class, 'update'])->name('backend.slider.update');
     Route::delete('/backend/slider/{id}/delete', [SliderController::class, 'delete'])->name('backend.slider.delete');
     // End Data Slider
+
+    // Data Mitra
+    Route::get('/backend/mitra', [MitraController::class, 'index'])->name('backend.mitra.index');
+    Route::get('/backend/mitra/create', [MitraController::class, 'create'])->name('backend.mitra.create');
+    Route::post('/backend/mitra/store', [MitraController::class, 'store'])->name('backend.mitra.store');
+    Route::get('/backend/mitra/{id}/edit', [MitraController::class, 'edit'])->name('backend.mitra.edit');
+    Route::put('/backend/mitra/{id}/update', [MitraController::class, 'update'])->name('backend.mitra.update');
+    Route::delete('/backend/mitra/{id}/delete', [MitraController::class, 'delete'])->name('backend.mitra.delete');
+    // End Data Mitra
 
     
 

@@ -488,7 +488,7 @@ Header Style
 }
 
 .header-area .main-nav .nav li:last-child a i {
-  background-color: #49da79;
+  background-color:  #198754;
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -1039,7 +1039,7 @@ Best Deal Style
 }
 
 .best-deal .tabs-content .nav-tabs .nav-link.active {
-  background-color: #f35525 !important;
+  background-color:  #198754 !important;
   color: #fff;
 }
 

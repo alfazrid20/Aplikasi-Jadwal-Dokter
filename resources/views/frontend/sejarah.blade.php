@@ -95,12 +95,12 @@
     <div class="single-property section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="main-image">
                         <img src="{{ asset('frontend/images/rs.jpg') }}" alt="Foto RS">
                     </div>
                     <div class="main-content">
-                        <h4>Sejarah Berdirinya RSUA</h4>
+                        <h4 class="text-dark">Sejarah Berdirinya RSUA</h4>
                         <p>
                             Pada awal berdirinya tahun 1966 adalah Klinik Bersalin dimana pendiriannya termotivasi karena adanya ibu-ibu hamil islam sering mengeluh karena tidak adanya Rumah Bersalin Islami, sehingga mereka terpaksa melahirka dan dirawat pada bidan dan rumah sakit non muslim.
                         </p>
@@ -112,22 +112,8 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="info-table">
-                        <ul>
-                            <li>
-                                <h4><i class="fa fa-bed"></i> Bed<br><span>150</span></h4>
-                            </li>
-                            <li>
-                                <h4><i class="fa fa-users"></i> Dokter<br><span>35</span></h4>
-                            </li>
-                            <li>
-                                <h4><i class="fa fa-book"></i> Poli<br><span>25</span></h4>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
             </div>
+        </div>
             <footer class="footer-no-gap mt-2">
                 <div class="container">
                     <div class="col-lg-12">
@@ -138,6 +124,7 @@
         </div>
     </div>
 </div>
+
 
 
 

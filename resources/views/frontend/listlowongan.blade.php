@@ -88,7 +88,7 @@
                 <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
                 @endif
             </a>
-            <h4><a href="#"><span class="badge text-bg-primary">{{ $d->posisi }}</span></a></h4>
+            <h4><a href="#"><span class="badge text-bg-primary">{{ $d->posisi_id }}</span></a></h4>
             <a href="#">
                 @if ($d->status_loker == 'Buka')
                 <span class="badge text-bg-success">Buka</span>

@@ -110,17 +110,17 @@
                     </div>
                     <div class="form-group row mt-2">
                         <div class="col-6">
-                            <label for="posisi"><b>Posisi yang Dilamar</b></label>
-                            <select class="form-control" id="posisi_dilamar" name="posisi_dilamar" required>
+                            <label for="posisi_id"><b>Posisi yang Dilamar</b></label>
+                            <select class="form-control" id="posisi_id" name="posisi_id" required>
                                 <option value="">Pilih Posisi</option>
-                                @foreach($lokerData as $loker)
-                                    <option value="{{ $loker->id }}" data-status="{{ $loker->status_loker }}">{{ $loker->posisi }}</option>
+                                @foreach($loker as $d)
+                                    <option value="{{ $d->id }}" data-status="{{ $d->status_loker }}">{{ $d->posisi_id }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
                         </div>
                         <div class="col-6">
-                            <label for="status_perkawinan"><b>Status Perkawinan</b></label>
+                            <label for="status"><b>Status Perkawinan</b></label>
                             <select class="form-control" id="status" name="status">
                                 <option value="single">Belum Menikah</option>
                                 <option value="married">Menikah</option>
@@ -152,6 +152,19 @@
     <script src="{{ asset('frontend/js/counter.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script>
+    document.getElementById('posisi_id').addEventListener('change', function() {
+        var selectedOption = this.options[this.selectedIndex];
+        var status = selectedOption.getAttribute('data-status');
+        if (status === 'Tutup') {
+            alert('Maaf, Lowongan Ini Belum Dibuka');
+            // Atau Anda dapat menggunakan library swal untuk alert yang lebih menarik
+            // Swal.fire({
+            //     title: 'Perhatian!',
+            //     text: 'Maaf, Lowongan Ini Belum Dibuka',
+            //     icon: 'warning'
+            // });
+            }
+        });
         function validateForm() {
             var nama = document.getElementById('nama').value;
             var email = document.getElementById('email').value;
@@ -159,7 +172,7 @@
             var no_hp = document.getElementById('no_hp').value;
             var pendidikan_terakhir = document.getElementById('pendidikan_terakhir').value;
             var ipk = document.getElementById('ipk').value;
-            var posisi_dilamar = document.getElementById('posisi_dilamar').value;
+            var posisi_id = document.getElementById('posisi_id').value;
             var dokumen = document.getElementById('dokumen').value;
 
             if (nama.trim() === '') {
@@ -193,7 +206,7 @@
                 return false;
             }
 
-            if (posisi_dilamar.trim() === '') {
+            if (posisi_id.trim() === '') {
                 alert('Posisi yang dilamar harus dipilih');
                 return false;
             }

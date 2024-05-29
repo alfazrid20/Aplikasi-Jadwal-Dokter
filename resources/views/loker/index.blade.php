@@ -49,7 +49,7 @@
                                     @foreach ($loker as $d )
                                     <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $d->posisi }}</td>
+                                    <td>{{ $d->posisi_id }}</td>
                                     <td>
                                         @if (!empty($d->foto_loker))
                                                 <img src="{{ asset($d->foto_loker) }}" alt="Foto Loker" style="max-width: 100%;">
