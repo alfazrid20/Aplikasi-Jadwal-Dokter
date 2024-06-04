@@ -23,19 +23,71 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <style>
-      .header-sticky {
+      .custom-header-area {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000;
         transition: top 0.3s;
+        background-color: rgba(255, 255, 255, 0);
+       
       }
-
-      .header-sticky.is-hidden {
+      
+      .custom-header-area.is-hidden {
         top: -20px;
       }
-
+      
+      .custom-main-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+      
+      .custom-main-nav .logo h1 {
+        font-size: 1.5rem;
+        margin: 0;
+        color: white;
+      }
+      
+      .custom-main-nav .nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
+      
+      .custom-main-nav .nav-item {
+        margin-left: 20px;
+      }
+      
+      .custom-main-nav .nav-link {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+      }
+      
+      .custom-main-nav .nav-link:hover,
+      .custom-main-nav .nav-link:focus {
+        background-color: #495057;
+        border-radius: 5px;
+      }
+      
+      .custom-main-nav .dropdown-menu {
+        background-color: #343a40;
+        border: none;
+      }
+      
+      .custom-main-nav .dropdown-item {
+        color: white;
+      }
+      
+      .custom-main-nav .dropdown-item:hover,
+      .custom-main-nav .dropdown-item:focus {
+        background-color: #495057;
+      }
+      
       #video-background {
         position: fixed;
         right: 0;
@@ -48,7 +100,7 @@
         overflow: hidden;
         object-fit: cover;
       }
-
+      
       .overlay {
         position: fixed;
         top: 0;
@@ -58,7 +110,7 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: -1;
       }
-
+      
       .content {
         position: relative;
         z-index: 1;
@@ -66,15 +118,16 @@
         text-align: center;
         padding: 100px 0;
       }
-
+      
       .card {
         background-color: rgba(255, 255, 255, 0.8);
         /* Ubah nilai alpha (a) sesuai kebutuhan */
       }
-
+      
       .contact-info p {
         margin-bottom: 5px;
       }
+      
     </style>
 
   </head>
@@ -88,31 +141,51 @@
     <div class="overlay"></div>
 
 
-    <header class="header-area header-sticky">
+    <header class="custom-header-area custom-header-sticky" style="margin-top: 2%">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <nav class="main-nav">
+            <nav class="custom-main-nav">
               <a href="/" class="logo">
                 <h1 class="text-white">RSUA</h1>
                 {{--  <img src="{{ asset('frontend/images/logo.ico') }}" alt="Logo" style="width: 40%; margin-top: 2%;" > --}}
               </a>
-              <ul class="nav">
-                <li><a href="/" class="">Home</a></li>
-                <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
-                <li><a href="/list-berita" class="">Berita</a></li>
-                <li><a href="/lowongan-pekerjaan" class="">Lowongan Pekerjaan</a></li>
-                <li><a href="/sejarah" class="">Tentang Kami</a></li>
-                <li><a href="/view-jadwal" target="_blank"><i class="fa fa-calendar"></i> Jadwal Dokter</a></li>
+              <ul class="nav justify-content-end">
+                <li class="nav-item">
+                  <a href="/" class="nav-link" aria-current="page">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/cek-kamar" class="nav-link">Cek Kamar</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/list-berita" class="nav-link">Berita</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/lowongan-pekerjaan" class="nav-link">Lowongan Pekerjaan</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" id="tentangKamiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Tentang Kami
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="tentangKamiDropdown">
+                    <li><a class="dropdown-item" href="/sejarah">Sejarah</a></li>
+                    <li><a class="dropdown-item" href="/visi-misi">Visi & Misi</a></li>
+                    <li><a class="dropdown-item" href="/tim-manajemen">Tim Manajemen</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a href="/view-jadwal" class="nav-link" target="_blank"><i class="fa fa-calendar"></i> Jadwal Dokter</a>
+                </li>
               </ul>
-              <a class='menu-trigger'>
-                <span>Menu</span>
-              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             </nav>
           </div>
         </div>
       </div>
     </header>
+    
     
 
     <section class="carousel-section" style="margin-top: 15%">
@@ -241,7 +314,7 @@
     <div class="section properties">
       <div class="container">
           <div class="col-12 text-center">
-              <h1>Our Facility</h1>
+              <h1>Fasilitas Layanan</h1>
           </div>
           <br>
           <div id="facilityCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -280,7 +353,7 @@
     <div class="section properties">
       <div class="container">
           <div class="col-12 text-center">
-              <h1>Our Partner</h1>
+              <h1>Mitra Kerjasama</h1>
           </div>
           <br>
           <div class="row">
@@ -332,6 +405,7 @@
     <script src="{{ asset('frontend/js/counter.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       var header = document.querySelector('.header-sticky');

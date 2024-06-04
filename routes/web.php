@@ -13,6 +13,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LamaranController;
 use App\Http\Controllers\PoliController;
 use App\Http\Controllers\LokerController;
+use App\Http\Controllers\ManajemenController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\SetJamPraktekController;
 use App\Http\Controllers\SliderController;
@@ -204,6 +205,21 @@ Route::middleware(['auth'])->group(function () {
      Route::delete('/backend/about/{id}/delete', [AboutController::class, 'delete'])->name('backend.about.delete');
      // End 
 
+      // Manajemen
+      Route::get('/backend/staff', [ManajemenController::class, 'index'])->name('backend.staff.index');
+      Route::get('/backend/staff/create', [ManajemenController::class, 'create'])->name('backend.staff.create');
+      Route::post('/backend/staff/store', [ManajemenController::class, 'store'])->name('backend.staff.store');
+      Route::get('/backend/staff/{id}/edit', [ManajemenController::class, 'edit'])->name('backend.staff.edit');
+      Route::put('/backend/staff/{id}/update', [ManajemenController::class, 'update'])->name('backend.staff.update');
+      Route::delete('/backend/staff/{id}/delete', [ManajemenController::class, 'delete'])->name('backend.staff.delete');
+
+      Route::get('/backend/unit', [ManajemenController::class, 'unit'])->name('backend.unit.index');
+      Route::get('/backend/unit/create', [ManajemenController::class, 'unitcreate'])->name('backend.unit.create');
+      Route::post('/backend/unit/store', [ManajemenController::class, 'unitstore'])->name('backend.unit.store');
+      Route::get('/backend/unit/{id}/edit', [ManajemenController::class, 'unitedit'])->name('backend.unit.edit');
+      Route::put('/backend/unit/{id}/update', [ManajemenController::class, 'unitupdate'])->name('backend.unit.update');
+      Route::delete('/backend/unit/{id}/delete', [ManajemenController::class, 'unitdelete'])->name('backend.unit.delete');
+      // End 
 });
 
 Route::get('/createrolepermission', function(){

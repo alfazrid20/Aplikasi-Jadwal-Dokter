@@ -43,6 +43,15 @@ $route = explode('/',$route);
                 <a href="/backend/slider" aria-expanded="false"><i class="fa fa-play-circle"></i> <span>Slider</span></a>
             </li>
             @endif
+            <li class="dropdown">
+                <a href="#element_staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-sitemap"></i><span>Manajemen & Staff</span>
+                </a>
+                <ul class="collapse list-unstyled" id="element_staff">
+                    <li><a href="/backend/staff">Daftar Manajemen</a></li>
+                    <li><a href="/backend/unit">Jabatan & Unit</a></li>
+                </ul>
+            </li> 
             @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')
             <li class="">
                 <a href="/backend/about" aria-expanded="false"><i class="fa fa-building-o"></i> <span>Fasilitas Pelayanan</span></a>

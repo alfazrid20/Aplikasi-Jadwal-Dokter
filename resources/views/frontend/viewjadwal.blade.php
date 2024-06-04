@@ -90,7 +90,7 @@
 
             <div class="container-fluid main-banner">
                 <div class="row">
-                    <div class="col-md-7 mx-auto" style="margin-top: 1%">
+                    <div class="col-md-7 mx-auto" style="margin-top: 3%">
                         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach($jadwaldokter as $key => $d)
