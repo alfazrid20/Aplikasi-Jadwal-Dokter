@@ -86,7 +86,13 @@
             $tanggalBerita = \Carbon\Carbon::createFromFormat('Y-m-d', $d->tanggal);
             $selisihHari = $tanggalBerita->diffInDays(\Carbon\Carbon::now());
             // Tentukan status berita berdasarkan selisih hari
-            $statusBerita = $selisihHari < 1 ? 'Update News' : 'Late News';
+            if ($selisihHari < 1) {
+                $statusBerita = 'Update News';
+            } elseif ($selisihHari <= 7) {
+                $statusBerita = $tanggalBerita->diffForHumans(['parts' => 1]); // Menampilkan "1 day ago", "2 days ago", dll.
+            } else {
+                $statusBerita = 'Late News';
+            }
         ?>
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv kategori-{{ $d->kategori->id }}">
             <div class="item">
@@ -111,12 +117,14 @@
                 <p>{!! $trimmedText !!}</p>
                 <br>
                 <div class="main-button">
-                  <a href="/view-berita/{{ $d->id }}">Detail Berita</a>
-              </div>                        
+                    <a href="/view-berita/{{ $d->id }}">Detail Berita</a>
+                </div>                        
             </div>
         </div>
         @endforeach
     </div>
+    
+    
     </div>
 
   <footer class="footer-no-gap mt-2">

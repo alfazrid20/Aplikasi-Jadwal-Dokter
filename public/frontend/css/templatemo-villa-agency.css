@@ -499,9 +499,9 @@ Header Style
   margin-left: -1px;
 }
 
-.header-area .main-nav .nav li:last-child:hover a {
+/* .header-area .main-nav .nav li:last-child:hover a {
   background-color: #1e1e1e;
-}
+} */
 
 .header-area .main-nav .nav li:last-child:hover a i {
   color: #fff;

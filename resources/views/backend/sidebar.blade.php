@@ -38,12 +38,21 @@ $route = explode('/',$route);
             <li class="">
                 <a href="/backend/dashboard" aria-expanded="false"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
+            @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')
             <li class="">
                 <a href="/backend/slider" aria-expanded="false"><i class="fa fa-play-circle"></i> <span>Slider</span></a>
             </li>
+            @endif
+            @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')
+            <li class="">
+                <a href="/backend/about" aria-expanded="false"><i class="fa fa-building-o"></i> <span>Fasilitas Pelayanan</span></a>
+            </li>
+            @endif
+            @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')
             <li class="">
                 <a href="/backend/mitra" aria-expanded="false"><i class="fa fa-globe"></i> <span>Mitra</span></a>
             </li>
+            @endif
             @if($role == 'IT' || $role == 'CS')
             <li><a href="/backend/data-poli"><i class="fa fa-book"></i> <span>Data Poli</span></a></li>
             @endif

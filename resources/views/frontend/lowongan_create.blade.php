@@ -68,7 +68,7 @@
     <div class="container mt-5 mb-2">
         <div class="card">
             <div class="container">
-                <h2 class="mt-5 text-center" style="font-family: 'Times New Roman', Times, serif">Ajukan Lamaran</h2>
+                <h2 class="mt-5 text-center text-dark" style="font-family: 'Times New Roman', Times, serif">Ajukan Lamaran</h2>
                 <hr>
                 <form id="lamaranForm" action="{{ route('lowongan.store') }}" method="POST" enctype="multipart/form-data" onsubmit="return showConfirmationAlert(event)">
                     @csrf

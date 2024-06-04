@@ -14,6 +14,7 @@ use App\Models\Lokers;
 use App\Models\Lamarans;
 use App\Models\Slider;
 use App\Models\Mitras;
+use App\Models\Fasilitas;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -28,7 +29,8 @@ class ViewController extends Controller
         $berita = Beritas::all();
         $slider = Slider::all();
         $mitra = Mitras::all();
-        return view('frontend.index',compact('slider','kategori','berita','mitra'));
+        $fasilitas = Fasilitas::all();
+        return view('frontend.index',compact('slider','kategori','berita','mitra','fasilitas'));
     }
 
     public function index()

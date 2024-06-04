@@ -95,16 +95,15 @@
             <nav class="main-nav">
               <a href="/" class="logo">
                 <h1 class="text-white">RSUA</h1>
-                {{--  <img src="{{ asset('frontend/images/logo.ico') }}" alt="Logo" style="width: 40%; margin-top: 2%;" >
-                --}}
+                {{--  <img src="{{ asset('frontend/images/logo.ico') }}" alt="Logo" style="width: 40%; margin-top: 2%;" > --}}
               </a>
               <ul class="nav">
                 <li><a href="/" class="">Home</a></li>
-                <li><a href="/sejarah" class="">Sejarah</a></li>
                 <li><a href="/cek-kamar" class="">Cek Kamar</a></li>
                 <li><a href="/list-berita" class="">Berita</a></li>
                 <li><a href="/lowongan-pekerjaan" class="">Lowongan Pekerjaan</a></li>
-                <li><a href="/view-jadwal" target="_blank"><i class="fa fa-calendar"></i>Jadwal Dokter</a></li>
+                <li><a href="/sejarah" class="">Tentang Kami</a></li>
+                <li><a href="/view-jadwal" target="_blank"><i class="fa fa-calendar"></i> Jadwal Dokter</a></li>
               </ul>
               <a class='menu-trigger'>
                 <span>Menu</span>
@@ -114,6 +113,7 @@
         </div>
       </div>
     </header>
+    
 
     <section class="carousel-section" style="margin-top: 15%">
       <div class="container">
@@ -173,76 +173,109 @@
    
     <div class="section best-deal" style="background-color: rgba(255, 255, 255, 0);">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="section-heading">
-              <h1 style="font-family: 'Times New Roman', Times, serif;"><span class="badge text-bg-success">Berita</span>
-              </h1>
-              <h2>Temukan Informasi dan Kegiatan Kami!</h2>
-            </div>
-          </div>
-          <div class="col-lg-12">
-            <div class="tabs-content">
-              <div class="row">
-                <div class="nav-wrapper">
-                  <ul class="nav nav-tabs">
-                      @foreach ($kategori->take(3) as $k)
-                          <li class="nav-item" role="presentation">
-                              <a class="nav-link active" href="/list-berita" data-filter=".kategori-{{ $k->id }}" aria-selected="true">{{ $k->kategori }}</a>
-                          </li>
-                      @endforeach
-                      <li class="nav-item" role="presentation">
-                          <a class="nav-link active" href="/list-berita">See More</a>
-                      </li>
-                  </ul>
-              </div>                                
-              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    @foreach ($berita as $index => $g)
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}" aria-current="{{ $index == 0 ? 'true' : '' }}" aria-label="Slide {{ $index + 1 }}"></button>
-                    @endforeach
-                </div>
-                <div class="carousel-inner">
-                    @foreach ($berita as $index => $g)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+          <div class="row">
+              <div class="col-lg-4">
+                  <div class="section-heading">
+                      <h1 style="font-family: 'Times New Roman', Times, serif;"><span class="badge text-bg-success">Berita</span></h1>
+                      <h2>Temukan Informasi dan Kegiatan Kami!</h2>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                  <div class="tabs-content">
                       <div class="row">
-                          <div class="col-lg-9">
-                              <div class="card" style="background-color: rgba(255, 255, 255, 0); border: none">
-                                  <div class="card-body d-flex justify-content-center align-items-center" >
-                                      @if (!empty($g->gambar))
-                                          <img src="{{ asset($g->gambar) }}" alt="Gambar Berita" style="max-width: 50%;">
-                                      @else
-                                          <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
-                                      @endif
-                                  </div>
-                              </div>
+                          <div class="nav-wrapper">
+                              <ul class="nav nav-tabs">
+                                  @foreach ($kategori->take(3) as $k)
+                                  <li class="nav-item" role="presentation">
+                                      <a class="nav-link active" href="/list-berita" data-filter=".kategori-{{ $k->id }}" aria-selected="true">{{ $k->kategori }}</a>
+                                  </li>
+                                  @endforeach
+                                  <li class="nav-item" role="presentation">
+                                      <a class="nav-link active" href="/list-berita">See More</a>
+                                  </li>
+                              </ul>
                           </div>
-                          <div class="col-lg-3">
-                              <h4 class="bg-danger text-center">{{ $g->judul_berita }}</h4>
-                              <div class="card">
-                                  <div class="card-body">
-                                      <?php
-                                      $wordCount = str_word_count($g->isi);
-                                      $maxWords = 30; // Jumlah maksimum kata yang ingin ditampilkan
-                                      $trimmedText = implode(' ', array_slice(explode(' ', $g->isi), 0, $maxWords));
-                                      $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
-                                      ?>
-                                      <p>{!! $trimmedText !!}</p>
+                          <div class="col-lg-12">
+                              <div class="row">
+                                  @if (!empty($berita))
+                                  <?php $g = $berita->last(); ?>
+                                  <div class="col-lg-9">
+                                      <div class="card" style="background-color: rgba(255, 255, 255, 0); border: none">
+                                          <div class="card-body d-flex justify-content-center align-items-center">
+                                              @if (!empty($g->gambar))
+                                              <img src="{{ asset($g->gambar) }}" alt="Gambar Berita" style="max-width: 50%;">
+                                              @else
+                                              <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                                              @endif
+                                          </div>
+                                      </div>
                                   </div>
+                                  <div class="col-lg-3">
+                                    <h1>Update</h1>
+                                    <h1 class="text-center">News</h1>
+                                      <h4 class="bg-danger text-center">{{ $g->judul_berita }}</h4>
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <?php
+                                              $wordCount = str_word_count($g->isi);
+                                              $maxWords = 30; // Jumlah maksimum kata yang ingin ditampilkan
+                                              $trimmedText = implode(' ', array_slice(explode(' ', $g->isi), 0, $maxWords));
+                                              $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                                              ?>
+                                              <p>{!! $trimmedText !!}</p>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  @endif
                               </div>
                           </div>
                       </div>
                   </div>
-                    @endforeach
-                </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
-    </div>
-             
+  </div>
+  
+  
+         
+    <div class="section properties">
+      <div class="container">
+          <div class="col-12 text-center">
+              <h1>Our Facility</h1>
+          </div>
+          <br>
+          <div id="facilityCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  @foreach ($fasilitas->chunk(3) as $index => $chunk)
+                  <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                      <div class="row">
+                          @foreach ($chunk as $f)
+                          <div class="col-md-4">
+                              <div class="card mb-3" style="max-width: 540px; background: rgba(255, 255, 255, 0); border: none">
+                                <img src="{{ asset($f->gambar) }}" class="card-img-top img-fluid rounded-start mx-auto d-block" style="width: 50%;">                                  <div class="card-body text-center">
+                                      <h5 class="card-title text-white"><span class="badge rounded-pill text-bg-danger">{{ $f->nama_fasilitas }}</span>
+                                        </h5>
+                                  </div>
+                              </div>
+                          </div>
+                          @endforeach
+                      </div>
+                  </div>
+                  @endforeach
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#facilityCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#facilityCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+      </div>
+  </div>
+  
+  
     
     <div class="section properties">
       <div class="container">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -194,7 +195,14 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/backend/mitra/{id}/delete', [MitraController::class, 'delete'])->name('backend.mitra.delete');
     // End Data Mitra
 
-    
+     // Informasi Perusahaan
+     Route::get('/backend/about', [AboutController::class, 'index'])->name('backend.about.index');
+     Route::get('/backend/about/create', [AboutController::class, 'create'])->name('backend.about.create');
+     Route::post('/backend/about/store', [AboutController::class, 'store'])->name('backend.about.store');
+     Route::get('/backend/about/{id}/edit', [AboutController::class, 'edit'])->name('backend.about.edit');
+     Route::put('/backend/about/{id}/update', [AboutController::class, 'update'])->name('backend.about.update');
+     Route::delete('/backend/about/{id}/delete', [AboutController::class, 'delete'])->name('backend.about.delete');
+     // End 
 
 });
 
