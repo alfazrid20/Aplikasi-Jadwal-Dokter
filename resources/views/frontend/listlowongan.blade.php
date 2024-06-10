@@ -29,7 +29,10 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
+  
 </head>
 
 <body>
@@ -88,10 +91,10 @@
                 @else
                 <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
                 @endif
-                <span class="post-date">{{ $d->posisi_id }}</span>
+                {{--  <span class="post-date">{{ $d->posisi_id }}</span>  --}}
               </div>
               <div class="post-content d-flex flex-column">
-                {{--  <h3 class="post-title">{{ $d->judul_berita }}</h3>  --}}
+                <h3 class="post-title">{{ $d->posisi_id }}</h3>
                 <div class="meta d-flex align-items-center">
                   <div class="d-flex align-items-center">
                     <i class="bi bi-person"></i> <span class="ps-2">Job Vacancy</span>

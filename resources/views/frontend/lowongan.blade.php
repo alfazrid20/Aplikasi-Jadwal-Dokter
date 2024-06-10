@@ -15,8 +15,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -25,6 +24,7 @@
   <link href="{{ asset('frontend/vendor/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
@@ -49,8 +49,7 @@
           <li><a href="/list-berita">Berita</a></li>
           <li><a href="/jadwal-dokter" target="_blank">Jadwal Dokter</a></li>
           <li><a href="/lowongan-pekerjaan" class="active">Lowongan Pekerjaan</a></li>
-          <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
-                class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="/sejarah">Sejarah</a></li>
               <li><a href="/manajemen">Staff & Manajemen</a></li>
@@ -83,16 +82,8 @@
                 <img src="{{ asset($loker->foto_loker) }}" alt="" class="img-fluid">
               </div>
               <h2 class="title">{{ $loker->posisi_id }}</h2>
-
-              <div class="meta-top">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i>
-                    Job Vacancy
-                    </a></li>
-                </ul>
-              </div>
+              <hr>
               <div class="content">
-                <hr>
                 <h5>Deskripsi</h5>
                 <hr>
                 <p>{!! $loker->deskripsi !!}</p>
@@ -104,52 +95,42 @@
                 <h5>Batas Waktu Lamaran</h5>
                 <hr>
                 <p>Batas Waktu Lamaran Adalah Pada Tanggal <b><u>{{ $loker->batas_waktu }}</u></b></p>
-                <hr>
-                @if(strtotime($loker->batas_waktu) > strtotime('now'))
-                    <a href="/daftar-lowongan" class="btn btn-danger">Apply Lamaran</a>
-                @else
-                <button class="btn btn-danger" disabled>Lamaran Telah Ditutup</button>
-                 @endif
-            </div>            
+                <br>
+                <div class="button">
+                  <a href="/daftar-lowongan" class="btn btn-danger">Apply Lamaran</a>
+                </div>
+              </div>
             </article>
           </div>
 
           <div class="col-lg-4">
-    <div class="sidebar">
-        <div class="sidebar-item recent-posts">
-            <h3 class="sidebar-title">Lowongan Lainnya</h3>
-            <hr>
-            @foreach ($otherJobs as $d)
-                <div class="mt-3">
-                    <div class="post-item mt-3">
-                        @if (!empty($d->foto_loker))
-                            <img src="{{ asset($d->foto_loker) }}" alt="Gambar Berita" style="max-width: 50%;">
-                        @else
-                            <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+            <div class="sidebar-item recent-post">
+                <h4 class="sidebar-title text-center" style="font-family: 'Times New Roman', Times, serif">Lowongan Lainnya</h4>
+                <hr>
+                <ul>
+                    @foreach ($otherJobs as $d)
+                        @if ($d->status_loker == 'Buka')
+                            <li>
+                                <h4 style="font-family: 'Times New Roman', Times, serif"><a><span class="badge text-bg-primary">{{ $d->posisi_id }}  </span>
+                                  </a></h4>
+                                <br>
+                                @if (!empty($d->foto_loker))
+                                    <img src="{{ asset($d->foto_loker) }}" style="max-width: 100%;">
+                                @else
+                                    <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
+                                @endif
+                                <div class="button mt-2">
+                                    <a href="/lowongan/{{ $d->id }}" class="statusLink" data-status="{{ $d->status_loker }}"><span class="badge text-bg-primary">Lihat Selengkapnya....</span></a>
+                                </div>
+                            </li>
+                            <hr>
                         @endif
-                        <div>
-                            <h4><a href="/view-berita/{{ $d->id }}">{{ $d->posisi }}</a></h4>
-                        </div>
-                    </div>
-                    <?php
-                        $wordCount = str_word_count($d->deskripsi);
-                        $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
-                        $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
-                        $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
-                    ?>
-                    <p><b>{!! $trimmedText !!}</b></p>
-                </div>
-                @if($d->status_loker == 'Tutup')
-                    <button class="btn btn-danger" onclick="alert('Maaf, lowongan ini sudah ditutup.')">Read More</button>
-                @else
-                    <a href="/lowongan/{{ $d->id }}" class="readmore stretched-link" data-status="{{ $d->status_loker }}">
-                        <span>Read More</span><i class="bi bi-arrow-right"></i>
-                    </a>
-                @endif
-            @endforeach
-            </div>            
+                    @endforeach
+                </ul>
+            </div>
         </div>
-    </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -157,7 +138,7 @@
     <div class="footer-content position-relative text-center">
       <div class="container">
         <div class="row justify-content-center">
-  
+
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
               <h3>RSUA</h3>
@@ -173,7 +154,7 @@
               </div>
             </div>
           </div><!-- End footer info column -->
-  
+
           <div class="col-lg-2 col-md-3 footer-links">
             <h4>Shortcut Link</h4>
             <ul>
@@ -185,13 +166,11 @@
               <li><a href="#">Jadwal Dokter</a></li>
             </ul>
           </div><!-- End footer links column -->
-  
+
         </div>
       </div>
     </div>
- 
-  
-  
+
     <div class="footer-legal text-center position-relative">
       <div class="container">
         <div class="copyright">
@@ -204,11 +183,7 @@
     </div>
   </footer>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-    class="bi bi-arrow-up-short"></i></a>
-
-  
-     
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader"></div>
 
@@ -221,10 +196,11 @@
   <script src="{{ asset('frontend/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
   
-
   <!-- Template Main JS File -->
   <script src="{{ asset('frontend/js/main.js') }}"></script>
-
+  
+  <!-- Custom Script for Status Link Handling -->
+  
 </body>
 
 </html>

@@ -81,8 +81,6 @@ class ViewController extends Controller
         return view('frontend.listberita', compact('berita', 'kategori'));
     }
 
-    
-    
     public function loker(Request $request)
     {
         $loker = Lokers::all();
@@ -113,7 +111,7 @@ class ViewController extends Controller
             'alamat' => 'required', 
             'pendidikan_terakhir' => 'required', 
             'ipk' => 'required',
-            'posisi_id' => 'required|exists:lokers,id',
+            'posisi_id' => 'required|exists:infoloker,id',
             'dokumen' => 'required|mimes:pdf',
             'status' => 'required',
         ], [
