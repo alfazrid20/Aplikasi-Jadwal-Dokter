@@ -21,6 +21,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Mitra</th>
+                                        <th>Informasi Mitra</th>
                                         <th class="text-center">Gambar</th>
                                         <th class="text-center">Aksi</th>
                                     </tr>
@@ -30,6 +31,7 @@
                                     <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->nama }}</td>
+                                    <td>{{ $d->rincian }}</td>
                                     <td class="text-center">
                                         @if (!empty($d->gambar))
                                                 <img src="{{ asset($d->gambar) }}" alt="Foto Loker" style="max-width: 50%;">

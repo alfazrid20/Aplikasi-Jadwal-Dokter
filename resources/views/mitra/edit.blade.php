@@ -28,6 +28,19 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-sm-2 control-label">Rincian</label>
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <textarea name="rincian" id="rincian" cols="30" rows="10">{{ $mitra->rincian }}</textarea>
+                                @if ($errors->has('rincian'))
+                                    <span class="text-danger">{{ $errors->first('rincian') }}</span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">Gambar</label>
                             <div class="col-sm-6 input-group">
                                 <div class="input-group-prepend">

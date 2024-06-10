@@ -1,181 +1,221 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Daftar Lowongan</title>
-    <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/templatemo-villa-agency.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/owl.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <style>
-      body {
-          background-image: url('{{ asset('frontend/images/loker.png') }}');
-          background-size: cover;
-          background-position: 100% center;
-          background-attachment: fixed;
-      }
-    </style>
-</head>
-<body>
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-8">
-          <ul class="info">
-            <li><i class="fa fa-envelope"></i>rsuaisyiyahpadang@gmail.com</li>
-            <li><i class="fa fa-map"></i> Jl. H. Agus Salim No.6, Sawahan</li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <ul class="social-links">
-            <li><a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="https://www.instagram.com/rsuaisyiyahpadang_/"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="/" class="logo mt-2">
-                   <img src="{{ asset('frontend/images/logo.png') }}" style="width: 100px; height: 100px;" alt="logo">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="/">Home</a></li>
-                      <li><a href="#" class="active">Lowongan Pekerjaan</a></li>
-                      <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter Spesialis</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Lowongan Pekerjaan</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ asset('assets/img/logo.ico') }}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <h1>RSUA<span>.</span></h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/cek-kamar">Cek Kamar</a></li>
+          <li><a href="/list-berita">Berita</a></li>
+          <li><a href="/view-jadwal" target="_blank">Jadwal Dokter</a></li>
+          <li><a href="/lowongan-pekerjaan" class="active">Lowongan Pekerjaan</a></li>
+          <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="/sejarah">Sejarah</a></li>
+              <li><a href="/manajemen">Staff & Manajemen</a></li>
+              <li><a href="/kontak">Dokter</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <div class="section properties">
-    <div class="container">
-      <h1 class="text-center text-white" style="font-family: 'Pacifico', cursive; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">We are Hiring!!</h1>
-      <br>
-      <div class="row properties-box" id="properties-box">
-        @foreach ($loker as $d)
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6">
-          <div class="item">
-            <a href="#">
+  <main id="main">
+
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('frontend/img/rs.png');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+        <h2>Lowongan Pekerjaan</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Lowongan Pekerjaan</li>
+        </ol>
+      </div>
+    </div>
+
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 posts-list">
+          @foreach ($loker as $d )
+          <div class="col-xl-4 col-md-6">
+            <div class="post-item position-relative h-100">
+              <div class="post-img position-relative overflow-hidden">
                 @if (!empty($d->foto_loker))
                 <img src="{{ asset($d->foto_loker) }}" alt="Gambar Berita" style="max-width: 100%;">
                 @else
                 <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
                 @endif
-            </a>
-            <h4><a href="#"><span class="badge text-bg-primary">{{ $d->posisi_id }}</span></a></h4>
-            <a href="#">
-                @if ($d->status_loker == 'Buka')
-                <span class="badge text-bg-success">Buka</span>
-                @elseif ($d->status_loker == 'Tutup')
-                <span class="badge text-bg-danger">Tutup</span>
-                @else
-                <span class="badge badge-secondary">{{ $d->status_loker }}</span>
-                @endif
-            </a>
-            <hr>
-            <p style="color: red"></p>
-            <p></p>
-            <?php
-            $wordCount = str_word_count($d->deskripsi);
-            $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
-            $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
-            $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
-            ?>
-            <p>{!! $trimmedText !!}</p>
-            <br>
-            <div class="main-button">
-                <a class="statusLink" href="/lowongan/{{ $d->id }}" data-status="{{ $d->status_loker }}">
-                  Lihat Selengkapnya
-                </a>
+                <span class="post-date">{{ $d->posisi_id }}</span>
+              </div>
+              <div class="post-content d-flex flex-column">
+                {{--  <h3 class="post-title">{{ $d->judul_berita }}</h3>  --}}
+                <div class="meta d-flex align-items-center">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person"></i> <span class="ps-2">Job Vacancy</span>
+                  </div>
+                  <span class="px-3 text-black-50">/</span>
+                  <div class="d-flex align-items-center">
+                    @if ($d->status_loker == 'Buka')
+                    <span class="badge text-bg-success">Buka</span>
+                    @elseif ($d->status_loker == 'Tutup')
+                    <span class="badge text-bg-danger">Tutup</span>
+                    @else
+                    <span class="badge badge-secondary">{{ $d->status_loker }}</span>
+                    @endif
+                  </div>
+                </div>
+                <?php
+                $wordCount = str_word_count($d->deskripsi);
+                $maxWords = 10; // Jumlah maksimum kata yang ingin ditampilkan
+                $trimmedText = implode(' ', array_slice(explode(' ', $d->deskripsi), 0, $maxWords));
+                $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
+                ?>
+                <p>
+                  {!! $trimmedText !!}
+                </p>
+                <hr>
+                <a href="/lowongan/{{ $d->id }}" class="readmore stretched-link" data-status="{{ $d->status_loker }}">
+                  <span>Read More</span><i class="bi bi-arrow-right"></i>
+              </a>
+              </div>
             </div>
-        </div>        
+          </div>
+          @endforeach
         </div>
-        @endforeach
-    </div>
-    </div>
+      </div>
+    </section>
+    
+  </main>
 
-  <footer class="footer-no-gap mt-2">
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2024 RSUA, Design By Alfazri Darmawansyah. All rights reserved.
+
+  <footer id="footer" class="footer">
+    <div class="footer-content position-relative text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+  
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>RSUA</h3>
+              <p>
+                Jl. H. Agus Salim No.6, Sawahan, Kec. Padang, Kota Padang, Sumatera Barat 25171<br><br>
+                <strong>Phone:</strong> 0751-23843<br>
+                <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
+              </p>
+              <div class="social-links d-flex justify-content-center mt-3">
+                <a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+          </div><!-- End footer info column -->
+  
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Shortcut Link</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Cek Kamar</a></li>
+              <li><a href="#">Berita</a></li>
+              <li><a href="#">Lowongan Pekerjaan</a></li>
+              <li><a href="#">Tentang Kami</a></li>
+              <li><a href="#">Jadwal Dokter</a></li>
+            </ul>
+          </div><!-- End footer links column -->
+  
+        </div>
+      </div>
+    </div>
+ 
+  
+  
+    <div class="footer-legal text-center position-relative">
+      <div class="container">
+        <div class="copyright">
+          &copy; Copyright <strong><span>RSUA</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="https://github.com/alfazrid20">Alfazri Darmawansyah</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/isotope.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/owl-carousel.js') }}"></script>
-  <script src="{{ asset('frontend/js/counter.js') }}"></script>
-  <script src="{{ asset('frontend/js/custom.js') }}"></script>
-  <script>
-    $(document).ready(function () {
-      $('.statusLink').on('click', function (event) {
-          var status = $(this).data('status');
-          
-          if (status === 'Tutup') {
-              event.preventDefault();
-              alert('Maaf, Lowongan Sudah ditutup');
-          } else {
-              // Lanjutkan ke tautan jika status "Buka"
-              // Ubah link ini sesuai dengan kebutuhan Anda
-              window.location.href = $(this).attr('href');
-          }
-      });
-  });
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
+
   
-    $(document).ready(function () {
-      var $propertiesBox = $('#properties-box').isotope({
-        itemSelector: '.properties-items',
-        layoutMode: 'fitRows'
-      });
+     
 
-      $('.properties-filter a').on('click', function (e) {
-        e.preventDefault();
-        var filterValue = $(this).attr('data-filter');
-        $propertiesBox.isotope({ filter: filterValue });
-        $('.properties-filter a').removeClass('is_active');
-        $(this).addClass('is_active');
-      });
+  <div id="preloader"></div>
 
-      document.getElementById('statusLink').addEventListener('click', function(event) {
-        var status = this.getAttribute('data-status');
-        
-        if (status === 'Tutup') {
-            event.preventDefault(); // Mencegah navigasi ke tautan
-            alert('Maaf, Lowongan Sudah ditutup');
-        } else {
-            // Lanjutkan ke tautan jika status "Buka"
-            this.href = '/lowongan';
-        }
-    });
+  <!-- Vendor JS Files -->
+  <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const readMoreLinks = document.querySelectorAll('.readmore');
+
+        readMoreLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                const status = this.getAttribute('data-status');
+                if (status === 'Tutup') {
+                    event.preventDefault();
+                    alert('Maaf, lowongan yang Anda pilih sudah tutup.');
+                }
+            });
+        });
     });
   </script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ asset('frontend/js/main.js') }}"></script>
+
 </body>
+
 </html>

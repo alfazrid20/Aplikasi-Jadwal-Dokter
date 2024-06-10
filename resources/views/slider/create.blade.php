@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
-                        <form class="form-horizontal" method="POST" action="{{ route('backend.slider.store') }}">
+                        <form class="form-horizontal" method="POST" action="{{ route('backend.slider.store') }}" enctype="multipart/form-data">
                             @csrf
                         <div class="form-group">
                                 <label class="col-sm-2 control-label">Judul</label>
@@ -24,6 +24,13 @@
                             <label class="col-sm-2 control-label">Konten</label>
                             <div class="col-sm-6">
                                 <textarea name="konten" class="form-control">{{ old('konten') }}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Gambar</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="gambar" class="form-control" placeholder="Gambar"
+                                value="{{ old('gambar') }}">
                             </div>
                         </div>
                         <div class="box-footer text-right">

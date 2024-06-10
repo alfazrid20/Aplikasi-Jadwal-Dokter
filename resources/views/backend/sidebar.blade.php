@@ -49,7 +49,7 @@ $route = explode('/',$route);
                 </a>
                 <ul class="collapse list-unstyled" id="element_staff">
                     <li><a href="/backend/staff">Daftar Manajemen</a></li>
-                    <li><a href="/backend/unit">Jabatan & Unit</a></li>
+                    <li><a href="/backend/unit">Staff</a></li>
                 </ul>
             </li> 
             @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')

@@ -15,6 +15,7 @@ use App\Models\Lamarans;
 use App\Models\Slider;
 use App\Models\Mitras;
 use App\Models\Fasilitas;
+use App\Models\Staff;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -53,28 +54,34 @@ class ViewController extends Controller
     {
         $jenis_kamar = JenisKamar::all();
         $detailkamar = DetailKamars::all();
-        return view('frontend.cekkamar', compact('detailkamar'));
+        return view('frontend.cekkamar', compact('detailkamar','jenis_kamar'));
     }
 
     public function berita($id)
     {
         $berita = Beritas::findOrFail($id);
+        $kategori = Kategoris::all();
         $otherNews = Beritas::where('id', '!=', $id)->get();
-        return view('frontend.berita', compact('berita', 'otherNews'));
+        return view('frontend.berita', compact('berita', 'otherNews','kategori'));
     }
 
     public function listberita(Request $request)
     {
         $kategoriId = $request->input('kategori_id');
         $query = Beritas::query();
+        
         if ($kategoriId) {
             $query->where('kategori_id', $kategoriId);
         }
-        $berita = $query->get();
+        
+        $berita = $query->paginate(3); // Adjust the number as per your requirement
+        
         $kategori = Kategoris::all();
         
         return view('frontend.listberita', compact('berita', 'kategori'));
     }
+
+    
     
     public function loker(Request $request)
     {
@@ -158,5 +165,24 @@ class ViewController extends Controller
         return redirect()->route('loker')
             ->with('success', 'Data berhasil ditambah');
     }
+
+    public function manajemen(Request $request)
+    {
+        $direktur = Staff::findOrFail(1);
+        $staff = Staff::where('id', '!=', 1)->get();
+        return view('frontend.manajemen',compact('staff','direktur'));
+    }
+
+    public function kontak()
+    {
+        return view('frontend.kontak');
+    }
+
+    public function jadwal()
+    {
+        $jadwaldokter = JadwalDokter::all();
+        return view('frontend.jadwal',compact('jadwaldokter'));
+    }
+
 
 }

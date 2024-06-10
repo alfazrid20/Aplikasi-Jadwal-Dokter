@@ -1,69 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Detail Lowongan</title>
-    <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
-    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('frontend/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/templatemo-villa-agency.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/owl.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <style>
-        body {
-            background-image: url('{{ asset('frontend/images/rs.jpg') }}');
-            background-size: cover;
-            background-position: center 5%;
-            background-attachment: fixed;
-        }
-    </style>
-</head>
-<body>
-    <div class="sub-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8">
-                    <ul class="info">
-                        <li><i class="fa fa-envelope"></i> rsuaisyiyahpadang@gmail.com</li>
-                        <li><i class="fa fa-map"></i> Jl. H. Agus Salim No.6, Sawahan</li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <ul class="social-links">
-                        <li><a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/rsuaisyiyahpadang_/"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <a href="/" class="logo mt-2">
-                            <img src="{{ asset('frontend/images/logo.ico') }}" style="width: 40%;" alt="logo">
-                        </a>
-                        <ul class="nav">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
-                            <li><a href="/#" class="active">Ajukan Lamaran</a></li>
-                            <li><a href="/view-jadwal"><i class="fa fa-calendar"></i>Jadwal Dokter Spesialis</a></li>
-                        </ul>
-                        <a class="menu-trigger">
-                            <span>Menu</span>
-                        </a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Detail Lowongan</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ asset('assets/img/logo.ico') }}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1>RSUA<span>.</span></h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/lowongan-pekerjaan" class="active">Lowongan Pekerjaan</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="breadcrumbs d-flex align-items-center" style="background: url('{{ asset('frontend/img/rs.png') }}')">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+      <h2>Lamaran</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Lamaran</li>
+      </ol>
+    </div>
+  </div>
 
     <div class="container mt-5 mb-2">
         <div class="card">
@@ -144,13 +140,27 @@
         </div>
     </div>
 
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short">
+    </i>
+    </a>
+    
+      
+         
+    
+      <div id="preloader"></div>
+
     <!-- Scripts -->
-    <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/isotope.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/owl-carousel.js') }}"></script>
-    <script src="{{ asset('frontend/js/counter.js') }}"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
+    <!-- Template Main JS File -->
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
+
     <script>
     document.getElementById('posisi_id').addEventListener('change', function() {
         var selectedOption = this.options[this.selectedIndex];

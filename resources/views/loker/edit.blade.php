@@ -21,9 +21,9 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" name="posisi" class="form-control" placeholder="Posisi" value="{{ old('posisi', $loker->posisi) }}">
-                                @if ($errors->has('posisi'))
-                                    <span class="text-danger">{{ $errors->first('posisi') }}</span>
+                                <input type="text" name="posisi_id" class="form-control" placeholder="Posisi" value="{{ old('posisi_id', $loker->posisi_id) }}">
+                                @if ($errors->has('posisi_id'))
+                                    <span class="text-danger">{{ $errors->first('posisi_id') }}</span>
                                 @endif
                             </div>
                         </div>

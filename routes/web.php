@@ -39,7 +39,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [ViewController::class, 'indexview']);
 Route::get('/view-jadwal', [ViewController::class, 'index'])->name('view');
+Route::get('/jadwal-dokter', [ViewController::class, 'jadwal'])->name('jadwal');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
+Route::get('/manajemen', [ViewController::class, 'manajemen'])->name('manajemen');
+Route::get('/kontak', [ViewController::class, 'kontak'])->name('kontak');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
 Route::get('/view-berita/{id}', [ViewController::class, 'berita'])->name('berita');
 Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');

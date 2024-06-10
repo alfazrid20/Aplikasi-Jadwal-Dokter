@@ -25,22 +25,22 @@ class LokerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'posisi_id' => 'required', 
-            'deskripsi' => 'required', 
-            'persyaratan' => 'required',    
-            'batas_waktu' => 'required', 
+        'posisi_id' => 'required', 
+        'deskripsi' => 'required', 
+        'persyaratan' => 'required',    
+        'batas_waktu' => 'required', 
             'status_loker' => 'required', 
             'foto_loker' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            'posisi_id.required' => "Posisi harus diisi.",
-            'deskripsi.required' => "Deskripsi harus diisi.",
-            'persyaratan.required' => "Persyaratan harus diisi.",
-            'batas_waktu.required' => "Batas waktu harus diisi.",
-            'status_loker.required' => "Status harus diisi.",
-            'foto_loker.image' => 'File harus berupa foto atau gambar.',
-            'foto_loker.mimes' => 'Format foto yang diizinkan adalah jpeg, png, jpg, dan gif.',
-            'foto_loker.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
-        ]);
+        'posisi_id.required' => "Posisi harus diisi.",
+        'deskripsi.required' => "Deskripsi harus diisi.",
+        'persyaratan.required' => "Persyaratan harus diisi.",
+        'batas_waktu.required' => "Batas waktu harus diisi.",
+        'status_loker.required' => "Status harus diisi.",
+        'foto_loker.image' => 'File harus berupa foto atau gambar.',
+        'foto_loker.mimes' => 'Format foto yang diizinkan adalah jpeg, png, jpg, dan gif.',
+        'foto_loker.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
+    ]);
 
         if ($validator->fails()) {
             return redirect()->route('backend.loker.create')
@@ -48,7 +48,7 @@ class LokerController extends Controller
                 ->withInput();
         }
 
-        $filePath = 'path/to/default/image.png';
+        $filePath = asset('frontend/images/no-photo.png');
 
         if ($request->hasFile('foto_loker')) {
             $file = $request->file('foto_loker');
@@ -57,7 +57,6 @@ class LokerController extends Controller
             $filePath = $file->storeAs('public/foto_loker', $fileName);
             $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
-
         Lokers::create([
             'posisi_id' => $request->posisi_id,
             'foto_loker' => $filePath,
@@ -66,7 +65,7 @@ class LokerController extends Controller
             'status_loker' => $request->status_loker,
             'batas_waktu' => $request->batas_waktu,
         ]);
-
+    
         return redirect()->route('backend.loker.index')
             ->with('success', 'Data berhasil ditambah');
     }
@@ -104,11 +103,11 @@ class LokerController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
+    
         $loker = Lokers::findOrFail($id);
         
         $filePath = $loker->foto_loker;
-
+    
         if ($request->hasFile('foto_loker')) {
             $file = $request->file('foto_loker');
             $fileName = time() . '_' . $file->getClientOriginalName();
@@ -117,7 +116,7 @@ class LokerController extends Controller
             $filePath = $file->storeAs('public/foto_loker', $fileName);
             $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
-
+    
         $loker->update([
             'posisi_id'=> $request->posisi_id,
             'foto_loker'=> $filePath,
@@ -126,7 +125,7 @@ class LokerController extends Controller
             'batas_waktu'=> $request->batas_waktu,
             'status_loker'=> $request->status_loker,
         ]);
-
+    
         return redirect()->route('backend.loker.index')
             ->with('success', 'Data berhasil diperbarui');
     }

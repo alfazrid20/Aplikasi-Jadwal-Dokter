@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- site icon -->
-    <link rel="icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/ico" />
+    <link rel="icon" href="{{ asset('frontend/img/logo.ico') }}" type="image/ico" />
     <!-- bootstrap css -->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <!-- site css -->

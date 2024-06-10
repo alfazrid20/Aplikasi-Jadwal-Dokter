@@ -10,7 +10,7 @@ class Mitras extends Model
     use HasFactory;
     protected $table = 'mitra';
     protected $fillable = [
-         'nama', 'gambar',
+         'nama', 'gambar', 'rincian'
     ];
 
     public $timestamps = false;

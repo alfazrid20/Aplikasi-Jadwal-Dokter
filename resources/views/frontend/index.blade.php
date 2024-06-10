@@ -1,464 +1,272 @@
-  <!DOCTYPE html>
-  <html lang="en">
 
-  <head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>RSU Aisyiyah Padang</title>
-    <link rel="shortcut icon" href="{{ asset('frontend/images/logo.ico') }}" type="image/x-icon">
+  <title>RSU Aisyiyah Padang</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Favicons -->
+  <link href="{{ asset('assets/img/logo.ico') }}" rel="icon">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet">
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/templatemo-villa-agency.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/owl.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('frontend/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-    <style>
-      .custom-header-area {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        transition: top 0.3s;
-        background-color: rgba(255, 255, 255, 0);
-       
-      }
-      
-      .custom-header-area.is-hidden {
-        top: -20px;
-      }
-      
-      .custom-main-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 20px;
-      }
-      
-      .custom-main-nav .logo h1 {
-        font-size: 1.5rem;
-        margin: 0;
-        color: white;
-      }
-      
-      .custom-main-nav .nav {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-      }
-      
-      .custom-main-nav .nav-item {
-        margin-left: 20px;
-      }
-      
-      .custom-main-nav .nav-link {
-        color: white;
-        text-decoration: none;
-        padding: 5px 10px;
-      }
-      
-      .custom-main-nav .nav-link:hover,
-      .custom-main-nav .nav-link:focus {
-        background-color: #495057;
-        border-radius: 5px;
-      }
-      
-      .custom-main-nav .dropdown-menu {
-        background-color: #343a40;
-        border: none;
-      }
-      
-      .custom-main-nav .dropdown-item {
-        color: white;
-      }
-      
-      .custom-main-nav .dropdown-item:hover,
-      .custom-main-nav .dropdown-item:focus {
-        background-color: #495057;
-      }
-      
-      #video-background {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
-        z-index: -1;
-        overflow: hidden;
-        object-fit: cover;
-      }
-      
-      .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: -1;
-      }
-      
-      .content {
-        position: relative;
-        z-index: 1;
-        color: white;
-        text-align: center;
-        padding: 100px 0;
-      }
-      
-      .card {
-        background-color: rgba(255, 255, 255, 0.8);
-        /* Ubah nilai alpha (a) sesuai kebutuhan */
-      }
-      
-      .contact-info p {
-        margin-bottom: 5px;
-      }
-      
-    </style>
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!-- Video Background -->
-    <video autoplay muted loop id="video-background">
-      <source src="{{ asset('frontend/images/backgroundvideo.mp4') }}" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
+      <a href="/" class="logo d-flex align-items-center">
+        <h1>RSUA<span>.</span></h1>
+      </a>
 
-    <header class="custom-header-area custom-header-sticky" style="margin-top: 2%">
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/cek-kamar" >Cek Kamar</a></li>
+          <li><a href="/list-berita">Berita</a></li>
+          <li><a href="/jadwal-dokter" target="_blank">Jadwal Dokter</a></li>
+          <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
+          <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
+                class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="/sejarah">Sejarah</a></li>
+              <hr>
+              <li><a href="/manajemen">Staff & Manajemen</a></li>
+              <hr>
+              <li><a href="#">Dokter</a></li>
+            </ul>
+          </li>
+          <li><a href="/kontak">Contact</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+    <div class="info d-flex align-items-center">
       <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <nav class="custom-main-nav">
-              <a href="/" class="logo">
-                <h1 class="text-white">RSUA</h1>
-                {{--  <img src="{{ asset('frontend/images/logo.ico') }}" alt="Logo" style="width: 40%; margin-top: 2%;" > --}}
-              </a>
-              <ul class="nav justify-content-end">
-                <li class="nav-item">
-                  <a href="/" class="nav-link" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/cek-kamar" class="nav-link">Cek Kamar</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/list-berita" class="nav-link">Berita</a>
-                </li>
-                <li class="nav-item">
-                  <a href="/lowongan-pekerjaan" class="nav-link">Lowongan Pekerjaan</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" id="tentangKamiDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Tentang Kami
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="tentangKamiDropdown">
-                    <li><a class="dropdown-item" href="/sejarah">Sejarah</a></li>
-                    <li><a class="dropdown-item" href="/visi-misi">Visi & Misi</a></li>
-                    <li><a class="dropdown-item" href="/tim-manajemen">Tim Manajemen</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="/view-jadwal" class="nav-link" target="_blank"><i class="fa fa-calendar"></i> Jadwal Dokter</a>
-                </li>
-              </ul>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </nav>
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 data-aos="fade-down">Rumah Sakit Umum Aisyiyah</h2>
+            <p data-aos="fade-up"> "SIIP"  </p>
           </div>
         </div>
       </div>
-    </header>
-    
-    
+    </div>
 
-    <section class="carousel-section" style="margin-top: 15%">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="card" style="background-color: rgba(255, 255, 255, 0); border: none">
-              <div class="card-body">
-                <div class="owl-carousel owl-carousel-custom">
-                  @foreach ($slider as $d)
-                  <div class="item">
-                    <div class="header-text">
-                      <div style="display: flex; align-items: center;">
-                        <img src="{{ asset('frontend/images/logo.ico') }}" alt="First Image" style="max-width: 5%; margin-right: 10px;">
-                        <img src="{{ asset('frontend/images/larsi.png') }}" alt="Second Image" style="max-width: 10%;">
-                    </div>
-                    <hr class="text-white">
-                      <h1><span class="badge text-bg-success"> {{ $d->judul }}</span>
-                       </h1>
-                      <h4 class="text-white mt-2" style="word-wrap: break-word;">{!! $d->konten !!}</h4>
-                    </div>
-                  </div>
-                  @endforeach
-                </div>
-                <hr class="text-white">
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-item active" style="background-image: url(assets/img/1717642024_1.png)">
+      </div>
+      <div class="carousel-item" style="background-image: url(assets/img/slider2.png)"></div>
+      <div class="carousel-item" style="background-image: url(assets/img/slider3.png)"></div>
+
+      <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Fasilitas Layanan</h2>
+          <p>Beberapa Fasilitas Pelayanan Yang Kami Miliki</p>
+        </div>
+
+        <div class="row gy-4">
+          @foreach ($fasilitas as $f )
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="fa-solid fa-notes-medical"></i>
               </div>
+              <h3>{{ $f->nama_fasilitas }}</h3>
+              <p>"Kami Berkomitmen Untuk Selalu Memberikan Pelayanan Yang Ramah, Baik Dan Sopan Kepada Seluruh Pasien"</p>
+              <img src="{{ $f->gambar }}" alt="{{ $f->nama_fasilitas }}" class="img-fluid">
             </div>
           </div>
+          @endforeach
+        </div>
         </div>
       </div>
     </section>
 
-    <div class="video section" style="margin-top: 23%">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 offset-lg-4">
-            <div class="section-heading text-center">
-              <h2>Ayo Kenal Kami Lebih Dekat!!</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="video-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="video-frame">
-              <img src="{{ asset('frontend/images/rs.jpg') }}" alt="">
-              <a href="https://youtu.be/b3zzsrMChyw?si=GTcB7_Fo5VJU1By3" target="_blank"><i class="fa fa-play"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-   
-    <div class="section best-deal" style="background-color: rgba(255, 255, 255, 0);">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-4">
-                  <div class="section-heading">
-                      <h1 style="font-family: 'Times New Roman', Times, serif;"><span class="badge text-bg-success">Berita</span></h1>
-                      <h2>Temukan Informasi dan Kegiatan Kami!</h2>
-                  </div>
-              </div>
-              <div class="col-lg-12">
-                  <div class="tabs-content">
-                      <div class="row">
-                          <div class="nav-wrapper">
-                              <ul class="nav nav-tabs">
-                                  @foreach ($kategori->take(3) as $k)
-                                  <li class="nav-item" role="presentation">
-                                      <a class="nav-link active" href="/list-berita" data-filter=".kategori-{{ $k->id }}" aria-selected="true">{{ $k->kategori }}</a>
-                                  </li>
-                                  @endforeach
-                                  <li class="nav-item" role="presentation">
-                                      <a class="nav-link active" href="/list-berita">See More</a>
-                                  </li>
-                              </ul>
-                          </div>
-                          <div class="col-lg-12">
-                              <div class="row">
-                                  @if (!empty($berita))
-                                  <?php $g = $berita->last(); ?>
-                                  <div class="col-lg-9">
-                                      <div class="card" style="background-color: rgba(255, 255, 255, 0); border: none">
-                                          <div class="card-body d-flex justify-content-center align-items-center">
-                                              @if (!empty($g->gambar))
-                                              <img src="{{ asset($g->gambar) }}" alt="Gambar Berita" style="max-width: 50%;">
-                                              @else
-                                              <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto" style="max-width: 100px;">
-                                              @endif
-                                          </div>
-                                      </div>
-                                  </div>
-                                  <div class="col-lg-3">
-                                    <h1>Update</h1>
-                                    <h1 class="text-center">News</h1>
-                                      <h4 class="bg-danger text-center">{{ $g->judul_berita }}</h4>
-                                      <div class="card">
-                                          <div class="card-body">
-                                              <?php
-                                              $wordCount = str_word_count($g->isi);
-                                              $maxWords = 30; // Jumlah maksimum kata yang ingin ditampilkan
-                                              $trimmedText = implode(' ', array_slice(explode(' ', $g->isi), 0, $maxWords));
-                                              $trimmedText .= $wordCount > $maxWords ? '...' : ''; // Tambahkan elipsis jika teks dipotong
-                                              ?>
-                                              <p>{!! $trimmedText !!}</p>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  @endif
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  
-         
-    <div class="section properties">
-      <div class="container">
-          <div class="col-12 text-center">
-              <h1>Fasilitas Layanan</h1>
-          </div>
-          <br>
-          <div id="facilityCarousel" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                  @foreach ($fasilitas->chunk(3) as $index => $chunk)
-                  <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                      <div class="row">
-                          @foreach ($chunk as $f)
-                          <div class="col-md-4">
-                              <div class="card mb-3" style="max-width: 540px; background: rgba(255, 255, 255, 0); border: none">
-                                <img src="{{ asset($f->gambar) }}" class="card-img-top img-fluid rounded-start mx-auto d-block" style="width: 50%;">                                  <div class="card-body text-center">
-                                      <h5 class="card-title text-white"><span class="badge rounded-pill text-bg-danger">{{ $f->nama_fasilitas }}</span>
-                                        </h5>
-                                  </div>
-                              </div>
-                          </div>
-                          @endforeach
-                      </div>
-                  </div>
-                  @endforeach
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#facilityCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#facilityCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-              </button>
-          </div>
-      </div>
-  </div>
-  
-  
     
-    <div class="section properties">
-      <div class="container">
-          <div class="col-12 text-center">
-              <h1>Mitra Kerjasama</h1>
-          </div>
-          <br>
-          <div class="row">
-              <div class="col">
-                  <div class="owl-carousel owl-theme">
-                      @foreach($mitra as $m)
-                      <div class="item" style="border: none">
-                          <div class="card h-100" style="border: none" >
-                              <img src="{{ $m->gambar }}" style="width: 100%" class="card-img-top" alt="{{ $m->nama }}">
-                          </div>
-                      </div>
-                      @endforeach
-                  </div>
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Mitra Kerjasama</h2>
+          <p> "Kami memiliki jaringan mitra yang kuat, termasuk asuransi kesehatan dan penyedia layanan medis lainnya, yang membantu kami memastikan pasien kami mendapatkan perawatan yang komprehensif dan terjangkau." </p>
+        </div>
+
+        <div class="slides-2 swiper">
+          <div class="swiper-wrapper">
+            @foreach ($mitra as $m)
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="{{ $m->gambar }}" class="testimonial-img" alt="">
+                  <h3>{{ $m->nama }}</h3>
+                  <h4>Mitra Kerjasama</h4>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    {{ $m->rincian }}
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
               </div>
+            </div>
+            @endforeach
           </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        
+
       </div>
-  </div>
-  
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6" style="margin-top: 5%">
-            <p><strong><i class="fa-solid fa-map-location-dot"></i></strong> Jl. H. Agus Salim No.6, Sawahan, Kec. Padang,
-              Kota Padang, Sumatera Barat 25171</p>
-            <p><strong><i class="fa-solid fa-phone"></i></strong> 0751-23843</p>
-            <p><strong><i class="fa-solid fa-envelope"></i></strong> rsuaisyiyahpadang@gmail.com</p>
+    </section>
+
+    <section id="recent-blog-posts" class="recent-blog-posts">
+      <div class="container" data-aos="fade-up"">
+
+    
+    
+  <div class=" section-header">
+        <h2>Berita</h2>
+        <p>Temukan Informasi Menarik dan Terbaru Tentang Kami</p>
+      </div>
+
+      <div class="row gy-5">
+        @foreach ($berita as $b )
+        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="post-item position-relative h-100">
+            <div class="post-img position-relative overflow-hidden">
+              <img src="{{ $b->gambar }}" class="img-fluid">
+              <span class="post-date">{{ $b->tanggal }}</span>
+            </div>
+            <div class="post-content d-flex flex-column">
+              <h3 class="post-title">{{ $b->judul_berita }}</h3>
+              <div class="meta d-flex align-items-center">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-person"></i> <span class="ps-2">RSUA</span>
+                </div>
+                <span class="px-3 text-black-50">/</span>
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-folder2"></i> <span class="ps-2">{{ $b->kategori->kategori }}</span>
+                </div>
+              </div>
+              <hr>
+              <a href="/view-berita/{{ $b->id }}" class="readmore stretched-link"><span>Read More</span><i
+                  class="bi bi-arrow-right"></i></a>
+            </div>
           </div>
-          <div class="col-md-6 mt-2">
-            <!-- Embedding Google Maps -->
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15957.090328223261!2d100.3635671!3d-0.9476724!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd4b9384eb33b0d%3A0xee87dd6052b44f19!2sRumah%20Sakit%20Umum%20Aisyiyah!5e0!3m2!1sid!2sid!4v1714013801118!5m2!1sid!2sid"
-              width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy"            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        @endforeach
+      </div>
+      
+      </div>
+    </section>
+
+    <footer id="footer" class="footer">
+      <div class="footer-content position-relative text-center">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+              <div class="footer-info">
+                <h3>RSUA</h3>
+                <p>
+                  Jl. H. Agus Salim No.6, Sawahan, Kec. Padang, Kota Padang, Sumatera Barat 25171<br><br>
+                  <strong>Phone:</strong> 0751-23843<br>
+                  <strong>Whatsapp:</strong> 0811-6761-616<br>
+                  <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
+                </p>
+                <div class="social-links d-flex justify-content-center mt-3">
+                  <a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-facebook"></i></a>
+                  <a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+            </div><!-- End footer info column -->
+    
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>Shortcut Link</h4>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Cek Kamar</a></li>
+                <li><a href="#">Berita</a></li>
+                <li><a href="#">Lowongan Pekerjaan</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Jadwal Dokter</a></li>
+              </ul>
+            </div><!-- End footer links column -->
+    
           </div>
         </div>
       </div>
-      <div class="container text-center">
-        <p>&copy; 2024 RSUA. Designed By Alfazri Darmawansyah. All Rights Reserved.</p>
+   
+    
+    
+      <div class="footer-legal text-center position-relative">
+        <div class="container">
+          <div class="copyright">
+            &copy; Copyright <strong><span>RSUA</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+            Designed by <a href="https://github.com/alfazrid20">Alfazri Darmawansyah</a>
+          </div>
+        </div>
       </div>
     </footer>
+    
 
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
+  <div id="preloader"></div>
 
-    <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/isotope.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/owl-carousel.js') }}"></script>
-    <script src="{{ asset('frontend/js/counter.js') }}"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
-    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
 
-    <script>
-      var header = document.querySelector('.header-sticky');
-      var prevScrollpos = window.pageYOffset;
+  <!-- Template Main JS File -->
+  <script src="{{ asset('frontend/js/main.js') }}"></script>
 
-      window.onscroll = function () {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-          header.classList.remove('is-hidden');
-        } else {
+</body>
 
-          header.classList.add('is-hidden');
-        }
-        prevScrollpos = currentScrollPos;
-      }
-
-          // Inisialisasi Owl Carousel dengan autoplay
-      $(document).ready(function(){
-        $(".owl-carousel-custom").owlCarousel({
-          items: 1,
-          loop: true,
-          autoplay: true, // Aktifkan autoplay
-          autoplayTimeout: 5000, // Atur waktu autoplay (dalam milidetik)
-          autoplayHoverPause: true // Jeda autoplay saat kursor berada di atas carousel
-        });
-      });
-
-      $(document).ready(function(){
-        $(".owl-carousel").owlCarousel({
-            items: 3, // jumlah item yang ditampilkan dalam satu waktu
-            loop: true, // membuat carousel berputar secara terus-menerus
-            margin: 10, // jarak antara setiap item
-            autoplay: true, // mengaktifkan autoplay
-            autoplayTimeout: 3000, // waktu tunggu autoplay dalam milidetik
-            autoplayHoverPause: true, // memberhentikan autoplay saat kursor di atas carousel
-            responsiveClass: true,
-            responsive:{
-                0:{
-                    items:1,
-                },
-                768:{
-                    items:3,
-                },
-                1000:{
-                    items:5,
-                }
-            }
-        });
-    });
-
-    </script>
-  </body>
-
-  </html>
-
-
+</html>

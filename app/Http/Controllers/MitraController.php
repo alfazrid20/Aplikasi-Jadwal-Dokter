@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Mitras;
 
 class MitraController extends Controller
@@ -25,9 +27,11 @@ class MitraController extends Controller
     {
     $validator = Validator::make($request->all(), [
         'nama' => 'required', 
+        'rincian' => 'required', 
         'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     ], [
         'nama.required' => "Isi Nama",
+        'rincian.required' => "Isi Rincian Perusahaan",
         'gambar.required' => "Inputkan Gambar",
         'gambar.image' => 'File harus berupa gambar.',
         'gambar.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
@@ -50,6 +54,7 @@ class MitraController extends Controller
 
     Mitras::create([
         'nama' => $request->nama,
+        'rincian' => $request->rincian,
         'gambar' => $filePath,
     ]);
 
@@ -69,9 +74,11 @@ class MitraController extends Controller
     
         $validator = Validator::make($request->all(), [
             'nama' => 'required', 
+            'rincian' => 'required', 
             'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
             'nama.required' => "Isi Nama",
+            'rincian.required' => "Isi Nama",
             'gambar.image' => 'File harus berupa gambar.',
             'gambar.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
             'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
@@ -99,16 +106,23 @@ class MitraController extends Controller
         }
     
         $mitra->nama = $request->nama;
+        $mitra->rincian = $request->rincian;
         $mitra->save();
     
         return redirect()->route('backend.mitra.index')
             ->with('success', 'Data berhasil diperbarui');
     }
     
-    public function delete()
+    public function delete($id)
     {
-       
-        //
+        $polis = DB::table('mitra')
+            ->where('id', $id)
+            ->delete();
+        if ($polis) {
+            return redirect()->route('backend.mitra.index')->with('success', 'Data Berhasil Dihapus');
+        } else {
+            return redirect()->route('backend.mitra.index')->with('error', 'Data Gagal Dihapus');
+        }
     }
 
 

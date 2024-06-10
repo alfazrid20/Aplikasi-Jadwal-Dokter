@@ -5,7 +5,7 @@
         <h2>Data Slider</h2>
     </div>
 
-    <div class="row">
+    <div class="row">  
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -22,6 +22,7 @@
                                         <th>No</th>
                                         <th>Judul Slider</th>
                                         <th>Konten</th>
+                                        <th>Gambar</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -31,6 +32,13 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $data->judul }}</td>
                                         <td>{{ $data->konten }}</td>
+                                        <td>
+                                            @if (!empty($data->gambar))
+                                            <img src="{{ asset($data->gambar) }}" alt="Gambar Berita" style="max-width: 100%;">
+                                            @else
+                                                <img src="{{ asset('placeholder.jpg') }}" alt="NULL"  style="max-width: 100px;">
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="btn-group">
                                                 <form action="{{ route('backend.slider.delete', $data->id) }}"
