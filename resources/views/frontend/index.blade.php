@@ -75,8 +75,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
-            <h2 data-aos="fade-down">Rumah Sakit Umum Aisyiyah</h2>
-            <p data-aos="fade-up"> "SIIP"  </p>
+            <h2 data-aos="fade-down">Rumah Sakit Umum Aisyiyah Padang</h2>
+            {{--  <p data-aos="fade-up"> "SIIP"  </p>  --}}
           </div>
         </div>
       </div>
@@ -209,7 +209,7 @@
                 <p>
                   Jl. H. Agus Salim No.6, Sawahan, Kec. Padang, Kota Padang, Sumatera Barat 25171<br><br>
                   <strong>Phone:</strong> 0751-23843<br>
-                  <strong>Whatsapp:</strong> 0811-6761-616<br>
+                  <strong>Customer Service:</strong> 0811-6761-616<br>
                   <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
                 </p>
                 <div class="social-links d-flex justify-content-center mt-3">
@@ -217,7 +217,7 @@
                   <a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-instagram"></i></a>
                 </div>
               </div>
-            </div><!-- End footer info column -->
+            </div>
     
             <div class="col-lg-2 col-md-3 footer-links">
               <h4>Shortcut Link</h4>
@@ -229,7 +229,7 @@
                 <li><a href="#">Tentang Kami</a></li>
                 <li><a href="#">Jadwal Dokter</a></li>
               </ul>
-            </div><!-- End footer links column -->
+            </div>
     
           </div>
         </div>

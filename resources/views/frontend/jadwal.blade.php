@@ -139,6 +139,7 @@
               <p>
                 Jl. H. Agus Salim No.6, Sawahan, Kec. Padang, Kota Padang, Sumatera Barat 25171<br><br>
                 <strong>Phone:</strong> 0751-23843<br>
+                <strong>Customer Service:</strong> 0811-6761-616<br>
                 <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
               </p>
               <div class="social-links d-flex justify-content-center mt-3">

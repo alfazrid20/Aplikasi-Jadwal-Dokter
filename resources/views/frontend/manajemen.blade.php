@@ -98,7 +98,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/cek-kamar">Cek Kamar</a></li>
           <li><a href="/list-berita">Berita</a></li>
-          <li><a href="/view-jadwal" target="_blank">Jadwal Dokter</a></li>
+          <li><a href="/jadwal-dokter" target="_blank">Jadwal Dokter</a></li>
           <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
           <li class="dropdown"><a href="#" class="active"><span>Tentang Kami</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -171,6 +171,7 @@
               <p>
                 Jl. H. Agus Salim No.6, Sawahan, Kec. Padang, Kota Padang, Sumatera Barat 25171<br><br>
                 <strong>Phone:</strong> 0751-23843<br>
+                <strong>Customer Service:</strong> 0811-6761-616<br>
                 <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
               </p>
               <div class="social-links d-flex justify-content-center mt-3">
