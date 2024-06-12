@@ -80,6 +80,30 @@
                                    value="{{ old('no_telepon', $staff->no_telepon) }}" pattern="[0-9]*" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="13">
                         </div>
                     </div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required">Facebook</label>
+                        <div class="col-sm-6 input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-facebook"></i></span>
+                            </div>
+                            <input type="text" name="fb" class="form-control" placeholder="Link Facebook"
+                                   value="{{ old('fb', $staff->fb) }}">
+                        </div>
+                        <small class="col-sm-6 col-sm-offset-2"><i style="color: red">Link boleh dihapus, boleh tidak. Jika dihapus, beri tanda "#".</i></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required">Instagram</label>
+                        <div class="col-sm-6 input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-instagram"></i></span>
+                          </div>
+                          <textarea name="ig" class="form-control" placeholder="Link Instagram">{{ old('ig', $staff->ig) }}</textarea>
+                        </div>
+                        <small class="col-sm-6 col-sm-offset-2"><i style="color: red">Link boleh dihapus, boleh tidak. Jika dihapus, beri tanda "#".</i></small>
+                      </div>
+                      
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label required">Jabatan</label>

@@ -1,9 +1,9 @@
 @extends('backend.layouts')
-@section('title', 'Tambah Data Slider')
+@section('title', 'Tambah Gambar')
 @section('content')
 
     <div class="page_title">
-        <h2>Tambah Data Slider</h2>
+        <h2>Tambah Gambar</h2>
     </div>
 
     <div class="row">
@@ -11,21 +11,16 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table_section padding_infor_info">
-                        <form class="form-horizontal" method="POST" action="{{ route('backend.slider.store') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" method="POST" action="{{ route('backend.slider-foto.store') }}" enctype="multipart/form-data">
                             @csrf
                         <div class="form-group">
-                                <label class="col-sm-2 control-label">Judul</label>
+                                <label class="col-sm-2 control-label">Gambar</label>
                                 <div class="col-sm-6">
-                                    <input type="text" name="judul" class="form-control" placeholder="Judul"
-                                        value="{{ old('judul') }}">
+                                    <input type="file" name="foto_slider" class="form-control"
+                                        value="{{ old('foto_slider') }}">
                                 </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Konten</label>
-                            <div class="col-sm-6">
-                                <textarea name="konten" class="form-control">{{ old('konten') }}</textarea>
-                            </div>
-                        </div>
+                        
                         <div class="box-footer text-right">
                             <a href="{{ route('backend.slider.index') }}" class="btn btn-danger">Kembali</a>
                             <button type="submit" class="btn btn-success">Simpan</button>

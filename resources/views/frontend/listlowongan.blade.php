@@ -61,7 +61,7 @@
               <li><a href="/kontak">Dokter</a></li>
             </ul>
           </li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="/kontak">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -135,10 +135,16 @@
 
 
   <footer id="footer" class="footer">
-    <div class="footer-content position-relative text-center">
+    <div class="footer-content position-relative ">
       <div class="container">
-        <div class="row justify-content-center">
-  
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <img src="{{ asset('frontend/img/logo_rs.png') }}" style="width: 90%">
+            </div>
+          </div>
+
           <div class="col-lg-4 col-md-6">
             <div class="footer-info">
               <h3>RSUA</h3>
@@ -148,12 +154,12 @@
                 <strong>Customer Service:</strong> 0811-6761-616<br>
                 <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
               </p>
-              <div class="social-links d-flex justify-content-center mt-3">
+              <div class="social-links d-flex mt-3">
                 <a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-facebook"></i></a>
                 <a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
-          </div><!-- End footer info column -->
+          </div>
   
           <div class="col-lg-2 col-md-3 footer-links">
             <h4>Shortcut Link</h4>
@@ -165,7 +171,7 @@
               <li><a href="#">Tentang Kami</a></li>
               <li><a href="#">Jadwal Dokter</a></li>
             </ul>
-          </div><!-- End footer links column -->
+          </div>
   
         </div>
       </div>

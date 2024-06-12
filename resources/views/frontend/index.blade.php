@@ -58,7 +58,7 @@
               <hr>
               <li><a href="/manajemen">Staff & Manajemen</a></li>
               <hr>
-              <li><a href="#">Dokter</a></li>
+              <li><a href="/dokter">Dokter</a></li>
             </ul>
           </li>
           <li><a href="/kontak">Contact</a></li>
@@ -83,18 +83,19 @@
     </div>
 
     <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-      <div class="carousel-item active" style="background-image: url(assets/img/1717642024_1.png)">
-      </div>
-      <div class="carousel-item" style="background-image: url(assets/img/slider2.png)"></div>
-      <div class="carousel-item" style="background-image: url(assets/img/slider3.png)"></div>
-
+      @foreach($foto as $key => $foto_slider)
+          <div class="carousel-item {{ $key == 0 ? 'active' : '' }}" style="background-image: url('{{ asset($foto_slider->foto_slider) }}')">
+          </div>
+      @endforeach
+  
       <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
       </a>
       <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
       </a>
-    </div>
+  </div>
+  
   </section>
 
   <main id="main">
@@ -200,9 +201,16 @@
     </section>
 
     <footer id="footer" class="footer">
-      <div class="footer-content position-relative text-center">
+      <div class="footer-content position-relative ">
         <div class="container">
-          <div class="row justify-content-center">
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="footer-info">
+                <img src="{{ asset('frontend/img/logo_rs.png') }}" style="width: 90%">
+              </div>
+            </div>
+
             <div class="col-lg-4 col-md-6">
               <div class="footer-info">
                 <h3>RSUA</h3>
@@ -212,7 +220,7 @@
                   <strong>Customer Service:</strong> 0811-6761-616<br>
                   <strong>Email:</strong> rsuaisyiyahpadang@gmail.com<br>
                 </p>
-                <div class="social-links d-flex justify-content-center mt-3">
+                <div class="social-links d-flex mt-3">
                   <a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-facebook"></i></a>
                   <a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="d-flex align-items-center justify-content-center" target="_blank"><i class="bi bi-instagram"></i></a>
                 </div>

@@ -32,6 +32,7 @@
                                         <th>No</th>
                                         <th>Nama Kandidat</th>
                                         <th>Email</th>
+                                        <th>Foto</th>
                                         <th>No Handphone</th>
                                         <th>Alamat</th>
                                         <th>Pendidikan Terakhir</th>
@@ -47,8 +48,23 @@
                                     @foreach ($lamaran as $d)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $d->nama }}</td>
+                                            <td>
+                                                <a href="#" class="nama-pelamar" data-toggle="modal" data-target="#pelamarModal"
+                                                   data-nama="{{ $d->nama }}" data-email="{{ $d->email }}" data-no_hp="{{ $d->no_hp }}"
+                                                   data-alamat="{{ $d->alamat }}" data-pendidikan="{{ $d->pendidikan_terakhir }}"
+                                                   data-ipk="{{ $d->ipk }}" data-posisi="{{ $d->infoloker->posisi_id }}"
+                                                   data-foto="{{ asset($d->foto) }}">
+                                                    {{ $d->nama }}
+                                                </a>
+                                            </td>
                                             <td>{{ $d->email }}</td>
+                                            <td>
+                                                @if (!empty($d->foto))
+                                                    <img src="{{ asset($d->foto) }}" alt="Foto Loker" style="max-width: 100px;">
+                                                @else
+                                                    <img src="{{ asset('placeholder.jpg') }}" alt="Tidak Ada Foto"  style="max-width: 100px;">
+                                                @endif
+                                            </td>
                                             <td>{{ $d->no_hp }}</td>
                                             <td>{{ $d->alamat }}</td>
                                             <td class="text-center">{{ $d->pendidikan_terakhir }}</td>
@@ -107,11 +123,52 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pelamarModal" tabindex="-1" role="dialog" aria-labelledby="pelamarModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pelamarModalLabel">Detail Pelamar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img id="modalFoto" src="#" class="img-fluid" alt="Foto Pelamar" style="width: 100%; height: auto; margin-top: 20%">
+                        </div>
+                        <div class="col-md-8">
+                            <p><span id="modalNama"></span></p>
+                            <hr>
+                            <p><span id="modalEmail"></span></p>
+                            <hr>
+                            <p><span id="modalNoHP"></span></p>
+                            <hr>
+                            <p><span id="modalAlamat"></span></p>
+                            <hr>
+                            <p><span id="modalPendidikan"></span></p>
+                            <hr>
+                            <p><span id="modalIPK"></span></p>
+                            <hr>
+                            <p><span id="modalPosisi"></span></p>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @push('myscript')
     <script>
-        document.getElementById('button-addon10').addEventListener('click', function() {
+        document.getElementById('button-addon4').addEventListener('click', function() {
             document.getElementById('searchForm').submit();
         });
 
@@ -130,6 +187,28 @@
                 }
             });
         }
+
+        // Event listener untuk menampilkan modal dan mengisi data
+        document.querySelectorAll('.nama-pelamar').forEach(function(element) {
+            element.addEventListener('click', function() {
+                var nama = element.getAttribute('data-nama');
+                var email = element.getAttribute('data-email');
+                var no_hp = element.getAttribute('data-no_hp');
+                var alamat = element.getAttribute('data-alamat');
+                var pendidikan = element.getAttribute('data-pendidikan');
+                var ipk = element.getAttribute('data-ipk');
+                var posisi = element.getAttribute('data-posisi');
+                var foto = element.getAttribute('data-foto');
+
+                document.getElementById('modalNama').textContent = nama;
+                document.getElementById('modalEmail').textContent = email;
+                document.getElementById('modalNoHP').textContent = no_hp;
+                document.getElementById('modalAlamat').textContent = alamat;
+                document.getElementById('modalPendidikan').textContent = pendidikan;
+                document.getElementById('modalIPK').textContent = ipk;
+                document.getElementById('modalPosisi').textContent = posisi;
+                document.getElementById('modalFoto').setAttribute('src', foto);
+            });
+        });
     </script>
 @endpush
-

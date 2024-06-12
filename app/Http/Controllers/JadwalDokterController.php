@@ -43,14 +43,16 @@ class JadwalDokterController extends Controller
         'poli_id' => 'required', 
         'dokter_id' => 'required',
         'hari' => 'required',
-        'jam_pelayanan' => 'required',
+        'jam_mulai' => 'required',
+        'jam_selesai' => 'required',
         'foto_dokter' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         'keterangan' => 'required'
     ], [
         'poli_id.required' => "Isi Poli",
         'dokter_id.required' => "Isi Nama Dokter",
         'hari.required' => "Isi Hari",
-        'jam_pelayanan.required' => "Isi Jam Pelayanan",
+        'jam_mulai.required' => "Isi Jam Mulai",
+        'jam_selesai.required' => "Isi Jam Selesai",
         'foto_dokter.image' => 'File harus berupa gambar.',
         'foto_dokter.mimes' => 'Format gambar yang diizinkan adalah jpeg, png, jpg, dan gif.',
         'foto_dokter.max' => 'Ukuran gambar tidak boleh lebih dari 2MB.',
@@ -77,7 +79,8 @@ class JadwalDokterController extends Controller
         'poli_id' => $request->poli_id,
         'dokter_id' => $request->dokter_id,
         'hari' => $request->hari,
-        'jam_pelayanan' => $request->jam_pelayanan,
+        'jam_mulai' => $request->jam_mulai,
+        'jam_selesai' => $request->jam_selesai,
         'foto_dokter' => $filePath,
         'keterangan' => $request->keterangan
     ]);
@@ -102,13 +105,15 @@ class JadwalDokterController extends Controller
             'poli_id' => 'required',
             'dokter_id' => 'required',
             'hari' => 'required',
-            'jam_pelayanan' => 'required',
+            'jam_mulai' => 'required',
+            'jam_selesai' => 'required',
             'keterangan' => 'required'
         ], [
             'poli_id.required' => "Isi Poli",
             'dokter_id.required' => "Isi Nama Dokter",
             'hari.required' => "Isi Hari",
-            'jam_pelayanan.required' => "Isi Jam Pelayanan",
+            'jam_mulai.required' => "Isi Jam Mulai",
+            'jam_selesai.required' => "Isi Jam Selesai",
             'keterangan.required' => 'Isi Keterangan'
         ]);
 
@@ -121,7 +126,8 @@ class JadwalDokterController extends Controller
         $jadwal->poli_id = $request->poli_id;
         $jadwal->dokter_id = $request->dokter_id;
         $jadwal->hari = $request->hari;
-        $jadwal->jam_pelayanan = $request->jam_pelayanan;
+        $jadwal->jam_mulai = $request->jam_mulai;
+        $jadwal->jam_selesai = $request->jam_selesai;
         $jadwal->keterangan = $request->keterangan;
 
         // Jika ada file foto yang diunggah, proses file tersebut
@@ -169,7 +175,8 @@ class JadwalDokterController extends Controller
         try {
             $jadwal = JadwalDokter::all();
             foreach ($jadwal as $item) {
-                $item->jam_pelayanan = '-';
+                $item->jam_mulai = '00:00:00';
+                $item->jam_selesai = '00:00:00';
                 $item->keterangan = 'Tidak Tersedia';
                 // $item->foto_dokter = '';
                 $item->save();

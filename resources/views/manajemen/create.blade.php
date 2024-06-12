@@ -70,13 +70,37 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label required">No Handphone</label>
+                            <label class="col-sm-2 control-label required">Facebook</label>
                             <div class="col-sm-6 input-group">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa fa-phone-square"></i></span>
+                                    <span class="input-group-text"><i class="fa fa-facebook"></i></span>
                                 </div>
-                                <input type="tel" name="no_telepon" class="form-control" placeholder="No Handphone"
-                                       value="{{ old('no_telepon') }}" pattern="[0-9]*" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength="13">
+                                <input type="text" name="fb" class="form-control" placeholder="Masukkan Link Facebook Anda"
+                                    value="{{ old('fb', '#') }}">
+                            </div>
+                            <small class="col-sm-6 col-sm-offset-2"><i style="color: red">Link boleh diisi, boleh tidak. Jika tidak diisi, biarkan saja bertanda "#".</i></small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label required">Instagram</label>
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-instagram"></i></span>
+                                </div>
+                                <input type="text" name="ig" class="form-control" placeholder="Masukkan Link Instagram Anda"
+                                    value="{{ old('ig', '#') }}">
+                            </div>
+                            <small class="col-sm-6 col-sm-offset-2"><i style="color: red">Link boleh diisi, boleh tidak. Jika tidak diisi, biarkan saja bertanda "#".</i></small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label required">Instagram</label>
+                            <div class="col-sm-6 input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-instagram"></i></span>
+                                </div>
+                                <input type="text" name="ig" class="form-control" placeholder="Masukkan Link Instagram Anda"
+                                    value="{{ old('ig') }}">
                             </div>
                         </div>
                                                

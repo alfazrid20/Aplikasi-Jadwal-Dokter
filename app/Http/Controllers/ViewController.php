@@ -16,6 +16,7 @@ use App\Models\Slider;
 use App\Models\Mitras;
 use App\Models\Fasilitas;
 use App\Models\Staff;
+use App\Models\ImgSlider;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -31,7 +32,8 @@ class ViewController extends Controller
         $slider = Slider::all();
         $mitra = Mitras::all();
         $fasilitas = Fasilitas::all();
-        return view('frontend.index',compact('slider','kategori','berita','mitra','fasilitas'));
+        $foto = ImgSlider::all();
+        return view('frontend.index',compact('slider','kategori','berita','mitra','fasilitas','foto'));
     }
 
     public function index()
@@ -106,7 +108,8 @@ class ViewController extends Controller
         // Validasi awal sebelum pengecekan status loker
         $validator = Validator::make($request->all(), [
             'nama' => 'required', 
-            'email' => 'required|email', 
+            'email' => 'required|email',
+            'foto' => 'image|mimes:png|max:2048', 
             'no_hp' => 'required',    
             'alamat' => 'required', 
             'pendidikan_terakhir' => 'required', 
@@ -118,6 +121,9 @@ class ViewController extends Controller
             'nama.required' => "Nama harus diisi.",
             'email.required' => "Email harus diisi.",
             'email.email' => "Email tidak valid.",
+            'foto.image' => 'File harus berupa foto atau gambar.',
+            'foto.mimes' => 'Format foto yang diizinkan adalah png',
+            'foto.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
             'no_hp.required' => "Nomor HP harus diisi.",
             'alamat.required' => "Alamat harus diisi.",
             'pendidikan_terakhir.required' => "Pendidikan terakhir harus diisi.",
@@ -135,6 +141,13 @@ class ViewController extends Controller
                 ->withInput();
         }
 
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('public/foto_kandidat', $fileName);
+            $filePath = 'storage/' . str_replace('public/', '', $filePath);
+        }
+
         $loker = Lokers::find($request->posisi_id);
         if ($loker && $loker->status_loker === 'Tutup') {
             return redirect()->route('lowongan.create')
@@ -150,6 +163,7 @@ class ViewController extends Controller
         Lamarans::create([
             'nama' => $request->nama,
             'email' => $request->email,
+            'foto' => $filePath,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
             'pendidikan_terakhir' => $request->pendidikan_terakhir,
@@ -180,6 +194,12 @@ class ViewController extends Controller
     {
         $jadwaldokter = JadwalDokter::all();
         return view('frontend.jadwal',compact('jadwaldokter'));
+    }
+
+    public function dokter()
+    {
+        $jadwaldokter = JadwalDokter::all();
+        return view('frontend.dokter',compact('jadwaldokter'));
     }
 
 

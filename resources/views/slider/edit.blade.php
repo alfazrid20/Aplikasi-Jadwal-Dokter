@@ -27,13 +27,6 @@
                                     <textarea name="konten" class="form-control">{{ old('konten', $slider->konten) }}</textarea>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label">Gambar</label>
-                                <div class="col-sm-6">
-                                    <input type="file" name="gambar" class="form-control" placeholder="Gambar"
-                                        value="{{ old('gambar', $slider->gambar) }}">
-                                </div>
-                            </div>
                             <div class="box-footer text-right">
                                 <a href="{{ route('backend.slider.index') }}" class="btn btn-danger">Kembali</a>
                                 <button type="submit" class="btn btn-success">Simpan</button>

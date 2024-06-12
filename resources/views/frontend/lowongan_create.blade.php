@@ -126,10 +126,16 @@
                     </div>
                     <br>
                     <div class="form-group row mt-2">
-                        <div class="col-12">
-                            <label for="dokumen"><b>Dokumen (CV, Ijazah, Foto, Dokumen Pendukung, dll)</b></label>
+                        <div class="col-6">
+                            <label for="dokumen"><b>Dokumen (CV, Ijazah, Dokumen Pendukung, dll)</b></label>
                             <input type="file" class="form-control" id="dokumen" name="dokumen">
                             <small class="form-text text-danger"><i>*Wajib Diisi Format PDF</i></small>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="dokumen"><b>Foto 3x4</b></label>
+                            <input type="file" class="form-control" id="foto" name="foto">
+                            <small class="form-text text-danger"><i>*Wajib Diisi Format PNG Max : 2 MB</i></small>
                         </div>
                     </div>
                     <div class="button mt-2 mb-2 text-center">

@@ -68,6 +68,8 @@ class ManajemenController extends Controller
                 'no_telepon' => $request->no_telepon,
                 'jabatan' => $request->jabatan,
                 'departemen' => $request->departemen,
+                'fb' => $request->fb,
+                'ig' => $request->fb,
                 'foto' => $filePath,
                 
             ]);
@@ -132,6 +134,8 @@ class ManajemenController extends Controller
             'no_telepon' => $request->no_telepon,
             'jabatan' => $request->jabatan,
             'departemen' => $request->departemen,
+            'fb' => $request->fb,
+            'ig' => $request->ig,
             'foto' => $filePath,
         ]);
     

@@ -84,15 +84,15 @@
                                     </div>
                                 </div>
 
-
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">Jam Pelayanan</label>
                                     <div class="col-sm-6 input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fa fa-clock-o"></i></span>
                                         </div>
-                                        <input type="text" name="jam_pelayanan" class="form-control"
-                                            placeholder="08:00 - 12:00" value="{{ $jadwal->jam_pelayanan }}">
+                                        <input type="time" name="jam_mulai" class="form-control" placeholder="Jam Mulai" value="{{ $jadwal->jam_mulai}}">
+                                        &nbsp;&nbsp;
+                                        <input type="time" name="jam_selesai" class="form-control" placeholder="Jam Selesai" value="{{$jadwal->jam_selesai}}">
                                     </div>
                                 </div>
 

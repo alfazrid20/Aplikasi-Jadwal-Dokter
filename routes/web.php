@@ -43,6 +43,7 @@ Route::get('/jadwal-dokter', [ViewController::class, 'jadwal'])->name('jadwal');
 Route::get('/sejarah', [ViewController::class, 'sejarah'])->name('sejarah');
 Route::get('/manajemen', [ViewController::class, 'manajemen'])->name('manajemen');
 Route::get('/kontak', [ViewController::class, 'kontak'])->name('kontak');
+Route::get('/dokter', [ViewController::class, 'dokter'])->name('dokter');
 Route::get('/cek-kamar', [ViewController::class, 'cekkamar'])->name('cekkamar');
 Route::get('/view-berita/{id}', [ViewController::class, 'berita'])->name('berita');
 Route::get('/list-berita', [ViewController::class, 'listberita'])->name('listberita');
@@ -188,6 +189,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/backend/slider/{id}/edit', [SliderController::class, 'edit'])->name('backend.slider.edit');
     Route::put('/backend/slider/{id}/update', [SliderController::class, 'update'])->name('backend.slider.update');
     Route::delete('/backend/slider/{id}/delete', [SliderController::class, 'delete'])->name('backend.slider.delete');
+
+    Route::get('/backend/slider-foto', [SliderController::class, 'index2'])->name('backend.slider-foto.index');
+    Route::get('/backend/slider-foto/create', [SliderController::class, 'create2'])->name('backend.slider-foto.create');
+    Route::post('/backend/slider-foto/store', [SliderController::class, 'store2'])->name('backend.slider-foto.store');
+    Route::get('/backend/slider-foto/{id}/edit', [SliderController::class, 'edit2'])->name('backend.slider-foto.edit');
+    Route::put('/backend/slider-foto/{id}/update', [SliderController::class, 'update2'])->name('backend.slider-foto.update');
+    Route::delete('/backend/slider-foto/{id}/delete', [SliderController::class, 'delete2'])->name('backend.slider-foto.delete');
     // End Data Slider
 
     // Data Mitra
@@ -216,12 +224,12 @@ Route::middleware(['auth'])->group(function () {
       Route::put('/backend/staff/{id}/update', [ManajemenController::class, 'update'])->name('backend.staff.update');
       Route::delete('/backend/staff/{id}/delete', [ManajemenController::class, 'delete'])->name('backend.staff.delete');
 
-      Route::get('/backend/unit', [ManajemenController::class, 'unit'])->name('backend.unit.index');
-      Route::get('/backend/unit/create', [ManajemenController::class, 'unitcreate'])->name('backend.unit.create');
-      Route::post('/backend/unit/store', [ManajemenController::class, 'unitstore'])->name('backend.unit.store');
-      Route::get('/backend/unit/{id}/edit', [ManajemenController::class, 'unitedit'])->name('backend.unit.edit');
-      Route::put('/backend/unit/{id}/update', [ManajemenController::class, 'unitupdate'])->name('backend.unit.update');
-      Route::delete('/backend/unit/{id}/delete', [ManajemenController::class, 'unitdelete'])->name('backend.unit.delete');
+    //   Route::get('/backend/unit', [ManajemenController::class, 'unit'])->name('backend.unit.index');
+    //   Route::get('/backend/unit/create', [ManajemenController::class, 'unitcreate'])->name('backend.unit.create');
+    //   Route::post('/backend/unit/store', [ManajemenController::class, 'unitstore'])->name('backend.unit.store');
+    //   Route::get('/backend/unit/{id}/edit', [ManajemenController::class, 'unitedit'])->name('backend.unit.edit');
+    //   Route::put('/backend/unit/{id}/update', [ManajemenController::class, 'unitupdate'])->name('backend.unit.update');
+    //   Route::delete('/backend/unit/{id}/delete', [ManajemenController::class, 'unitdelete'])->name('backend.unit.delete');
       // End 
 });
 

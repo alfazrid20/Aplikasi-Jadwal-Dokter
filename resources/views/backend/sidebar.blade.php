@@ -38,18 +38,22 @@ $route = explode('/',$route);
             <li class="">
                 <a href="/backend/dashboard" aria-expanded="false"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
-            @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')
-            <li class="">
-                <a href="/backend/slider" aria-expanded="false"><i class="fa fa-play-circle"></i> <span>Slider</span></a>
-            </li>
-            @endif
+            <li class="dropdown">
+                <a href="#element_slider" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-play-circle"></i><span>Data Slider</span>
+                </a>
+                <ul class="collapse list-unstyled" id="element_slider">
+                    <li><a href="/backend/slider"><i class="fa fa-bed"></i>Slider</a></li>
+                    <li><a href="/backend/slider-foto"><i class="fa fa-bed"></i>Gambar</a></li>
+                </ul>
+            </li> 
             <li class="dropdown">
                 <a href="#element_staff" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fa fa-sitemap"></i><span>Manajemen & Staff</span>
                 </a>
                 <ul class="collapse list-unstyled" id="element_staff">
                     <li><a href="/backend/staff">Daftar Manajemen</a></li>
-                    <li><a href="/backend/unit">Staff</a></li>
+                    <li><a href="#">Staff</a></li>
                 </ul>
             </li> 
             @if($role == 'IT' || $role == 'Humas' || $role == 'Marketing' || $role == 'HRD' || $role == 'Admin')

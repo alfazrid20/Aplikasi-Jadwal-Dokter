@@ -51,8 +51,9 @@
                                         <th>Poli</th>
                                         <th>Nama Dokter</th>
                                         <th>Hari</th>
-                                        <th>Jam Pelayanan</th>
-                                        <th>Foto</th>
+                                        <th>Start</th>
+                                        <th>End</th>
+                                        <th class="text-center">Foto</th>
                                         <th>Keterangan</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -64,7 +65,8 @@
                                             <td>{{ $d->poli->nama }}</td>
                                             <td>{{ $d->dokter->nama }}</td>
                                             <td>{{ $d->hari }}</td>
-                                            <td>{{ $d->jam_pelayanan }}</td>
+                                            <td>{{ $d->jam_mulai }}</td>
+                                            <td>{{ $d->jam_selesai }}</td>
                                             <td>
                                                 @if (!empty($d->foto_dokter))
                                                     <img src="{{ asset($d->foto_dokter) }}" alt="Foto Dokter"  style="max-width: 100%;">
@@ -150,6 +152,7 @@
     document.getElementById('button-addon6').addEventListener('click', function() {
         document.getElementById('searchForm').submit();
     });
+    
     
     </script>
     

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Jadwal Dokter</title>
+  <title>Dokter RSUA</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -29,10 +29,13 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('frontend/css/main.css') }}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
 
+  
 </head>
 
-<body onload="updateTime()">
+<body>
 
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -47,9 +50,9 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/cek-kamar">Cek Kamar</a></li>
-          <li><a href="/list-berita" class="active">Berita</a></li>
-          <li><a href="/view-jadwal" target="_blank">Jadwal Dokter</a></li>
-          <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
+          <li><a href="/list-berita">Berita</a></li>
+          <li><a href="/jadwal-dokter" target="_blank">Jadwal Dokter</a></li>
+          <li><a href="/lowongan-pekerjaan" class="active">Lowongan Pekerjaan</a></li>
           <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -68,64 +71,43 @@
 
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('frontend/img/rs.png');">
       <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-
-        <h2>Jadwal Dokter</h2>
+        <h2>Dokter & Ahli</h2>
         <ol>
           <li><a href="/">Home</a></li>
-          <li>Jadwal Dokter</li>
+          <li>Dokter</li>
         </ol>
       </div>
     </div>
 
-    <div class="image text-center">
-      <img src="{{ asset('frontend/img/logo_rs.png') }}" style="width: 20%">
-    </div>
-     <h1 class="text-center">
-        Jadwal Praktek Dokter Spesialis <br>
-        Rumah Sakit Umum Aisyiyah <br>
-        <span id="currentDate"></span>
-        <br>
-        <span id="currentTime"></span>
-      </h1> 
-      <br>
-    <div class="container mt-2">
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Poli</th>
-                <th>Nama Dokter</th>
-                <th>Mulai</th>
-                <th>Selesai</th>
-                <th class="text-center">Keterangan</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($jadwaldokter as $d )
-              <tr>
-                <td>{{ $d->poli->nama }}</td>
-                <td>{{ $d->dokter->nama }}</td>
-                <td>{{ $d->jam_mulai }}</td>
-                <td>{{ $d->jam_selesai }}</td>
-                <td>
-                  @if ($d->keterangan == 'Tersedia')
-                      <span
-                          class="badge text-bg-primary ">{{ $d->keterangan }}</span>
-                  @elseif ($d->keterangan == 'Dalam Perjalanan')
-                      <span class="badge text-bg-info">{{ $d->keterangan }}</span>
-                  @elseif ($d->keterangan == 'Tidak Tersedia')
-                      <span
-                          class="badge text-bg-danger">{{ $d->keterangan }}</span>
-                  @endif
-                </td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
+    <!-- ======= Our Projects Section ======= -->
+    <section id="projects" class="projects">
+        <div class="container" data-aos="fade-up">
+    
+            <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+    
+                <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active">All</li>
+                    @foreach ($jadwaldokter->unique('poli.id') as $d)
+                        <li data-filter=".poli-{{ $d->poli->id }}">{{ $d->poli->nama }}</li>
+                    @endforeach
+                </ul>
+    
+                <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+                    @foreach ($jadwaldokter as $d)
+                        <div class="col-lg-4 col-md-6 portfolio-item poli-{{ $d->poli->id }}">
+                            <div class="portfolio-content h-100">
+                                <img src="{{ $d->foto_dokter ? asset($d->foto_dokter) : asset('placeholder.jpg') }}" class="img-fluid" alt="Foto Dokter">
+                                <div class="room-details mt-2">
+                                    <p class="text-center">{{ $d->dokter->nama }}</p>
+                                    <p class="text-center">{{ $d->poli->nama }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
-      </div>
-
-   
+    </section>
     
   </main>
 
@@ -204,23 +186,19 @@
   <script src="{{ asset('frontend/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ asset('frontend/vendor/php-email-form/validate.js') }}"></script>
   <script>
-    function updateTime() {
-      const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-      const now = new Date();
-      const dayName = days[now.getDay()];
-      const date = now.getDate().toString().padStart(2, '0');
-      const month = (now.getMonth() + 1).toString().padStart(2, '0');
-      const year = now.getFullYear();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      const currentTime = `${hours}:${minutes}:${seconds}`;
+    document.addEventListener("DOMContentLoaded", function () {
+        const readMoreLinks = document.querySelectorAll('.readmore');
 
-      document.getElementById('currentDate').innerText = `${dayName}, ${date}-${month}-${year}`;
-      document.getElementById('currentTime').innerText = currentTime;
-    }
-
-    setInterval(updateTime, 1000);
+        readMoreLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                const status = this.getAttribute('data-status');
+                if (status === 'Tutup') {
+                    event.preventDefault();
+                    alert('Maaf, lowongan yang Anda pilih sudah tutup.');
+                }
+            });
+        });
+    });
   </script>
 
   <!-- Template Main JS File -->

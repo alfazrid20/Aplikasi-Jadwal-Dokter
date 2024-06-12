@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Slider extends Model
+class ImgSlider extends Model
 {
     use HasFactory;
-    protected $table = 'slider';
-    protected $fillable = ['judul','konten'];
-    public $timestamps = false;
+    protected $table = 'foto_slider';
+    protected $fillable = [
+         'foto_slider',
+    ];
+
 }
