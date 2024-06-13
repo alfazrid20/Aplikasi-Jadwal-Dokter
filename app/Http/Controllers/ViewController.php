@@ -190,9 +190,15 @@ class ViewController extends Controller
         return view('frontend.kontak');
     }
 
-    public function jadwal()
+    public function jadwal(Request $request)
     {
-        $jadwaldokter = JadwalDokter::all();
+        $query = JadwalDokter::query();
+        if ($request->has('nama')) {
+            $query->whereHas('dokter', function ($q) use ($request) {
+                $q->where('nama', 'like', '%'.$request->nama.'%');
+            });
+        }
+        $jadwaldokter = $query->get();
         return view('frontend.jadwal',compact('jadwaldokter'));
     }
 

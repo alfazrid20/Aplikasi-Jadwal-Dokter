@@ -47,8 +47,8 @@
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/cek-kamar">Cek Kamar</a></li>
-          <li><a href="/jadwal-dokter" class="active">Berita</a></li>
-          <li><a href="/view-jadwal" target="_blank">Jadwal Dokter</a></li>
+          <li><a href="/list-berita" class="active">Berita</a></li>
+          <li><a href="/jadwal-dokter" target="_blank">Jadwal Dokter</a></li>
           <li><a href="/lowongan-pekerjaan">Lowongan Pekerjaan</a></li>
           <li class="dropdown"><a href="#"><span>Tentang Kami</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>

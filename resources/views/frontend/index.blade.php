@@ -68,9 +68,7 @@
     </div>
   </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
-
     <div class="info d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">
@@ -95,10 +93,60 @@
           <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
       </a>
   </div>
-  
   </section>
 
   <main id="main">
+
+    <section id="stats-counter" class="stats-counter section-bg">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-hospital color-blue flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Poli</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-user-md color-orange flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="28" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Dokter</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-user-nurse color-green flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Perawat</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-bed color-pink flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Tempat Tidur</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
@@ -124,10 +172,180 @@
       </div>
     </section>
 
+    <section id="alt-services-2" class="alt-services section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-around gy-4">
+          <div class="col-lg-5 d-flex flex-column justify-content-center">
+            <h3>Kontak Rumah Sakit Umum Aisyiyah Padang</h3>
+            <p>Hubungi Kami Jika Anda Butuh Bantuan</p>
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+              <i class="bi bi-whatsapp flex-shrink-0" style="color: green"></i>
+              <div>
+                <h4><a href="https://api.whatsapp.com/send?phone=628116761616" class="stretched-link" target="_blank">Whatsapp</a></h4>
+                <p>0811 - 6761 - 616 </p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-telephone flex-shrink-0" style="color: green"></i>
+              <div>
+                <h4><a href="tel:075123843" class="stretched-link" target="_blank">Telepon</a></h4>
+                <p>0751 - 23843</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-instagram flex-shrink-0" style="color: red"></i>
+              <div>
+                <h4><a href="https://www.instagram.com/rsuaisyiyahpadang_/" class="stretched-link" target="_blank">Instagram</a></h4>
+                <p>rsuaisyiyahpadang_</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-facebook flex-shrink-0" style="color: blue"></i>
+              <div>
+                <h4><a href="https://m.facebook.com/people/RSU-Aisyiyah-Padang/100069546992570/" class="stretched-link" target="_blank">Facebook</a></h4>
+                <p>RSU AISYIYAH PADANG</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-envelope flex-shrink-0" style="color: red"></i>
+              <div>
+                <h4><a href="https://mail.google.com/" class="stretched-link" target="_blank">Email</a></h4>
+              <p>rsuaisyiyahpadang@gmail.com</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/bg_index.png);" data-aos="zoom-in"
+            data-aos-delay="100"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="alt-services" class="alt-services">
+      <div class="container" data-aos="fade-up">
+        <div class="row justify-content-around gy-4">
+          <div class="col-lg-6 img-bg" style="background-image: url(assets/img/bg_jkn.png);" data-aos="zoom-in"
+            data-aos-delay="100"></div>
+          <div class="col-lg-5 d-flex flex-column justify-content-center">
+            <h3>Pendaftaran Bisa Dilakukan Melalui Mobile JKN</h3>
+            <p>Pendaftaran melalui aplikasi Mobile JKN kini lebih mudah, memungkinkan Anda untuk mengakses layanan kesehatan dan mendapatkan informasi tentang dokter dengan cepat dan praktis langsung dari genggaman tangan.</p>
+            <p>
+              Berikut Langkah - Langkah Mendaftar Melalui Mobile JKN :
+            </p>
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+              <i class="bi bi-check-circle flex-shrink-0"></i>
+              <div>
+                <h4><a href="https://bpjs-kesehatan.go.id/user-manual-mobile-jkn/akun-mobile-jkn.html" class="stretched-link" target="_blank">Login Aplikasi Mobile JKN</a></h4>
+                <p>Masuk ke aplikasi Mobile JKN dengan menggunakan username dan password yang telah terdaftar</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-check-circle flex-shrink-0"></i>
+              <div>
+                <h4><a href="https://bpjs-kesehatan.go.id/user-manual-mobile-jkn/akun-mobile-jkn.html" class="stretched-link" target="_blank">Pilih menu Pendaftaran Pelayanan 
+                  (Antrian)</a></h4>
+                <p>Setelah berhasil login, pilih menu "Pendaftaran Pelayanan" untuk memulai proses pendaftaran antrian pelayanan kesehatan.</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-check-circle flex-shrink-0"></i>
+              <div>
+                <h4><a href="https://bpjs-kesehatan.go.id/user-manual-mobile-jkn/akun-mobile-jkn.html" class="stretched-link" target="_blank">Pilih Faskes Rujukan Tingkat Lanjut</a></h4>
+                <p>Pilih fasilitas kesehatan rujukan tingkat lanjut yang Anda inginkan sesuai dengan kebutuhan medis Anda.</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-check-circle flex-shrink-0"></i>
+              <div>
+                <h4><a href="https://bpjs-kesehatan.go.id/user-manual-mobile-jkn/akun-mobile-jkn.html" class="stretched-link" target="_blank">Klik Daftar Pelayanan</a></h4>
+                <p>Tentukan tanggal rencana kunjungan Anda ke fasilitas kesehatan yang dipilih untuk mendapatkan pelayanan medis.</p>
+              </div>
+            </div>
+
+            <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-check-circle flex-shrink-0"></i>
+              <div>
+                <h4><a href="https://bpjs-kesehatan.go.id/user-manual-mobile-jkn/akun-mobile-jkn.html" class="stretched-link" target="_blank">Pilih Tanggal Rencana  Kunjungan</a></h4>
+                <p>Setelah semua informasi terisi dengan benar, klik "Daftar Pelayanan" untuk menyelesaikan proses pendaftaran dan mendapatkan nomor antrian.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="playstore text-center">
+      <h2>Download Mobile JKN Sekarang Juga</h2>
+      <div class="row justify-content-center">
+        <div class="col-6 col-md-2 mt-2">
+          <div class="text-center">
+            <img src="{{ asset('frontend/images/icon.png') }}" class="img-fluid w-50">
+            <p class="mt-2 mb-0">
+              <a href="https://play.google.com/store/apps/details?id=app.bpjs.mobile&pcampaignid=web_share" target="_blank" style="color: blue">Download di Play Store</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-6 col-md-2 mt-2">
+          <div class="text-center">
+            <img src="{{ asset('frontend/images/plystr.png') }}" class="img-fluid w-50">
+            <p class="mt-2 mb-0">
+              <a href="https://apps.apple.com/id/app/mobile-jkn/id1237601115?platform=iphone" target="_blank" style="color: blue">Download di App Store</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     
+    
+    
+  
+    <section id="recent-blog-posts" class="recent-blog-posts">
+      <div class="container" data-aos="fade-up"> 
+          <div class="section-header">
+              <h2>Berita</h2>
+              <p>Temukan Informasi Menarik dan Terbaru Tentang Kami</p>
+          </div>
+
+          <div class="row gy-5">
+              @foreach ($berita as $b)
+              <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                  <div class="post-item position-relative h-100">
+                      <div class="post-img position-relative overflow-hidden">
+                          <img src="{{ $b->gambar }}" class="img-fluid">
+                          <span class="post-date">{{ $b->tanggal }}</span>
+                      </div>
+                      <div class="post-content d-flex flex-column">
+                          <h3 class="post-title">{{ $b->judul_berita }}</h3>
+                          <div class="meta d-flex align-items-center">
+                              <div class="d-flex align-items-center">
+                                  <i class="bi bi-person"></i> <span class="ps-2">RSUA</span>
+                              </div>
+                              <span class="px-3 text-black-50">/</span>
+                              <div class="d-flex align-items-center">
+                                  <i class="bi bi-folder2"></i> <span class="ps-2">{{ $b->kategori->kategori }}</span>
+                              </div>
+                          </div>
+                          <hr>
+                          <a href="/view-berita/{{ $b->id }}" class="readmore stretched-link">
+                              <span>Read More</span><i class="bi bi-arrow-right"></i>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              @endforeach
+          </div>
+      </div>
+  </section>
+  
     <section id="testimonials" class="testimonials section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-header">
           <h2>Mitra Kerjasama</h2>
           <p> "Kami memiliki jaringan mitra yang kuat, termasuk asuransi kesehatan dan penyedia layanan medis lainnya, yang membantu kami memastikan pasien kami mendapatkan perawatan yang komprehensif dan terjangkau." </p>
@@ -154,51 +372,10 @@
           </div>
           <div class="swiper-pagination"></div>
         </div>
-        
-
       </div>
     </section>
 
-    <section id="recent-blog-posts" class="recent-blog-posts">
-      <div class="container" data-aos="fade-up"">
-
-    
-    
-  <div class=" section-header">
-        <h2>Berita</h2>
-        <p>Temukan Informasi Menarik dan Terbaru Tentang Kami</p>
-      </div>
-
-      <div class="row gy-5">
-        @foreach ($berita as $b )
-        <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="post-item position-relative h-100">
-            <div class="post-img position-relative overflow-hidden">
-              <img src="{{ $b->gambar }}" class="img-fluid">
-              <span class="post-date">{{ $b->tanggal }}</span>
-            </div>
-            <div class="post-content d-flex flex-column">
-              <h3 class="post-title">{{ $b->judul_berita }}</h3>
-              <div class="meta d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-person"></i> <span class="ps-2">RSUA</span>
-                </div>
-                <span class="px-3 text-black-50">/</span>
-                <div class="d-flex align-items-center">
-                  <i class="bi bi-folder2"></i> <span class="ps-2">{{ $b->kategori->kategori }}</span>
-                </div>
-              </div>
-              <hr>
-              <a href="/view-berita/{{ $b->id }}" class="readmore stretched-link"><span>Read More</span><i
-                  class="bi bi-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-        @endforeach
-      </div>
-      
-      </div>
-    </section>
+   
 
     <footer id="footer" class="footer">
       <div class="footer-content position-relative ">

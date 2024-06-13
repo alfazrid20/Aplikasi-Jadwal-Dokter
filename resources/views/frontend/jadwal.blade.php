@@ -88,6 +88,30 @@
         <span id="currentTime"></span>
       </h1> 
       <br>
+      <hr>
+      
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <form action="/jadwal-dokter" method="GET" id="searchForm">
+              <div class="row">
+                  <div class="col-6">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <input type="text" name="nama" id="nama" class="form-control"
+                                  placeholder="Cari Dokter" style="width: 45%; margin-right: 5%;"
+                                  value="{{ Request('nama') }}">
+                              <button class="btn btn-primary" type="submit" id="button-addon14"><i
+                                      class="fa fa-search"></i> Search</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+          </div>
+        </div>
+      </div>
+
     <div class="container mt-2">
         <div class="table-responsive">
           <table class="table table-striped">
@@ -124,10 +148,8 @@
           </table>
         </div>
       </div>
-
-   
-    
   </main>
+  <hr>
 
 
   <footer id="footer" class="footer">
@@ -221,6 +243,10 @@
     }
 
     setInterval(updateTime, 1000);
+
+    document.getElementById('button-addon6').addEventListener('click', function() {
+      document.getElementById('searchForm').submit();
+  });
   </script>
 
   <!-- Template Main JS File -->

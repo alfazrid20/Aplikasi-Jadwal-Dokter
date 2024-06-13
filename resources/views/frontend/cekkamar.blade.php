@@ -75,7 +75,6 @@
       </div>
     </div>
 
-    <!-- ======= Our Projects Section ======= -->
     <section id="projects" class="projects">
       <div class="container" data-aos="fade-up">
 
@@ -100,13 +99,11 @@
                            data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link">
                            <i class="bi bi-zoom-in"></i>
                         </a>
-                        <a href="#" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=628116761616" title="Hubungi Kami" class="details-link" target="_blank"><i class="bi bi-link-45deg"></i></a>
                     </div>
                     <div class="room-details mt-2">
-                        <p>Kelas: {{ $d->nama_kamar }}</p>
-                        <p><i class="fa fa-money-bill"></i>Harga: {{ $d->harga }}</p>
-                        <p><i class="fa fa-bed"></i>  {{ $d->tempat_tidur }}</p>
-                        <p><i class="fa fa-toilet"></i>   {{ $d->kamar_mandi }}</p>
+                        <p>Kamar : {{ $d->nama_kamar }}</p>
+                        <p><span class="badge text-bg-success">BPJS</span> / <span class="badge text-bg-danger">UMUM </span></p>
                     </div>
                 </div>
             </div>
