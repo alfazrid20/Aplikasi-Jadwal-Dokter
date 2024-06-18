@@ -30,11 +30,13 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Kandidat</th>
+                                        <th>Nama</th>
+                                        <th>Jenis Kelamin</th>
                                         <th>Email</th>
                                         <th>Foto</th>
                                         <th>No Handphone</th>
                                         <th>Alamat</th>
+                                        <th>Instansi Pendidikan</th>
                                         <th>Pendidikan Terakhir</th>
                                         <th>IPK/Nilai</th>
                                         <th>Posisi Dilamar</th>
@@ -50,13 +52,16 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
                                                 <a href="#" class="nama-pelamar" data-toggle="modal" data-target="#pelamarModal"
-                                                   data-nama="{{ $d->nama }}" data-email="{{ $d->email }}" data-no_hp="{{ $d->no_hp }}"
-                                                   data-alamat="{{ $d->alamat }}" data-pendidikan="{{ $d->pendidikan_terakhir }}"
-                                                   data-ipk="{{ $d->ipk }}" data-posisi="{{ $d->infoloker->posisi_id }}"
-                                                   data-foto="{{ asset($d->foto) }}">
-                                                    {{ $d->nama }}
-                                                </a>
+                                                data-nama="{{ $d->nama }}" data-email="{{ $d->email }}" data-no_hp="{{ $d->no_hp }}"
+                                                data-alamat="{{ $d->alamat }}" data-pendidikan="{{ $d->pendidikan_terakhir }}"
+                                                data-ipk="{{ $d->ipk }}" data-posisi="{{ $d->infoloker->posisi_id }}"
+                                                data-jenis_kelamin="{{ $d->jenis_kelamin }}"
+                                                data-kampus="{{ $d->kampus }}"
+                                                data-foto="{{ asset($d->foto) }}">
+                                                 {{ $d->nama }}
+                                             </a>
                                             </td>
+                                            <td>{{ $d->jenis_kelamin }}</td>
                                             <td>{{ $d->email }}</td>
                                             <td>
                                                 @if (!empty($d->foto))
@@ -67,6 +72,7 @@
                                             </td>
                                             <td>{{ $d->no_hp }}</td>
                                             <td>{{ $d->alamat }}</td>
+                                            <td>{{ $d->kampus }}</td>
                                             <td class="text-center">{{ $d->pendidikan_terakhir }}</td>
                                             <td>{{ $d->ipk }}</td>
                                             <td>{{ $d->infoloker->posisi_id }}</td>
@@ -77,7 +83,7 @@
                                                 Tidak ada dokumen
                                                 @endif
                                             </td>
-                                            <td>{{ ucwords($d->status) }}</td>
+                                            <td>{{ ucwords($d->status) }}</td>  
                                             <td>
                                                 @if ($d->status_lamaran == 0)
                                                     <span class="badge badge-warning">Waiting</span>
@@ -142,22 +148,53 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img id="modalFoto" src="#" class="img-fluid" alt="Foto Pelamar" style="width: 100%; height: auto; margin-top: 20%">
+                            <img id="modalFoto" src="#" class="img-fluid" alt="Foto Pelamar" style="width: 100%; height: auto; margin-top: 100%">
                         </div>
                         <div class="col-md-8">
-                            <p><span id="modalNama"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Nama:</strong></p>
+                                <p id="modalNama"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalEmail"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Jenis Kelamin:</strong></p>
+                                <p id="modalJenisKelamin"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalNoHP"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Email:</strong></p>
+                                <p id="modalEmail"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalAlamat"></span></p>
+                            <div class="mb-3">
+                                <p><strong>No. Handphone:</strong></p>
+                                <p id="modalNoHP"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalPendidikan"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Alamat:</strong></p>
+                                <p id="modalAlamat"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalIPK"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Kampus:</strong></p>
+                                <p id="modalKampus"></p>
+                            </div>
                             <hr>
-                            <p><span id="modalPosisi"></span></p>
+                            <div class="mb-3">
+                                <p><strong>Pendidikan Terakhir:</strong></p>
+                                <p id="modalPendidikan"></p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <p><strong>IPK/Nilai:</strong></p>
+                                <p id="modalIPK"></p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <p><strong>Posisi Dilamar:</strong></p>
+                                <p id="modalPosisi"></p>
+                            </div>
                             <hr>
                         </div>
                     </div>
@@ -168,7 +205,8 @@
             </div>
         </div>
     </div>
-
+    
+    
 @endsection
 
 @push('myscript')
@@ -209,7 +247,7 @@
             });
         }
 
-        // Event listener untuk menampilkan modal dan mengisi data
+       // Event listener untuk menampilkan modal dan mengisi data
         document.querySelectorAll('.nama-pelamar').forEach(function(element) {
             element.addEventListener('click', function() {
                 var nama = element.getAttribute('data-nama');
@@ -219,6 +257,8 @@
                 var pendidikan = element.getAttribute('data-pendidikan');
                 var ipk = element.getAttribute('data-ipk');
                 var posisi = element.getAttribute('data-posisi');
+                var jenis_kelamin = element.getAttribute('data-jenis_kelamin'); // tambahan
+                var kampus = element.getAttribute('data-kampus'); // tambahan
                 var foto = element.getAttribute('data-foto');
 
                 document.getElementById('modalNama').textContent = nama;
@@ -228,6 +268,8 @@
                 document.getElementById('modalPendidikan').textContent = pendidikan;
                 document.getElementById('modalIPK').textContent = ipk;
                 document.getElementById('modalPosisi').textContent = posisi;
+                document.getElementById('modalJenisKelamin').textContent = jenis_kelamin; // tambahan
+                document.getElementById('modalKampus').textContent = kampus; // tambahan
                 document.getElementById('modalFoto').setAttribute('src', foto);
             });
         });

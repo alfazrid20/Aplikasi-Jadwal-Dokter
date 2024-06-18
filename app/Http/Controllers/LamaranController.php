@@ -42,23 +42,23 @@ class LamaranController extends Controller
     }
 
     public function delete($id)
-{
-    // Ambil data lamaran berdasarkan ID
+    {
     $lamaran = DB::table('lamarans')->where('id', $id)->first();
 
     if ($lamaran) {
-        // Hapus file dokumen dari storage
+        if ($lamaran->foto && file_exists(public_path($lamaran->foto))) {
+            unlink(public_path($lamaran->foto));
+        }
         if ($lamaran->dokumen && file_exists(public_path($lamaran->dokumen))) {
             unlink(public_path($lamaran->dokumen));
         }
 
-        // Hapus data dari database
         DB::table('lamarans')->where('id', $id)->delete();
 
         return redirect()->route('backend.lamaran.index')->with('success', 'Data Berhasil Dihapus');
     } else {
         return redirect()->route('backend.lamaran.index')->with('error', 'Data Gagal Dihapus');
     }
-}
+    }
 
 }

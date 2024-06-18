@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Detail Lowongan</title>
+  <title>Ajukan Lamaran</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -74,34 +74,45 @@
                             <input type="text" class="form-control" id="nama" name="nama">
                             <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
                         </div>
+                        <div class="col-2">
+                            <label for="jenis_kelamin"><b>Jenis Kelamin</b></label>
+                            <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin" required>
+                            <small class="form-text text-danger"><i>*Laki - laki / Perempuan</i></small>
+                        </div>
                         <div class="col-6">
                             <label for="email"><b>Email</b></label>
                             <input type="email" class="form-control" id="email" name="email" required>
                             <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
                         </div>
-                    </div>
-                    <div class="form-group row mt-2">
-                        <div class="col-6">
-                            <label for="alamat"><b>Alamat</b></label>
-                            <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
-                            <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
-                        </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <label for="no_hp"><b>No HP</b></label>
                             <input type="tel" class="form-control" id="no_hp" maxlength="13" name="no_hp" placeholder="ex . 08xx xxxx xxxx">
                             <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
                         </div>
                     </div>
                     <div class="form-group row mt-2">
+                        <div class="col-12">
+                            <label for="alamat"><b>Alamat</b></label>
+                            <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
+                            <small class="form-text text-danger"><i>*Wajib Diisi</i></small>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row mt-2">
                         <div class="col-6">
+                            <label for="pendidikan_terakhir"><b>Universitas / Instansi Pendidikan</b></label>
+                            <input type="text" class="form-control" id="kampus" name="kampus">
+                            <small class="form-text text-danger"><i>*Wajib Diisi/</i></small>
+                        </div>
+                        <div class="col-3">
                             <label for="pendidikan_terakhir"><b>Pendidikan Terakhir</b></label>
                             <input type="text" class="form-control" id="pendidikan_terakhir" name="pendidikan_terakhir" maxlength="5">
-                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : S1/S2/D4/D3/SMA/SMK</i></small>
+                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : S1/S2/D4/D3/</i></small>
                         </div>
-                        <div class="col-6">
+                        <div class="col-3">
                             <label for="ipk"><b>IPK / Nilai Ijazah Terakhir</b></label>
                             <input type="text" class="form-control" id="ipk" name="ipk" maxlength="5" pattern="[0-9.]+" title="Masukkan angka dan titik saja">
-                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : IPK 3.00, SMA Sederajat : 85</i></small>
+                            <small class="form-text text-danger"><i>*Wajib Diisi, Contoh : IPK 3.00</i></small>
                         </div>                                          
                     </div>
                     <div class="form-group row mt-2">

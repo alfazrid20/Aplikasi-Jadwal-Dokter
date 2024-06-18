@@ -10,8 +10,8 @@ class Lamarans extends Model
     use HasFactory;
     protected $table = 'lamarans';
     protected $fillable = [
-         'nama', 'email','no_hp','foto','alamat','posisi_id','dokumen','status','status_lamaran','pendidikan_terakhir'
-         ,'ipk',
+         'nama', 'jenis_kelamin', 'email','no_hp','foto','alamat','posisi_id','dokumen','status','status_lamaran','pendidikan_terakhir'
+         ,'ipk', 'kampus',
     ];
 
     public function infoloker()

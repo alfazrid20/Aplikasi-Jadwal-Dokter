@@ -105,13 +105,14 @@ class ViewController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi awal sebelum pengecekan status loker
         $validator = Validator::make($request->all(), [
-            'nama' => 'required', 
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',  
             'email' => 'required|email',
             'foto' => 'image|mimes:png|max:2048', 
             'no_hp' => 'required',    
             'alamat' => 'required', 
+            'kampus' => 'required', 
             'pendidikan_terakhir' => 'required', 
             'ipk' => 'required',
             'posisi_id' => 'required|exists:infoloker,id',
@@ -119,6 +120,7 @@ class ViewController extends Controller
             'status' => 'required',
         ], [
             'nama.required' => "Nama harus diisi.",
+            'jenis_kelamin.required' => "Jenis Kelamin Harus Diisi",
             'email.required' => "Email harus diisi.",
             'email.email' => "Email tidak valid.",
             'foto.image' => 'File harus berupa foto atau gambar.',
@@ -126,6 +128,7 @@ class ViewController extends Controller
             'foto.max' => 'Ukuran foto tidak boleh lebih dari 2MB.',
             'no_hp.required' => "Nomor HP harus diisi.",
             'alamat.required' => "Alamat harus diisi.",
+            'kampus.required' => "Kampus harus diisi.",
             'pendidikan_terakhir.required' => "Pendidikan terakhir harus diisi.",
             'ipk.required' => 'IPK atau Nilai Ijazah Terakhir harus diisi',
             'posisi_id.required' => 'Posisi yang dilamar harus diisi',
@@ -166,10 +169,12 @@ class ViewController extends Controller
     
         Lamarans::create([
             'nama' => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'email' => $request->email,
             'foto' => $filePath,
             'no_hp' => $request->no_hp,
             'alamat' => $request->alamat,
+            'kampus' => $request->kampus,
             'pendidikan_terakhir' => $request->pendidikan_terakhir,
             'ipk' => $request->ipk,
             'posisi_id' => $request->posisi_id,
