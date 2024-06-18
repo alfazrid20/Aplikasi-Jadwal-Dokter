@@ -72,9 +72,9 @@
                                             <td>{{ $d->infoloker->posisi_id }}</td>
                                             <td>
                                                 @if($d->dokumen)
-                                                    <a href="{{ asset('storage/' . $d->dokumen) }}" target="_blank" class="btn btn-danger">Lihat Dokumen</a>
+                                                <a href="{{ asset($d->dokumen) }}" target="_blank" class="btn btn-danger">Lihat Dokumen</a>
                                                 @else
-                                                    Tidak ada dokumen
+                                                Tidak ada dokumen
                                                 @endif
                                             </td>
                                             <td>{{ ucwords($d->status) }}</td>
@@ -105,10 +105,15 @@
                                                         @csrf
                                                         <input type="hidden" name="status_lamaran" value="3">
                                                         @if ($d->status_lamaran == 1)
-                                                            <button type="button" class="btn btn-info" onclick="confirmHire({{ $d->id }})"><i class="fa fa-check-square-o text-white"></i></button>
+                                                            <button type="button" class="btn btn-info mr-2" onclick="confirmHire({{ $d->id }})"><i class="fa fa-check-square-o text-white"></i></button>
                                                         @else
-                                                            <button type="button" class="btn btn-info" disabled><i class="fa fa-check-square-o text-white"></i></button>
+                                                            <button type="button" class="btn btn-info mr-2" disabled><i class="fa fa-check-square-o text-white"></i></button>
                                                         @endif
+                                                    </form>
+                                                    <form id="deleteForm_{{ $d->id }}" action="{{ route('backend.lamaran.delete', $d->id) }}" method="POST" class="delete-form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="button" class="btn btn-danger" onclick="confirmDelete({{ $d->id }})"><i class="fa fa-trash text-white"></i></button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -184,6 +189,22 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     document.getElementById('submitForm_' + id + '_3').submit();
+                }
+            });
+        }
+
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This candidate will be deleted!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete them!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm_' + id).submit();
                 }
             });
         }

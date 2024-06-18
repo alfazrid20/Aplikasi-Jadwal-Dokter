@@ -134,32 +134,36 @@ class ViewController extends Controller
             'dokumen.mimes' => 'Dokumen harus berupa file PDF',
             'status.required' => 'Status harus diisi',
         ]);
-        
+    
         if ($validator->fails()) {
             return redirect()->route('lowongan.create')
                 ->withErrors($validator)
                 ->withInput();
         }
-
+    
+        $filePath = null;
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('public/foto_kandidat', $fileName);
             $filePath = 'storage/' . str_replace('public/', '', $filePath);
         }
-
+    
         $loker = Lokers::find($request->posisi_id);
         if ($loker && $loker->status_loker === 'Tutup') {
             return redirect()->route('lowongan.create')
                 ->with('error', 'Maaf, lowongan pada posisi ini belum dibuka.')
                 ->withInput();
         }
-
+    
         $status_lamaran = 0;
-        
+    
         // Simpan dokumen setelah semua validasi terpenuhi
-        $dokumenPath = $request->file('dokumen')->store('dokumen');
-        
+        $dokumen = $request->file('dokumen');
+        $dokumenName = time() . '_' . $dokumen->getClientOriginalName();
+        $dokumenPath = $dokumen->storeAs('public/dokumen', $dokumenName);
+        $dokumenPath = 'storage/' . str_replace('public/', '', $dokumenPath);
+    
         Lamarans::create([
             'nama' => $request->nama,
             'email' => $request->email,
@@ -173,10 +177,11 @@ class ViewController extends Controller
             'status' => $request->status,
             'status_lamaran' => $status_lamaran,
         ]);
-
+    
         return redirect()->route('loker')
             ->with('success', 'Data berhasil ditambah');
     }
+    
 
     public function manajemen(Request $request)
     {
